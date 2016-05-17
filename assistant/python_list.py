@@ -6,10 +6,12 @@ def create_square_list_1():
     :return: None
     """
 
+    print("##### ##### create_square_list_1 ##### #####")
     squares = []
     for x in range(10):
         squares.append(x**2)
     print(squares)
+    print()
 
 
 def create_square_list_2():
@@ -19,8 +21,10 @@ def create_square_list_2():
     :return: None
     """
 
+    print("##### ##### create_square_list_2 ##### #####")
     squares = [x**2 for x in range(10)]
     print(squares)
+    print()
 
 
 def list_comprehensions():
@@ -29,6 +33,7 @@ def list_comprehensions():
     :return:
     """
 
+    print("##### ##### list_comprehensions ##### #####")
     vec = [-4, -2, 0, 2, 4]
 
     # create a new list with the values doubled
@@ -62,6 +67,7 @@ def list_comprehensions():
     nested_list = [num for elem in vec for num in elem]
     print(nested_list)
     # prints: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    print()
 
 
 def nested_list_comprehensions():
@@ -70,6 +76,7 @@ def nested_list_comprehensions():
     :return:
     """
 
+    print("##### ##### nested_list_comprehensions ##### #####")
     matrix = [
         [1, 2, 3, 4],
         [5, 6, 7, 8],
@@ -107,6 +114,7 @@ def nested_list_comprehensions():
     transposed = zip(*matrix)
     print(transposed)
     # prints: [(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
+    print()
 
 
 def list_delete():
@@ -115,6 +123,7 @@ def list_delete():
     :return: None
     """
 
+    print("##### ##### list_delete ##### #####")
     # deletes a specific index of element
     a = [-1, 1, 66.25, 333, 333, 1234.5]
     del a[0]
@@ -133,5 +142,5 @@ def list_delete():
 
     # deletes the entire list variable
     del a
-
+    print()
 

@@ -1,4 +1,4 @@
-<h1 id="sololearn-python-notes"><strong><em>SOLOLEARN PYTHON NOTES</em></strong></h1>
+<h1 id="sololearn-python-notes"><strong><em>PYTHON NOTES</em></strong></h1>
 
 <hr>
 
@@ -8,7 +8,7 @@
 
 <p><div class="toc">
 <ul>
-<li><a href="#sololearn-python-notes">SOLOLEARN PYTHON NOTES</a><ul>
+<li><a href="#sololearn-python-notes">PYTHON NOTES</a><ul>
 <li><a href="#table-of-contents">Table of Contents</a></li>
 <li><a href="#functional-programming">FUNCTIONAL PROGRAMMING</a></li>
 <li><a href="#lambdas">Lambdas</a></li>
@@ -36,7 +36,7 @@
 </p>
 
 <h2 id="functional-programming"><strong><em>Functional Programming</em></strong></h2>
-
+[Source: SoloLearn Python Tutorial](http://www.sololearn.com/Play/Python)
 <h3 id="lambdas"><strong>Lambdas</strong></h3>
 
 <hr>

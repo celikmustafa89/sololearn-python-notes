@@ -10,7 +10,7 @@
 <ul>
 <li><a href="#sololearn-python-notes">PYTHON NOTES</a><ul>
 <li><a href="#table-of-contents">Table of Contents</a></li>
-<li><a href="#functional-programming">FUNCTIONAL PROGRAMMING</a></li>
+<li><a href="#functional-programming">FUNCTIONAL PROGRAMMING</a><ul>
 <li><a href="#lambdas">Lambdas</a></li>
 <li><a href="#map">Map</a></li>
 <li><a href="#filter">Filter</a></li>
@@ -29,6 +29,8 @@
 <li><a href="#itertools-1">itertools-1</a></li>
 <li><a href="#itertools-2">itertools-2</a></li>
 <li><a href="#itertools-3">itertools-3</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -909,3 +909,650 @@ B().spam()</code></pre>
 </blockquote>
 
 <p><strong>Note:</strong> <strong><em>super().spam()</em></strong> calls the <strong>spam</strong> method of the superclass.</p>
+
+
+
+<h3 id="magic-methods-1"><strong>Magic Methods-1</strong></h3>
+
+<hr>
+
+<p><strong>Magic methods</strong> are special methods which have <strong>double underscores</strong> at the beginning and end of their names.  <br>
+They are also known as <strong>dunders.</strong>  <br>
+So far, the only one we have encountered is <code>__init__</code>, but there are several others.  <br>
+They are used to create functionality that can’t be represented as a normal method. </p>
+
+<p>One common use of them is <strong>operator overloading</strong>.  <br>
+This means defining operators for custom classes that allow operators such as <strong>+ and *</strong> to be used on them. <br>
+An example magic method is <code>__add__</code> for <strong>+</strong>.</p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector2D</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x, y)</span>:</span>
+    self.x = x
+    self.y = y
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span><span class="hljs-params">(self, other)</span>:</span>
+    <span class="hljs-keyword">return</span> Vector2D(self.x + other.x, self.y + other.y)
+
+first = Vector2D(<span class="hljs-number">5</span>, <span class="hljs-number">7</span>)
+second = Vector2D(<span class="hljs-number">3</span>, <span class="hljs-number">9</span>)
+result = first + second
+print(result.x)
+print(result.y)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>8 <br>
+  16    </p>
+</blockquote>
+
+<p>The <code>__add__</code> method allows for the definition of a custom behavior for the <strong>+ operator</strong> in our class.  <br>
+As you can see, it adds the corresponding attributes of the objects and returns a new object, containing the result. <br>
+Once it’s defined, we can add two objects of the class together.</p>
+
+
+
+<h3 id="magic-methods-2"><strong>Magic Methods-2</strong></h3>
+
+<hr>
+
+<p>More magic methods for common operators: <br>
+<code>__sub__</code> for <strong>-</strong> <br>
+<code>__mul__</code> for <strong>*</strong> <br>
+<code>__truediv__</code> for <strong>/</strong> <br>
+<code>__floordiv__</code> for <strong>//</strong> <br>
+<code>__mod__</code> for <strong>%</strong> <br>
+<code>__pow__</code> for <strong>**</strong> <br>
+<code>__and__</code> for <strong>&amp;</strong> <br>
+<code>__xor__</code> for <strong>^</strong> <br>
+<code>__or__</code> for <strong>|</strong></p>
+
+<p>The expression <code>x + y</code> is translated into <code>x.__add__(y)</code>.  <br>
+However, if x hasn’t implemented <code>__add__</code>, and x and y are of different types, then <code>y.__radd__(x)</code> is called.  <br>
+There are equivalent r methods for all magic methods just mentioned. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpecialString</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, cont)</span>:</span>
+    self.cont = cont
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__truediv__</span><span class="hljs-params">(self, other)</span>:</span>
+    line = <span class="hljs-string">"="</span> * len(other.cont)
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"\n"</span>.join([self.cont, line, other.cont])
+
+spam = SpecialString(<span class="hljs-string">"spam"</span>)
+hello = SpecialString(<span class="hljs-string">"Hello world!"</span>)
+print(spam / hello)</code></pre>
+
+<p><strong>Result:</strong>  </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs asciidoc"><span class="hljs-header">spam
+============</span>
+Hello world!</code></pre>
+
+<p><strong>Note:</strong> In the example above, we defined the <strong>division</strong> operation for our class <strong>SpecialString</strong>.</p>
+
+<h3 id="magic-methods-3"><strong>Magic Methods-3</strong></h3>
+
+<hr>
+
+<p>Python also provides magic methods for comparisons. <br>
+<code>__lt__</code> for <strong>&lt;</strong> <br>
+<code>__le__</code> for <strong>&lt;=</strong> <br>
+<code>__eq__</code> for <strong>==</strong> <br>
+<code>__ne__</code> for <strong>!=</strong> <br>
+<code>__gt__</code> for <strong>&gt;</strong> <br>
+<code>__ge__</code> for <strong>&gt;=</strong></p>
+
+<p>If <code>__ne__</code> is not implemented, it returns the opposite of <code>__eq__</code>.  <br>
+<strong>Note:</strong> There are no other relationships between the other operators. <br>
+<strong>Example:</strong></p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpecialString</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, cont)</span>:</span>
+    self.cont = cont
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__gt__</span><span class="hljs-params">(self, other)</span>:</span>
+    <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> range(len(other.cont)+<span class="hljs-number">1</span>):
+      result = other.cont[:index] + <span class="hljs-string">"&gt;"</span> + self.cont
+      result += <span class="hljs-string">"&gt;"</span> + other.cont[index:]
+      print(result)
+
+spam = SpecialString(<span class="hljs-string">"spam"</span>)
+eggs = SpecialString(<span class="hljs-string">"eggs"</span>)
+spam &gt; eggs</code></pre>
+
+<p><strong>Result:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs ">&gt;spam&gt;eggs
+e&gt;spam&gt;ggs
+eg&gt;spam&gt;gs
+egg&gt;spam&gt;s
+eggs&gt;spam&gt;</code></pre>
+
+<p><strong>Note:</strong> As you can see, you can define any custom behavior for the overloaded operators.</p>
+
+
+
+<h3 id="magic-methods-4"><strong>Magic Methods-4</strong></h3>
+
+<hr>
+
+<p>There are several magic methods for making classes act like containers. <br>
+<code>__len__</code> for <strong>len()</strong> <br>
+<code>__getitem__</code> for <strong>indexing</strong> <br>
+<code>__setitem__</code> for <strong>assigning</strong> to indexed values <br>
+<code>__delitem__</code> for <strong>deleting</strong> indexed values <br>
+<code>__iter__</code> for <strong>iteration</strong> over objects (e.g., in for loops) <br>
+<code>__contains__</code> for <strong>in</strong></p>
+
+<p>There are many other magic methods that we won’t cover here, such as <code>__call__</code> for calling objects as functions, and <code>__int__</code>, <code>__str__</code>, and the like, for converting objects to built-in types.  <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-keyword">import</span> random
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VagueList</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, cont)</span>:</span>
+    self.cont = cont
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__getitem__</span><span class="hljs-params">(self, index)</span>:</span>
+    <span class="hljs-keyword">return</span> self.cont[index + random.randint(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)]
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__len__</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> random.randint(<span class="hljs-number">0</span>, len(self.cont)*<span class="hljs-number">2</span>)
+
+vague_list = VagueList([<span class="hljs-string">"A"</span>, <span class="hljs-string">"B"</span>, <span class="hljs-string">"C"</span>, <span class="hljs-string">"D"</span>, <span class="hljs-string">"E"</span>])
+print(len(vague_list))
+print(len(vague_list))
+print(vague_list[<span class="hljs-number">2</span>])
+print(vague_list[<span class="hljs-number">2</span>])</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>6 <br>
+  7 <br>
+  D <br>
+  C</p>
+</blockquote>
+
+<p><strong>Note:</strong> We have overridden the <strong>len()</strong> function for the class VagueList to return a random number. <br>
+The indexing function also returns a random item in a range from the list, based on the expression.</p>
+
+
+
+<h3 id="object-lifecycle-1"><strong>Object Lifecycle-1</strong></h3>
+
+<hr>
+
+<p>The lifecycle of an object is made up of its <strong>creation</strong>, <strong>manipulation</strong>, and <strong>destruction</strong>.</p>
+
+<p>The first stage of the life-cycle of an object is the <strong>definition</strong> of the class to which it belongs. <br>
+The next stage is the <strong>instantiation</strong> of an instance, when <code>__init__</code> is called. Memory is allocated to store the instance. Just before this occurs, the <code>__new__</code> method of the class is called. This is usually overridden only in special cases.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> After this has happened, the object is ready to be used. Other code can then interact with the object, by calling functions on <br>
+  it and accessing its attributes.  Eventually, it will finish being <br>
+  used, and can be <strong>destroyed</strong>.</p>
+</blockquote>
+
+
+
+<h3 id="object-lifecycle-2"><strong>Object Lifecycle-2</strong></h3>
+
+<hr>
+
+<p>When an object is <strong>destroyed</strong>, the memory allocated to it is freed up, and can be used for other purposes. <br>
+Destruction of an object occurs when its <strong>reference count</strong> reaches zero. Reference count is the number of variables and other elements that refer to an object. <br>
+If nothing is referring to it (it has a reference count of zero) nothing can interact with it, so it can be safely deleted.</p>
+
+<p>In some situations, two (or more) objects can be referred to by each other only, and therefore can be deleted as well.  <br>
+The del statement reduces the reference count of an object by one, and this often leads to its deletion. <br>
+The magic method for the <strong>del</strong> statement is <code>__del__</code>.  <br>
+The process of deleting objects when they are no longer needed is called <strong>garbage collection</strong>. <br>
+In summary, an object’s reference count increases when it is assigned a new name or placed in a container (list, tuple, or dictionary). The object’s reference count decreases when it’s deleted with <strong>del</strong>, its reference is reassigned, or its reference goes out of scope. When an object’s reference count reaches zero, Python automatically deletes it. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs sql">a = 42  # <span class="hljs-operator"><span class="hljs-keyword">Create</span> object &lt;<span class="hljs-number">42</span>&gt;
+b = a  # Increase ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt; 
+c = [a]  # Increase ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt; 
+
+del a  # Decrease ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt;
+b = <span class="hljs-number">100</span>  # Decrease ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt; 
+c[<span class="hljs-number">0</span>] = -<span class="hljs-number">1</span>  # Decrease ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt;</span></code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> Lower level languages like C don’t have this kind of automatic memory management.</p>
+</blockquote>
+
+
+
+<h3 id="data-hiding-1"><strong>Data Hiding-1</strong></h3>
+
+<hr>
+
+<p>A key part of object-oriented programming is <strong>encapsulation</strong>, which involves packaging of related variables and functions into a single easy-to-use object - an instance of a class. <br>
+A related concept is <strong>data hiding</strong>, which states that implementation details of a class should be hidden, and a clean standard interface be presented for those who want to use the class.  <br>
+In other programming languages, this is usually done with private methods and attributes, which block external access to certain methods and attributes in a class.</p>
+
+<p>The Python philosophy is slightly different. It is often stated as <strong>“we are all consenting adults here”</strong>, meaning that you shouldn’t put arbitrary restrictions on accessing parts of a class. Hence there are no ways of enforcing a method or attribute be strictly private. </p>
+
+<blockquote>
+  <p><strong>Note:</strong> However, there are ways to discourage people from accessing parts of a class, such as by denoting that it is an implementation <br>
+  detail, and should be used at their own risk.</p>
+</blockquote>
+
+
+
+<h3 id="data-hiding-2"><strong>Data Hiding-2</strong></h3>
+
+<hr>
+
+<p><strong>Weakly private</strong> methods and attributes have a <strong>single underscore</strong> at the beginning. <br>
+This signals that they are private, and shouldn’t be used by external code. However, it is mostly only a convention, and does not stop external code from accessing them.  <br>
+Its only actual effect is that <strong>from module_name import *</strong> won’t import variables that start with a single underscore. <br>
+<strong>Example:</strong></p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Queue</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, contents)</span>:</span>
+    self._hiddenlist = list(contents)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">push</span><span class="hljs-params">(self, value)</span>:</span>
+    self._hiddenlist.insert(<span class="hljs-number">0</span>, value)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pop</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self._hiddenlist.pop(-<span class="hljs-number">1</span>)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Queue({})"</span>.format(self._hiddenlist)
+
+queue = Queue([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+print(queue)
+queue.push(<span class="hljs-number">0</span>)
+print(queue)
+queue.pop()
+print(queue)
+print(queue._hiddenlist)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>Queue([1, 2, 3]) <br>
+  Queue([0, 1, 2, 3]) <br>
+  Queue([0, 1, 2]) <br>
+  [0, 1, 2]</p>
+</blockquote>
+
+<p><strong>Note:</strong> In the code above, the attribute <code>_hiddenlist</code> is marked as private, but it can still be accessed in the outside code. <br>
+The <code>__repr__</code> magic method is used for string representation of the instance.</p>
+
+
+
+<h3 id="data-hiding-3"><strong>Data Hiding-3</strong></h3>
+
+<hr>
+
+<p><strong>Strongly private</strong> methods and attributes have a <strong>double underscore</strong> at the beginning of their names. This causes their names to be mangled, which means that they can’t be accessed from outside the class.  <br>
+The purpose of this isn’t to ensure that they are kept private, but to avoid bugs if there are subclasses that have methods or attributes with the same names. <br>
+Name mangled methods can still be accessed externally, but by a different name. The method <code>__privatemethod</code> of class <strong>Spam</strong> could be accessed externally with <code>_Spam__privatemethod</code>. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Spam</span>:</span>
+  __egg = <span class="hljs-number">7</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_egg</span><span class="hljs-params">(self)</span>:</span>
+    print(self.__egg)
+
+s = Spam()
+s.print_egg()
+print(s._Spam__egg)
+print(s.__egg)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>7 <br>
+  7 <br>
+  AttributeError: ‘Spam’ object has no attribute ‘__egg’</p>
+</blockquote>
+
+<p><strong>Note:</strong> Basically, Python protects those members by internally changing the name to include the class name.</p>
+
+
+
+<h3 id="class-methods"><strong>Class Methods</strong></h3>
+
+<hr>
+
+<p>Methods of objects we’ve looked at so far are called by an instance of a class, which is then passed to the <strong>self</strong> parameter of the method. <br>
+<strong>Class methods</strong> are different - they are called by a class, which is passed to the <strong>cls</strong> parameter of the method.  <br>
+A common use of these are factory methods, which instantiate an instance of a class, using different parameters than those usually passed to the class constructor.  <br>
+Class methods are marked with a <strong>classmethod</strong> <strong>decorator</strong>. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, width, height)</span>:</span>
+    self.width = width
+    self.height = height
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_area</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.width * self.height
+
+  <span class="hljs-decorator">@classmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">new_square</span><span class="hljs-params">(cls, side_length)</span>:</span>
+    <span class="hljs-keyword">return</span> cls(side_length, side_length)
+
+square = Rectangle.new_square(<span class="hljs-number">5</span>)
+print(square.calculate_area())</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>25</p>
+</blockquote>
+
+<p><strong>new_square</strong> is a class method and is called on the class, rather than on an instance of the class. It returns a new object of the class <strong>cls</strong>. <br>
+Technically, the parameters <strong>self</strong> and <strong>cls</strong> are just conventions; they could be changed to anything else. However, they are universally followed, so it is wise to stick to using them.</p>
+
+
+
+<h3 id="static-methods"><strong>Static Methods</strong></h3>
+
+<hr>
+
+<p><strong>Static methods</strong> are similar to class methods, except they don’t receive any additional arguments; they are identical to normal functions that belong to a class.  <br>
+They are marked with the <strong>staticmethod decorator.</strong> <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
+    self.toppings = toppings
+
+  <span class="hljs-decorator">@staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">validate_topping</span><span class="hljs-params">(topping)</span>:</span>
+    <span class="hljs-keyword">if</span> topping == <span class="hljs-string">"pineapple"</span>:
+      <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"No pineapples!"</span>)
+    <span class="hljs-keyword">else</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">True</span>
+
+ingredients = [<span class="hljs-string">"cheese"</span>, <span class="hljs-string">"onions"</span>, <span class="hljs-string">"spam"</span>]
+<span class="hljs-keyword">if</span> all(Pizza.validate_topping(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ingredients):
+  pizza = Pizza(ingredients) </code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> Static methods behave like plain functions, except for the fact that you can call them from an instance of the class.</p>
+</blockquote>
+
+
+
+<h3 id="properties-1"><strong>Properties-1</strong></h3>
+
+<hr>
+
+<p><strong>Properties</strong> provide a way of customizing access to instance attributes.  <br>
+They are created by putting the <strong>property decorator</strong> above a method, which means when the instance attribute with the same name as the method is accessed, the method will be called instead.  <br>
+One common use of a property is to make an attribute <strong>read-only</strong>. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
+    self.toppings = toppings
+
+  <span class="hljs-decorator">@property</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pineapple_allowed</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">False</span>
+
+pizza = Pizza([<span class="hljs-string">"cheese"</span>, <span class="hljs-string">"tomato"</span>])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = <span class="hljs-keyword">True</span></code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>False</p>
+  
+  <p>AttributeError: can’t set attribute</p>
+</blockquote>
+
+
+
+<h3 id="properties-2"><strong>Properties-2</strong></h3>
+
+<hr>
+
+<p>Properties can also be set by defining <strong>setter/getter</strong> functions. <br>
+The <strong>setter</strong> function sets the corresponding property’s value. <br>
+The <strong>getter</strong> gets the value. <br>
+To define a <strong>setter</strong>, you need to use a <strong>decorator</strong> of the same name as the property, followed by a <strong>dot</strong> and the <strong>setter</strong> keyword. <br>
+The same applies to defining <strong>getter</strong> functions. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
+    self.toppings = toppings
+    self._pineapple_allowed = <span class="hljs-keyword">False</span>
+
+  <span class="hljs-decorator">@property</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pineapple_allowed</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self._pineapple_allowed
+
+  <span class="hljs-decorator">@pineapple_allowed.setter</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pineapple_allowed</span><span class="hljs-params">(self, value)</span>:</span>
+    <span class="hljs-keyword">if</span> value:
+      password = input(<span class="hljs-string">"Enter the password: "</span>)
+      <span class="hljs-keyword">if</span> password == <span class="hljs-string">"Sw0rdf1sh!"</span>:
+        self._pineapple_allowed = value
+      <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"Alert! Intruder!"</span>)
+
+pizza = Pizza([<span class="hljs-string">"cheese"</span>, <span class="hljs-string">"tomato"</span>])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = <span class="hljs-keyword">True</span>
+print(pizza.pineapple_allowed)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>False <br>
+  Enter the password to permit pineapple: Sw0rdf1sh! <br>
+  True</p>
+</blockquote>
+
+
+
+<h3 id="a-simple-game"><strong>A Simple Game</strong></h3>
+
+<hr>
+
+<p>Object-orientation is very useful when managing different objects and their relations. That is especially useful when you are developing games with different characters and features.</p>
+
+<p>Let’s look at an example project that shows how classes are used in game development. <br>
+The game to be developed is an old fashioned text-based adventure game. <br>
+Below is the function handling input and simple parsing.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_input</span><span class="hljs-params">()</span>:</span>
+  command = input(<span class="hljs-string">": "</span>).split()
+  verb_word = command[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">if</span> verb_word <span class="hljs-keyword">in</span> verb_dict:
+    verb = verb_dict[verb_word]
+  <span class="hljs-keyword">else</span>:
+    print(<span class="hljs-string">"Unknown verb {}"</span>. format(verb_word))
+    <span class="hljs-keyword">return</span>
+
+  <span class="hljs-keyword">if</span> len(command) &gt;= <span class="hljs-number">2</span>:
+    noun_word = command[<span class="hljs-number">1</span>]
+    <span class="hljs-keyword">print</span> (verb(noun_word))
+  <span class="hljs-keyword">else</span>:
+    print(verb(<span class="hljs-string">"nothing"</span>))
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">say</span><span class="hljs-params">(noun)</span>:</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'You said "{}"'</span>.format(noun)
+
+verb_dict = {
+  <span class="hljs-string">"say"</span>: say,
+}
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+  get_input()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<pre><code>: say Hello!
+You said "Hello!"
+: say Goodbye!
+You said "Goodbye!"
+
+: test
+Unknown verb test
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> The code above takes input from the user, and tries to match the first word with a command in <strong>verb_dict</strong>. If a match is found, the <br>
+  corresponding function is called.</p>
+</blockquote>
+
+<p>The next step is to use classes to represent game objects.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameObject</span>:</span>
+  class_name = <span class="hljs-string">""</span>
+  desc = <span class="hljs-string">""</span>
+  objects = {}
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name)</span>:</span>
+    self.name = name
+    GameObject.objects[self.class_name] = self
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_desc</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.class_name + <span class="hljs-string">"\n"</span> + self.desc
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Goblin</span><span class="hljs-params">(GameObject)</span>:</span>
+  class_name = <span class="hljs-string">"goblin"</span>
+  desc = <span class="hljs-string">"A foul creature"</span>
+
+goblin = Goblin(<span class="hljs-string">"Gobbly"</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">examine</span><span class="hljs-params">(noun)</span>:</span>
+  <span class="hljs-keyword">if</span> noun <span class="hljs-keyword">in</span> GameObject.objects:
+    <span class="hljs-keyword">return</span> GameObject.objects[noun].get_desc()
+  <span class="hljs-keyword">else</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"There is no {} here."</span>.format(noun)</code></pre>
+
+<p>We created a <strong>Goblin</strong> class, which inherits from the <strong>GameObjects</strong> class. <br>
+We also created a new function <strong>examine</strong>, which returns the objects description. <br>
+Now we can add a new “examine” verb to our dictionary and try it out!</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs perl">verb_dict = {
+  <span class="hljs-string">"say"</span>: <span class="hljs-keyword">say</span>,
+  <span class="hljs-string">"examine"</span>: examine,
+}</code></pre>
+
+<p>Combine this code with the one in our previous example, and run the program.</p>
+
+<pre><code>&gt;&gt;&gt;
+: say Hello!
+You said "Hello!"
+
+: examine goblin
+goblin
+A foul creature
+
+: examine elf
+There is no elf here.
+:
+</code></pre>
+
+<p>This code adds more detail to the <strong>Goblin</strong> class and allows you to <strong>fight</strong> goblins.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Goblin</span><span class="hljs-params">(GameObject)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name)</span>:</span>
+    self.class_name = <span class="hljs-string">"goblin"</span>
+    self.health = <span class="hljs-number">3</span>
+    self._desc = <span class="hljs-string">" A foul creature"</span>
+    super().__init__(name)
+
+  <span class="hljs-decorator">@property</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">desc</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">if</span> self.health &gt;=<span class="hljs-number">3</span>:
+      <span class="hljs-keyword">return</span> self._desc
+    <span class="hljs-keyword">elif</span> self.health == <span class="hljs-number">2</span>:
+      health_line = <span class="hljs-string">"It has a wound on its knee."</span>
+    <span class="hljs-keyword">elif</span> self.health == <span class="hljs-number">1</span>:
+      health_line = <span class="hljs-string">"Its left arm has been cut off!"</span>
+    <span class="hljs-keyword">elif</span> self.health &lt;= <span class="hljs-number">0</span>:
+      health_line = <span class="hljs-string">"It is dead."</span>
+    <span class="hljs-keyword">return</span> self._desc + <span class="hljs-string">"\n"</span> + health_line
+
+  <span class="hljs-decorator">@desc.setter</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">desc</span><span class="hljs-params">(self, value)</span>:</span>
+    self._desc = value
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hit</span><span class="hljs-params">(noun)</span>:</span>
+  <span class="hljs-keyword">if</span> noun <span class="hljs-keyword">in</span> GameObject.objects:
+    thing = GameObject.objects[noun]
+    <span class="hljs-keyword">if</span> type(thing) == Goblin:
+      thing.health = thing.health - <span class="hljs-number">1</span>
+      <span class="hljs-keyword">if</span> thing.health &lt;= <span class="hljs-number">0</span>:
+        msg = <span class="hljs-string">"You killed the goblin!"</span>
+      <span class="hljs-keyword">else</span>: 
+        msg = <span class="hljs-string">"You hit the {}"</span>.format(thing.class_name)
+  <span class="hljs-keyword">else</span>:
+    msg =<span class="hljs-string">"There is no {} here."</span>.format(noun) 
+  <span class="hljs-keyword">return</span> msg</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<pre><code>&gt;&gt;&gt;
+: hit goblin
+You hit the goblin
+
+: examine goblin
+goblin
+ A foul creature
+It has a wound on its knee.
+
+: hit goblin
+You hit the goblin
+
+: hit goblin
+You killed the goblin!
+
+: examine goblin
+A goblin
+
+goblin
+ A foul creature
+It is dead.
+:
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> This was just a simple sample. You could create different classes <br>
+  (e.g., elves, orcs, humans), fight them, make them fight each other, <br>
+  and so on.</p>
+</blockquote>

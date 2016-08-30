@@ -31,6 +31,12 @@
 <li><a href="#itertools-3">itertools-3</a></li>
 </ul>
 </li>
+<li><a href="#object-oriented-programming">Object-Oriented Programming</a><ul>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#init">_init_</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -39,7 +45,11 @@
 
 <p>Source: <a href="http://www.sololearn.com/Play/Python">SoloLearn Python Tutorial</a></p>
 
+
+
 <h2 id="functional-programming"><strong><em>Functional Programming</em></strong></h2>
+
+
 
 <h3 id="lambdas"><strong>Lambdas</strong></h3>
 
@@ -49,6 +59,8 @@
 This is different from the creation of other objects - such as <strong>strings</strong> and <strong>integers</strong> - which can be created on the fly, without assigning them to a variable.  <br>
 The same is possible with <strong>functions</strong>, provided that they are created using <strong>lambda syntax</strong>. Functions created this way are known as <strong>anonymous</strong>. <br>
 This approach is most commonly used when passing a simple function as an argument to another function. The syntax is shown in the next example and consists of the lambda keyword followed by a list of arguments, a <strong>colon</strong>, and the <strong>expression</strong> to <strong>evaluate</strong> and <strong>return</strong>.</p>
+
+
 
 <pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_func</span><span class="hljs-params">(f, arg)</span>:</span>
   <span class="hljs-keyword">return</span> f(arg)
@@ -131,6 +143,8 @@ Fill in the blanks to remove all items that are greater than 4 from the list.</p
 res = <span class="hljs-keyword">list</span>(filter(lambda x: x &lt; <span class="hljs-number">5</span>, nums))
 <span class="hljs-keyword">print</span>(res)</code></pre>
 
+
+
 <h3 id="generators-1"><strong>Generators-1</strong></h3>
 
 <hr>
@@ -162,6 +176,8 @@ They can be created using functions and the <strong>yield</strong> statement. <b
 </blockquote>
 
 <p>The <strong>yield</strong> statement is used to define a <strong>generator</strong>, replacing the return of a function to provide a result to its caller without destroying local variables.</p>
+
+
 
 <h3 id="generators-2"><strong>Generators-2</strong></h3>
 
@@ -206,6 +222,8 @@ Fill in the blanks to create a prime number generator, that yields all prime num
       <span class="hljs-keyword">yield</span> num
     num += <span class="hljs-number">1</span></code></pre>
 
+
+
 <h3 id="generators-3"><strong>Generators-3</strong></h3>
 
 <hr>
@@ -228,6 +246,8 @@ print(list(numbers(<span class="hljs-number">11</span>)))</code></pre>
 </blockquote>
 
 <p><strong>Note:</strong> Using <strong>generators</strong> results in improved performance, which is the result of the lazy (on demand) generation of values, which translates to lower memory usage. Furthermore, we do not need to wait until all the elements have been generated before we start to use them.</p>
+
+
 
 <h3 id="decorators-1"><strong>Decorators-1</strong></h3>
 
@@ -266,6 +286,8 @@ print_text()</span></code></pre>
   <p>Now print_text corresponds to our decorated version.</p>
 </blockquote>
 
+
+
 <h3 id="decorators-2"><strong>Decorators-2</strong></h3>
 
 <hr>
@@ -295,6 +317,8 @@ Try It Yourself</code></pre>
 <blockquote>
   <p><strong>Note:</strong> A single function can have multiple decorators.</p>
 </blockquote>
+
+
 
 <h3 id="recursion-1"><strong>Recursion-1</strong></h3>
 
@@ -326,6 +350,8 @@ print(factorial(<span class="hljs-number">5</span>))</code></pre>
 
 <p><strong>Note:</strong> <em>The base case acts as the exit condition of the recursion.</em></p>
 
+
+
 <h3 id="recursion-2"><strong>Recursion-2</strong></h3>
 
 <hr>
@@ -345,6 +371,8 @@ print(factorial(<span class="hljs-number">5</span>))</code></pre>
 <blockquote>
   <p>RuntimeError: maximum recursion depth exceeded</p>
 </blockquote>
+
+
 
 <h3 id="recursion-3"><strong>Recursion-3</strong></h3>
 
@@ -375,6 +403,8 @@ print(is_even(<span class="hljs-number">23</span>))</code></pre>
   False</p>
 </blockquote>
 
+
+
 <h3 id="sets-1"><strong>Sets-1</strong></h3>
 
 <hr>
@@ -397,6 +427,8 @@ print(<span class="hljs-string">"spam"</span> not <span class="hljs-keyword">in<
 </blockquote>
 
 <p><strong>Note:</strong> <em>To create an empty set, you must use <strong>set()</strong>, as <strong>{}</strong> creates an empty dictionary.</em></p>
+
+
 
 <h3 id="sets-2"><strong>Sets-2</strong></h3>
 
@@ -425,6 +457,8 @@ The method <strong>remove</strong> removes a specific element from a set; <stron
 </blockquote>
 
 <p><strong>Note</strong>: <em>Basic uses of <strong>sets</strong> include membership testing and the <strong>elimination of duplicate entries</strong>.</em></p>
+
+
 
 <h3 id="sets-3"><strong>Sets-3</strong></h3>
 
@@ -458,6 +492,8 @@ print(<span class="hljs-keyword">first</span> ^ <span class="hljs-keyword">secon
 </blockquote>
 
 <p>StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible <strong>offline!</strong></p>
+
+
 
 <h3 id="data-structures"><strong>Data Structures</strong></h3>
 
@@ -521,6 +557,8 @@ The function <strong>repeat</strong> repeats an object, either infinitely or a s
   11</p>
 </blockquote>
 
+
+
 <h3 id="itertools-2"><strong>itertools-2</strong></h3>
 
 <hr>
@@ -546,6 +584,8 @@ print(list(takewhile(<span class="hljs-keyword">lambda</span> x: x&lt;= <span cl
   [0, 1, 3, 6]</p>
 </blockquote>
 
+
+
 <h3 id="itertools-3"><strong>itertools-3</strong></h3>
 
 <hr>
@@ -568,3 +608,289 @@ letters = (<span class="hljs-string">"A"</span>, <span class="hljs-string">"B"</
   <p>[(‘A’, 0), (‘A’, 1), (‘B’, 0), (‘B’, 1)] <br>
   [(‘A’, ‘B’), (‘B’, ‘A’)]</p>
 </blockquote>
+
+
+
+<h2 id="object-oriented-programming"><strong><em>Object-Oriented Programming</em></strong></h2>
+
+
+
+<h3 id="classes-1"><strong>Classes-1</strong></h3>
+
+<hr>
+
+<p>We have previously looked at two paradigms of programming - <strong>imperative</strong> (using statements, loops, and functions as subroutines), and <strong>functional</strong> (using pure functions, higher-order functions, and recursion).</p>
+
+<p>Another very popular paradigm is <strong>object**</strong>-<strong>**oriented</strong> <strong>programming</strong> (<strong>OOP</strong>). <br>
+Objects are created using <strong>classes</strong>, which are actually the focal point of OOP. <br>
+The <strong>class</strong> describes what the object will be, but is separate from the object itself. In other words, a class can be described as an object’s blueprint, description, or definition. <br>
+You can use the same class as a blueprint for creating multiple different objects. </p>
+
+<p>Classes are created using the keyword <strong>class</strong> and an indented block, which contains class <strong>methods</strong> (which are functions).  <br>
+Below is an example of a simple class and its objects.</p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, color, legs)</span>:</span>
+    self.color = color
+    self.legs = legs
+
+felix = Cat(<span class="hljs-string">"ginger"</span>, <span class="hljs-number">4</span>)
+rover = Cat(<span class="hljs-string">"dog-colored"</span>, <span class="hljs-number">4</span>)
+stumpy = Cat(<span class="hljs-string">"brown"</span>, <span class="hljs-number">3</span>)</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> This code defines a class named <strong>Cat</strong>, which has two attributes: <strong>color</strong> and <strong>legs</strong>. <br>
+  Then the class is used to create 3 separate objects of that class.</p>
+</blockquote>
+
+
+
+<h4 id="init"><strong><em>_init_</em></strong></h4>
+
+<hr>
+
+<p>The <strong>init</strong> method is the most important method in a class.  <br>
+This is called when an instance (object) of the class is created, using the class name as a function.</p>
+
+<p>All methods must have <strong>self</strong> as their first parameter, although it isn’t explicitly passed, Python adds the <strong>self</strong> argument to the list for you; you do not need to include it when you call the methods. Within a method definition, <strong>self</strong> refers to the instance calling the method.</p>
+
+<p>Instances of a class have <strong>attributes</strong>, which are pieces of data associated with them. <br>
+In this example, <strong>Cat</strong> instances have attributes <strong>color</strong> and <strong>legs</strong>. These can be accessed by putting a <strong>dot</strong>, and the attribute name after an instance.  <br>
+In an <strong>init</strong> method, <strong>self.attribute</strong> can therefore be used to set the initial value of an instance’s attributes. <br>
+<strong>Example:</strong></p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, color, legs)</span>:</span>
+    self.color = color
+    self.legs = legs
+
+felix = Cat(<span class="hljs-string">"ginger"</span>, <span class="hljs-number">4</span>)
+print(felix.color)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p><strong>Note:</strong> ginger</p>
+</blockquote>
+
+<p><strong>Note:</strong> In the example above, the <strong>init</strong> method takes two arguments and assigns them to the object’s attributes. The <strong>init</strong> method is called the class <strong>constructor</strong>.</p>
+
+
+
+<h4 id="methods"><strong>Methods</strong></h4>
+
+<hr>
+
+<p>Classes can have other <strong>methods</strong> defined to add functionality to them.  <br>
+Remember, that all methods must have <strong>self</strong> as their first <strong>parameter</strong>. <br>
+These methods are accessed using the same <strong>dot syntax</strong> as attributes.  <br>
+<strong>Example:</strong></p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Woof!"</span>)
+
+fido = Dog(<span class="hljs-string">"Fido"</span>, <span class="hljs-string">"brown"</span>)
+print(fido.name)
+fido.bark()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>Fido <br>
+  Woof!</p>
+</blockquote>
+
+<p>Classes can also have <strong>class attributes</strong>, created by assigning variables within the body of the class. These can be accessed either from instances of the class, or the class itself. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span>
+  legs = <span class="hljs-number">4</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
+
+fido = Dog(<span class="hljs-string">"Fido"</span>, <span class="hljs-string">"brown"</span>)
+print(fido.legs)
+print(Dog.legs)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>4 <br>
+  4</p>
+</blockquote>
+
+<p><strong>NOTE:</strong> Class attributes are shared by all instances of the class.</p>
+
+
+
+<h3 id="classes-2"><strong>Classes-2</strong></h3>
+
+<hr>
+
+<p>Trying to access an attribute of an instance that isn’t defined causes an <strong>AttributeError</strong>. This also applies when you call an <strong>undefined</strong> method.</p>
+
+<p><strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>:</span> 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, width, height)</span>:</span>
+    self.width = width
+    self.height = height
+
+rect = Rectangle(<span class="hljs-number">7</span>, <span class="hljs-number">8</span>)
+print(rect.color)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>AttributeError: ‘Rectangle’ object has no attribute ‘color’</p>
+</blockquote>
+
+
+
+<h3 id="inheritance-1"><strong>Inheritance-1</strong></h3>
+
+<hr>
+
+<p><strong>Inheritance</strong> provides a way to share functionality between classes.  <br>
+Imagine several classes, <strong>Cat</strong>, <strong>Dog</strong>, <strong>Rabbit</strong> and so on. Although they may differ in some ways (only <strong>Dog</strong> might have the method <strong>bark</strong>), they are likely to be similar in others (all having the attributes <strong>color</strong> and <strong>name</strong>).  <br>
+This similarity can be expressed by making them all inherit from a <strong>superclass</strong> <strong>Animal</strong>, which contains the shared functionality.  <br>
+To inherit a class from another class, put the superclass name in parentheses after the class name. <br>
+<strong>Example:</strong></p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>:</span> 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span><span class="hljs-params">(Animal)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">purr</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Purr..."</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span><span class="hljs-params">(Animal)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Woof!"</span>)
+
+fido = Dog(<span class="hljs-string">"Fido"</span>, <span class="hljs-string">"brown"</span>)
+print(fido.color)
+fido.bark()</code></pre>
+
+<p><strong>Result</strong>:</p>
+
+<blockquote>
+  <p>brown <br>
+  Woof!</p>
+</blockquote>
+
+
+
+<h3 id="inheritance-2"><strong>Inheritance-2</strong></h3>
+
+<hr>
+
+<p>A class that inherits from another class is called a <strong>subclass</strong>. <br>
+A class that is inherited from is called a <strong>superclass</strong>. <br>
+If a class inherits from another with the same attributes or methods, it overrides them.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wolf</span>:</span> 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Grr..."</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span><span class="hljs-params">(Wolf)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Woof"</span>)
+
+husky = Dog(<span class="hljs-string">"Max"</span>, <span class="hljs-string">"grey"</span>)
+husky.bark()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>Woof</p>
+</blockquote>
+
+<p><strong>Note:</strong> In the example above, Wolf is the superclass, Dog is the subclass.</p>
+
+
+
+<h3 id="inheritance-3"><strong>Inheritance-3</strong></h3>
+
+<hr>
+
+<p>Inheritance can also be <strong>indirect</strong>. One class can inherit from another, and that class can inherit from a third class.  <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">method</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"A method"</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span><span class="hljs-params">(A)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">another_method</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"B method"</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span><span class="hljs-params">(B)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">third_method</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"C method"</span>)
+
+c = C()
+c.method()
+c.another_method()
+c.third_method()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>A method <br>
+  B method <br>
+  C method</p>
+</blockquote>
+
+<p><strong>Note:</strong> However, circular inheritance is not possible.</p>
+
+
+
+<h3 id="inheritance-4"><strong>Inheritance-4</strong></h3>
+
+<hr>
+
+<p>The function <strong>super</strong> is a useful inheritance-related function that refers to the parent class. It can be used to find the method with a certain name in an object’s superclass. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spam</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-number">1</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span><span class="hljs-params">(A)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spam</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-number">2</span>)
+    super().spam()
+
+B().spam()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>2 <br>
+  1    </p>
+</blockquote>
+
+<p><strong>Note:</strong> <strong><em>super().spam()</em></strong> calls the <strong>spam</strong> method of the superclass.</p>

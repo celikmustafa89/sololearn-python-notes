@@ -32,9 +32,16 @@
 </ul>
 </li>
 <li><a href="#object-oriented-programming">Object-Oriented Programming</a><ul>
-<li><a href="#classes">Classes</a></li>
-<li><a href="#init">_init_</a></li>
+<li><a href="#classes-1">Classes-1</a><ul>
+<li><a href="#init">__init__</a></li>
 <li><a href="#methods">Methods</a></li>
+</ul>
+</li>
+<li><a href="#classes-2">Classes-2</a></li>
+<li><a href="#inheritance-1">Inheritance-1</a></li>
+<li><a href="#inheritance-2">Inheritance-2</a></li>
+<li><a href="#inheritance-3">Inheritance-3</a></li>
+<li><a href="#inheritance-4">Inheritance-4</a></li>
 </ul>
 </li>
 </ul>
@@ -629,6 +636,8 @@ You can use the same class as a blueprint for creating multiple different object
 <p>Classes are created using the keyword <strong>class</strong> and an indented block, which contains class <strong>methods</strong> (which are functions).  <br>
 Below is an example of a simple class and its objects.</p>
 
+
+
 <pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, color, legs)</span>:</span>
     self.color = color
@@ -659,6 +668,8 @@ In this example, <strong>Cat</strong> instances have attributes <strong>color</s
 In an <strong>init</strong> method, <strong>self.attribute</strong> can therefore be used to set the initial value of an instance’s attributes. <br>
 <strong>Example:</strong></p>
 
+
+
 <pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, color, legs)</span>:</span>
     self.color = color
@@ -685,6 +696,8 @@ print(felix.color)</code></pre>
 Remember, that all methods must have <strong>self</strong> as their first <strong>parameter</strong>. <br>
 These methods are accessed using the same <strong>dot syntax</strong> as attributes.  <br>
 <strong>Example:</strong></p>
+
+
 
 <pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span>
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
@@ -729,6 +742,8 @@ print(Dog.legs)</code></pre>
 
 <p><strong>NOTE:</strong> Class attributes are shared by all instances of the class.</p>
 
+
+
 <h3 id="classes-2"><strong>Classes-2</strong></h3>
 
 <hr>
@@ -764,6 +779,8 @@ Imagine several classes, <strong>Cat</strong>, <strong>Dog</strong>, <strong>Rab
 This similarity can be expressed by making them all inherit from a <strong>superclass</strong> <strong>Animal</strong>, which contains the shared functionality.  <br>
 To inherit a class from another class, put the superclass name in parentheses after the class name. <br>
 <strong>Example:</strong></p>
+
+
 
 <pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>:</span> 
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>

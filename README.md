@@ -645,7 +645,7 @@ stumpy = Cat(<span class="hljs-string">"brown"</span>, <span class="hljs-number"
 
 
 
-<h4 id="init"><strong><em>_init_</em></strong></h4>
+<h4 id="init"><strong><code>__init__</code></strong></h4>
 
 <hr>
 
@@ -728,8 +728,6 @@ print(Dog.legs)</code></pre>
 </blockquote>
 
 <p><strong>NOTE:</strong> Class attributes are shared by all instances of the class.</p>
-
-
 
 <h3 id="classes-2"><strong>Classes-2</strong></h3>
 

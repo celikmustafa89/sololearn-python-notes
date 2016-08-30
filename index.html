@@ -56,6 +56,21 @@
 <li><a href="#itertools-3">itertools-3</a></li>
 </ul>
 </li>
+<li>
+<a href="#object-oriented-programming">Object-Oriented Programming</a><ul>
+<li>
+<a href="#classes-1">Classes-1</a><ul>
+<li><a href="#init">__init__</a></li>
+<li><a href="#methods">Methods</a></li>
+</ul>
+</li>
+<li><a href="#classes-2">Classes-2</a></li>
+<li><a href="#inheritance-1">Inheritance-1</a></li>
+<li><a href="#inheritance-2">Inheritance-2</a></li>
+<li><a href="#inheritance-3">Inheritance-3</a></li>
+<li><a href="#inheritance-4">Inheritance-4</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -583,6 +598,282 @@ print(list(permutations(letters))) </code></pre>
   <p>[(‘A’, 0), (‘A’, 1), (‘B’, 0), (‘B’, 1)] <br>
   [(‘A’, ‘B’), (‘B’, ‘A’)]</p>
 </blockquote>
+
+<h2 id="object-oriented-programming">
+<a id="object-oriented-programming" class="anchor" href="#object-oriented-programming" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong><em>Object-Oriented Programming</em></strong>
+</h2>
+
+<h3 id="classes-1">
+<a id="classes-1" class="anchor" href="#classes-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Classes-1</strong>
+</h3>
+
+<hr>
+
+<p>We have previously looked at two paradigms of programming - <strong>imperative</strong> (using statements, loops, and functions as subroutines), and <strong>functional</strong> (using pure functions, higher-order functions, and recursion).</p>
+
+<p>Another very popular paradigm is <strong>object**</strong>-<strong>**oriented</strong> <strong>programming</strong> (<strong>OOP</strong>). <br>
+Objects are created using <strong>classes</strong>, which are actually the focal point of OOP. <br>
+The <strong>class</strong> describes what the object will be, but is separate from the object itself. In other words, a class can be described as an object’s blueprint, description, or definition. <br>
+You can use the same class as a blueprint for creating multiple different objects. </p>
+
+<p>Classes are created using the keyword <strong>class</strong> and an indented block, which contains class <strong>methods</strong> (which are functions).  <br>
+Below is an example of a simple class and its objects.</p>
+
+<pre><code>class Cat:
+  def __init__(self, color, legs):
+    self.color = color
+    self.legs = legs
+
+felix = Cat("ginger", 4)
+rover = Cat("dog-colored", 4)
+stumpy = Cat("brown", 3)</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> This code defines a class named <strong>Cat</strong>, which has two attributes: <strong>color</strong> and <strong>legs</strong>. <br>
+  Then the class is used to create 3 separate objects of that class.</p>
+</blockquote>
+
+<h4 id="init">
+<a id="__init__" class="anchor" href="#__init__" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong><code>__init__</code></strong>
+</h4>
+
+<hr>
+
+<p>The <strong>init</strong> method is the most important method in a class.  <br>
+This is called when an instance (object) of the class is created, using the class name as a function.</p>
+
+<p>All methods must have <strong>self</strong> as their first parameter, although it isn’t explicitly passed, Python adds the <strong>self</strong> argument to the list for you; you do not need to include it when you call the methods. Within a method definition, <strong>self</strong> refers to the instance calling the method.</p>
+
+<p>Instances of a class have <strong>attributes</strong>, which are pieces of data associated with them. <br>
+In this example, <strong>Cat</strong> instances have attributes <strong>color</strong> and <strong>legs</strong>. These can be accessed by putting a <strong>dot</strong>, and the attribute name after an instance.  <br>
+In an <strong>init</strong> method, <strong>self.attribute</strong> can therefore be used to set the initial value of an instance’s attributes. <br>
+<strong>Example:</strong></p>
+
+<pre><code>class Cat:
+  def __init__(self, color, legs):
+    self.color = color
+    self.legs = legs
+
+felix = Cat("ginger", 4)
+print(felix.color)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p><strong>Note:</strong> ginger</p>
+</blockquote>
+
+<p><strong>Note:</strong> In the example above, the <strong>init</strong> method takes two arguments and assigns them to the object’s attributes. The <strong>init</strong> method is called the class <strong>constructor</strong>.</p>
+
+<h4 id="methods">
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Methods</strong>
+</h4>
+
+<hr>
+
+<p>Classes can have other <strong>methods</strong> defined to add functionality to them.  <br>
+Remember, that all methods must have <strong>self</strong> as their first <strong>parameter</strong>. <br>
+These methods are accessed using the same <strong>dot syntax</strong> as attributes.  <br>
+<strong>Example:</strong></p>
+
+<pre><code>class Dog:
+  def __init__(self, name, color):
+    self.name = name
+    self.color = color
+
+  def bark(self):
+    print("Woof!")
+
+fido = Dog("Fido", "brown")
+print(fido.name)
+fido.bark()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>Fido <br>
+  Woof!</p>
+</blockquote>
+
+<p>Classes can also have <strong>class attributes</strong>, created by assigning variables within the body of the class. These can be accessed either from instances of the class, or the class itself. <br>
+<strong>Example:</strong></p>
+
+<pre><code>class Dog:
+  legs = 4
+  def __init__(self, name, color):
+    self.name = name
+    self.color = color
+
+fido = Dog("Fido", "brown")
+print(fido.legs)
+print(Dog.legs)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>4 <br>
+  4</p>
+</blockquote>
+
+<p><strong>NOTE:</strong> Class attributes are shared by all instances of the class.</p>
+
+<h3 id="classes-2">
+<a id="classes-2" class="anchor" href="#classes-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Classes-2</strong>
+</h3>
+
+<hr>
+
+<p>Trying to access an attribute of an instance that isn’t defined causes an <strong>AttributeError</strong>. This also applies when you call an <strong>undefined</strong> method.</p>
+
+<p><strong>Example:</strong></p>
+
+<pre><code>class Rectangle: 
+  def __init__(self, width, height):
+    self.width = width
+    self.height = height
+
+rect = Rectangle(7, 8)
+print(rect.color)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>AttributeError: ‘Rectangle’ object has no attribute ‘color’</p>
+</blockquote>
+
+<h3 id="inheritance-1">
+<a id="inheritance-1" class="anchor" href="#inheritance-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Inheritance-1</strong>
+</h3>
+
+<hr>
+
+<p><strong>Inheritance</strong> provides a way to share functionality between classes.  <br>
+Imagine several classes, <strong>Cat</strong>, <strong>Dog</strong>, <strong>Rabbit</strong> and so on. Although they may differ in some ways (only <strong>Dog</strong> might have the method <strong>bark</strong>), they are likely to be similar in others (all having the attributes <strong>color</strong> and <strong>name</strong>).  <br>
+This similarity can be expressed by making them all inherit from a <strong>superclass</strong> <strong>Animal</strong>, which contains the shared functionality.  <br>
+To inherit a class from another class, put the superclass name in parentheses after the class name. <br>
+<strong>Example:</strong></p>
+
+<pre><code>class Animal: 
+  def __init__(self, name, color):
+    self.name = name
+    self.color = color
+
+class Cat(Animal):
+  def purr(self):
+    print("Purr...")
+
+class Dog(Animal):
+  def bark(self):
+    print("Woof!")
+
+fido = Dog("Fido", "brown")
+print(fido.color)
+fido.bark()</code></pre>
+
+<p><strong>Result</strong>:</p>
+
+<blockquote>
+  <p>brown <br>
+  Woof!</p>
+</blockquote>
+
+<h3 id="inheritance-2">
+<a id="inheritance-2" class="anchor" href="#inheritance-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Inheritance-2</strong>
+</h3>
+
+<hr>
+
+<p>A class that inherits from another class is called a <strong>subclass</strong>. <br>
+A class that is inherited from is called a <strong>superclass</strong>. <br>
+If a class inherits from another with the same attributes or methods, it overrides them.</p>
+
+<pre><code>class Wolf: 
+  def __init__(self, name, color):
+    self.name = name
+    self.color = color
+
+  def bark(self):
+    print("Grr...")
+
+class Dog(Wolf):
+  def bark(self):
+    print("Woof")
+
+husky = Dog("Max", "grey")
+husky.bark()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>Woof</p>
+</blockquote>
+
+<p><strong>Note:</strong> In the example above, Wolf is the superclass, Dog is the subclass.</p>
+
+<h3 id="inheritance-3">
+<a id="inheritance-3" class="anchor" href="#inheritance-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Inheritance-3</strong>
+</h3>
+
+<hr>
+
+<p>Inheritance can also be <strong>indirect</strong>. One class can inherit from another, and that class can inherit from a third class.  <br>
+<strong>Example:</strong></p>
+
+<pre><code>class A:
+  def method(self):
+    print("A method")
+
+class B(A):
+  def another_method(self):
+    print("B method")
+
+class C(B):
+  def third_method(self):
+    print("C method")
+
+c = C()
+c.method()
+c.another_method()
+c.third_method()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>A method <br>
+  B method <br>
+  C method</p>
+</blockquote>
+
+<p><strong>Note:</strong> However, circular inheritance is not possible.</p>
+
+<h3 id="inheritance-4">
+<a id="inheritance-4" class="anchor" href="#inheritance-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Inheritance-4</strong>
+</h3>
+
+<hr>
+
+<p>The function <strong>super</strong> is a useful inheritance-related function that refers to the parent class. It can be used to find the method with a certain name in an object’s superclass. <br>
+<strong>Example:</strong></p>
+
+<pre><code>class A:
+  def spam(self):
+    print(1)
+
+class B(A):
+  def spam(self):
+    print(2)
+    super().spam()
+
+B().spam()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>2 <br>
+  1    </p>
+</blockquote>
+
+<p><strong>Note:</strong> <strong><em>super().spam()</em></strong> calls the <strong>spam</strong> method of the superclass.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/celikmustafa89/sololearn-python-notes">Python Notes</a> is maintained by <a href="https://github.com/celikmustafa89">celikmustafa89</a>.</span>

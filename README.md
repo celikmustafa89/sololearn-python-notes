@@ -1,22 +1,4 @@
-<style>
- #preview-box {
-     background-color: rgba(1,1,1,0.1);
-     padding: 1px 10px;
-     border-radius: 10px;
- }
-</style>
-<link id="linkstyle" rel='stylesheet' href='theme1.css'/>
-
-<script>
- var linkstyle = document.getElementById('linkstyle');
- var themes = document.getElementById('themes');
-
- themes.onchange = function(e) {
-     linkstyle.href = themes.value;
- };
-</script>
-
-<h1 id="shell-scripting"><strong>SHELL SCRIPTING</strong></h1>
+<h1 id="python-notes"><strong><em>PYTHON NOTES</em></strong></h1>
 
 <hr>
 
@@ -26,4193 +8,1551 @@
 
 <p><div class="toc">
 <ul>
-<li><a href="#shell-scripting">SHELL SCRIPTING</a><ul>
+<li><a href="#python-notes">PYTHON NOTES</a><ul>
 <li><a href="#table-of-contents">Table of Contents</a></li>
-<li><a href="#shell-scripting-tutorial-1-introduction">Shell Scripting Tutorial-1: Introduction</a></li>
-<li><a href="#shell-scripting-tutorial-2-shell-kernel-terminal-and-more">Shell Scripting Tutorial-2: Shell, Kernel, Terminal and More</a></li>
-<li><a href="#shell-scripting-tutorial-3-view-system-date-calender">Shell Scripting Tutorial-3: View System Date, Calender</a><ul>
-<li><a href="#calender">Calender</a></li>
-<li><a href="#date">Date</a></li>
+<li><a href="#functional-programming">Functional Programming</a><ul>
+<li><a href="#lambdas">Lambdas</a></li>
+<li><a href="#map">Map</a></li>
+<li><a href="#filter">Filter</a></li>
+<li><a href="#generators-1">Generators-1</a></li>
+<li><a href="#generators-2">Generators-2</a></li>
+<li><a href="#generators-3">Generators-3</a></li>
+<li><a href="#decorators-1">Decorators-1</a></li>
+<li><a href="#decorators-2">Decorators-2</a></li>
+<li><a href="#recursion-1">Recursion-1</a></li>
+<li><a href="#recursion-2">Recursion-2</a></li>
+<li><a href="#recursion-3">Recursion-3</a></li>
+<li><a href="#sets-1">Sets-1</a></li>
+<li><a href="#sets-2">Sets-2</a></li>
+<li><a href="#sets-3">Sets-3</a></li>
+<li><a href="#data-structures">Data Structures</a></li>
+<li><a href="#itertools-1">itertools-1</a></li>
+<li><a href="#itertools-2">itertools-2</a></li>
+<li><a href="#itertools-3">itertools-3</a></li>
 </ul>
 </li>
-<li><a href="#shell-scripting-tutorial-4-create-files-directories">Shell Scripting Tutorial-4: Create Files &amp; Directories</a></li>
-<li><a href="#shell-scripting-tutorial-5-text-files-create-merge-play">Shell Scripting Tutorial-5: Text Files: Create, Merge &amp; Play</a></li>
-<li><a href="#shell-scripting-tutorial-6-rename-delete-files-directories">Shell Scripting Tutorial-6: Rename &amp; Delete Files &amp; Directories</a><ul>
-<li><a href="#rename-files-directories">Rename Files &amp; Directories</a></li>
-<li><a href="#delete-files-directories">Delete Files &amp; Directories</a></li>
+<li><a href="#object-oriented-programming">Object-Oriented Programming</a><ul>
+<li><a href="#classes-1">Classes-1</a><ul>
+<li><a href="#init">__init__</a></li>
+<li><a href="#methods">Methods</a></li>
 </ul>
 </li>
-<li><a href="#shell-scripting-tutorial-7-create-copies-links-to-files-directories">Shell Scripting Tutorial-7: Create Copies, Links to Files &amp; Directories</a><ul>
-<li><a href="#copy-files">Copy Files</a></li>
-<li><a href="#links">Links</a></li>
+<li><a href="#classes-2">Classes-2</a></li>
+<li><a href="#inheritance-1">Inheritance-1</a></li>
+<li><a href="#inheritance-2">Inheritance-2</a></li>
+<li><a href="#inheritance-3">Inheritance-3</a></li>
+<li><a href="#inheritance-4">Inheritance-4</a></li>
 </ul>
 </li>
-<li><a href="#shell-scripting-tutorial-8-file-permissions">Shell Scripting Tutorial-8: File Permissions</a><ul>
-<li><a href="#file-permission">File Permission</a></li>
-<li><a href="#umask-usage">“umask” Usage</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-9-see-whats-using-in-ls">Shell Scripting Tutorial-9: See What’s Using in ‘ls’</a><ul>
-<li><a href="#usage-of-ls">Usage of ‘ls’</a></li>
-<li><a href="#hidden-files-and-ls-a">Hidden files and ‘ls -a’</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-10-change-file-permissions-using-chmod">Shell Scripting Tutorial-10: Change File Permissions Using ‘chmod’</a><ul>
-<li><a href="#usage-of-chmod">Usage of ‘chmod’</a></li>
-<li><a href="#usage-of-uname">Usage of ‘uname’</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-11-count-lines-words-characters-using-wc">Shell Scripting Tutorial-11: Count Lines, Words &amp; Characters Using ‘wc’</a><ul>
-<li><a href="#usage-of-file">Usage of ‘file’</a></li>
-<li><a href="#usage-of-wc">Usage of ‘wc’</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-12-sort">Shell Scripting Tutorial-12: Sort</a><ul>
-<li><a href="#usage-of-sort">Usage of ‘sort’</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-13-cut-through-your-files">Shell Scripting Tutorial-13: Cut Through Your Files</a><ul>
-<li><a href="#usage-of-cut">Usage of ‘cut’</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-14-convert-copy-files-with-dd">Shell Scripting Tutorial-14: Convert &amp; Copy Files with ‘dd’</a><ul>
-<li><a href="#usage-of-dd">Usage of ‘dd’</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-15-get-help-view-fancy-text-reduce-file-size">Shell Scripting Tutorial-15: Get Help, View Fancy Text &amp; Reduce File Size</a><ul>
-<li><a href="#getting-help">Getting Help</a></li>
-<li><a href="#view-fancy-text">View Fancy Text</a></li>
-<li><a href="#reduce-file-size">Reduce File Size</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-16-hello-world">Shell Scripting Tutorial-16: Hello World!</a></li>
-<li><a href="#shell-scripting-tutorial-17-use-command-in-your-script">Shell Scripting Tutorial-17: Use Command in Your Script</a></li>
-<li><a href="#shell-scripting-tutorial-18-shell-variables-grab-user-input-using-read">Shell Scripting Tutorial-18: Shell Variables, Grab User Input Using ‘read’</a><ul>
-<li><a href="#shell-variables">Shell Variables</a></li>
-<li><a href="#grab-user-input-using-read">Grab User Input Using ‘read’</a></li>
-</ul>
-</li>
-<li><a href="#shell-scripting-tutorial-19-positional-parameters">Shell Scripting Tutorial-19: Positional Parameters</a></li>
-<li><a href="#shell-scripting-tutorial-20-more-on-positional-parameters">Shell Scripting Tutorial-20: More on Positional Parameters</a></li>
-<li><a href="#shell-scripting-tutorial-21-reverse-quotes-accent-graves">Shell Scripting Tutorial-21: Reverse Quotes &amp; Accent Graves</a></li>
-<li><a href="#shell-scripting-tutorial-22-count-the-number-of-command-line-arguments-using">Shell Scripting Tutorial-22: Count the Number of Command Line Arguments Using ‘$#’</a></li>
-<li><a href="#shell-scripting-tutorial-23-math-on-integers-using-expr">Shell Scripting Tutorial-23: Math on Integers Using ‘expr’</a></li>
-<li><a href="#shell-scripting-tutorial-24-operator-precedence">Shell Scripting Tutorial-24: Operator Precedence</a></li>
-<li><a href="#shell-scripting-tutorial-25-math-on-real-numbers">Shell Scripting Tutorial-25: Math on Real Numbers</a></li>
-<li><a href="#shell-scripting-tutorial-26-escape-sequences">Shell Scripting Tutorial-26: Escape Sequences</a></li>
-<li><a href="#shell-scripting-tutorial-27-do-cool-things-with-tput">Shell Scripting Tutorial-27: Do Cool Things with ‘tput’</a></li>
-<li><a href="#shell-scripting-tutorial-28-if-then-statement-in-action">Shell Scripting Tutorial-28: ‘if-then’ Statement in Action</a></li>
-<li><a href="#shell-scripting-tutorial-29-the-if-then-else-statement">Shell Scripting Tutorial-29: The ‘if-then-else’ Statement</a></li>
-<li><a href="#shell-scripting-tutorial-30-run-checks-on-numbers">Shell Scripting Tutorial-30: Run Checks on Numbers</a></li>
-<li><a href="#shell-scripting-tutorial-31-run-checks-on-files">Shell Scripting Tutorial-31: Run Checks on Files</a></li>
-<li><a href="#shell-scripting-tutorial-32-append-text-to-a-file-through-shell-script">Shell Scripting Tutorial-32: Append Text to a File Through Shell Script</a></li>
-<li><a href="#shell-scripting-tutorial-33-run-checks-on-strings">Shell Scripting Tutorial-33: Run Checks on Strings</a></li>
-<li><a href="#shell-scripting-tutorial-34-run-checks-on-stringthe-and-logical-operator">Shell Scripting Tutorial-34: Run Checks on StringThe ‘AND’ Logical Operator</a></li>
-<li><a href="#shell-scripting-tutorial-35-count-the-number-of-characters-in-users-input-in-your-script">Shell Scripting Tutorial-35: Count the Number of Characters in User’s Input in Your Script</a></li>
-<li><a href="#shell-scripting-tutorial-36-the-or-logical-operator">Shell Scripting Tutorial-36: The ‘OR’ Logical Operator</a></li>
-<li><a href="#shell-scripting-tutorial-38-another-date-with-case-statement">Shell Scripting Tutorial-38: Another Date with ‘case’ Statement</a></li>
-<li><a href="#shell-scripting-tutorial-39-the-while-loop">Shell Scripting Tutorial-39: The ‘while’ Loop</a></li>
-<li><a href="#shell-scripting-tutorial-40-the-until-loop">Shell Scripting Tutorial-40: The ‘until’ Loop</a></li>
-<li><a href="#shell-scripting-tutorial-41-the-for-loop">Shell Scripting Tutorial-41: The ‘for’ Loop</a></li>
-<li><a href="#shell-scripting-tutorial-42-rant-little-work">Shell Scripting Tutorial-42: Rant &amp; Little Work</a></li>
-<li><a href="#shell-scripting-tutorial-43-search-patterns-using-grep">Shell Scripting Tutorial-43: Search Patterns Using ‘grep’</a></li>
-<li><a href="#shell-scripting-tutorial-44-the-passwd-file-explained">Shell Scripting Tutorial-44: The ‘passwd’ File Explained</a></li>
-<li><a href="#shell-scripting-tutorial-45-the-internal-field-separator">Shell Scripting Tutorial-45: The Internal Field Separator</a></li>
-<li><a href="#shell-scripting-tutorial-46-passwd-file-revisited">Shell Scripting Tutorial-46: ‘passwd’ File Revisited</a></li>
-<li><a href="#shell-scripting-tutorial-47-reading-from-a-file">Shell Scripting Tutorial-47: Reading From a File</a></li>
-<li><a href="#shell-scripting-tutorial-48-sleep-while-you-are-at-work">Shell Scripting Tutorial-48: Sleep While You are at Work</a></li>
-<li><a href="#shell-scripting-tutorial-49-count-the-number-of-words-sentences-in-a-text-file-without-using-wc">Shell Scripting Tutorial-49: Count the number of words &amp; sentences in a text file without using ‘wc’</a></li>
-<li><a href="#shell-scripting-tutorial-50-fetch-redirect-man-pages-of-commands-using-for-loop">Shell Scripting Tutorial-50: Fetch &amp; Redirect Man Pages of commands using ‘for loop’</a></li>
-<li><a href="#shell-scripting-tutorial-51-nested-loops">Shell Scripting Tutorial-51: Nested Loops</a></li>
-<li><a href="#shell-scripting-tutorial-52-the-break-statement">Shell Scripting Tutorial-52: The ‘break’ Statement</a></li>
-<li><a href="#shell-scripting-tutorial-53-the-continue-statement">Shell Scripting Tutorial-53: The ‘continue’ Statement</a></li>
-<li><a href="#shell-scripting-tutorial-54-more-on-metacharacters">Shell Scripting Tutorial-54: More on Metacharacters</a></li>
-<li><a href="#shell-scripting-tutorial-55-adding-removing-users">Shell Scripting Tutorial-55: Adding &amp; Removing Users</a></li>
-<li><a href="#shell-scripting-tutorial-56-know-when-users-log-in-part-one">Shell Scripting Tutorial-56: Know when users log in Part One</a></li>
-<li><a href="#shell-scripting-tutorial-57-know-when-users-log-in-part-two">Shell Scripting Tutorial-57: Know when users log in Part Two</a></li>
-<li><a href="#shell-scripting-tutorial-58-know-when-users-log-in-final-part">Shell Scripting Tutorial-58: Know when users log in Final Part</a></li>
-<li><a href="#shell-scripting-tutorial-59-communicate-with-other-users-using-write">Shell Scripting Tutorial-59: Communicate with other users using ‘write’</a></li>
-<li><a href="#shell-scripting-tutorial-60-create-your-own-commands-using-functions">Shell Scripting Tutorial-60: Create Your Own Commands Using Functions</a></li>
-<li><a href="#shell-scripting-tutorial-61-executing-multiple-scripts">Shell Scripting Tutorial-61: Executing Multiple Scripts</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </p>
 
-
-
-<h2 id="shell-scripting-tutorial-1-introduction"><strong>Shell Scripting Tutorial-1:</strong> <em>Introduction</em></h2>
-
-<p>Install a linux distribution.</p>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/nVt3Rst-2H8" frameborder="0" allowfullscreen></iframe>
+<p>Source: <a href="http://www.sololearn.com/Play/Python">SoloLearn Python Tutorial</a></p>
 
 
 
-<h2 id="shell-scripting-tutorial-2-shell-kernel-terminal-and-more"><strong>Shell Scripting Tutorial-2:</strong> <em>Shell, Kernel, Terminal and More</em></h2>
+<h2 id="functional-programming"><strong><em>Functional Programming</em></strong></h2>
 
-<p><strong>Shell</strong> is an interface between user and the UNIX Kernel. <br>
-<strong>UNIX Kernel</strong> manages the resources and hardware. <br>
-<strong>Terminal</strong> provides access to shell.  </p>
 
-<p>\@\:~$ terminal commands must be lowercase.  </p>
+
+<h3 id="lambdas"><strong>Lambdas</strong></h3>
+
+<hr>
+
+<p>Creating a function normally (using <strong>def</strong>) assigns it to a variable automatically.  <br>
+This is different from the creation of other objects - such as <strong>strings</strong> and <strong>integers</strong> - which can be created on the fly, without assigning them to a variable.  <br>
+The same is possible with <strong>functions</strong>, provided that they are created using <strong>lambda syntax</strong>. Functions created this way are known as <strong>anonymous</strong>. <br>
+This approach is most commonly used when passing a simple function as an argument to another function. The syntax is shown in the next example and consists of the lambda keyword followed by a list of arguments, a <strong>colon</strong>, and the <strong>expression</strong> to <strong>evaluate</strong> and <strong>return</strong>.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_func</span><span class="hljs-params">(f, arg)</span>:</span>
+  <span class="hljs-keyword">return</span> f(arg)
+
+my_func(<span class="hljs-keyword">lambda</span> x: <span class="hljs-number">2</span>*x*x, <span class="hljs-number">5</span>)</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> Lambda functions get their name from lambda calculus, which is a model of computation invented by Alonzo Church.</p>
+</blockquote>
+
+
+
+<h3 id="map"><strong>Map</strong></h3>
+
+<hr>
+
+<p>The built-in functions <strong>map</strong> and <strong>filter</strong> are very useful <strong>higher-order functions</strong> that operate on <strong>lists</strong> (or similar objects called iterables).  <br>
+The function map takes a function and an iterable as arguments, and returns a new iterable with the function applied to each argument.</p>
+
+<p><strong>Example</strong>:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_five</span><span class="hljs-params">(x)</span>:</span>
+  <span class="hljs-keyword">return</span> x + <span class="hljs-number">5</span>
+
+nums = [<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>]
+result = list(map(add_five, nums))
+print(result)
+</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>[16, 27, 38, 49, 60]</p>
+</blockquote>
+
+<p>We could have achieved the same result more easily by using <strong>lambda syntax</strong>.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs applescript">nums = [<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>]
+
+<span class="hljs-constant">result</span> = <span class="hljs-type">list</span>(map(lambda x: x+<span class="hljs-number">5</span>, nums))
+print(<span class="hljs-constant">result</span>)</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> To convert the result into a list, we used list explicitly.</p>
+</blockquote>
+
+
+
+<h3 id="filter"><strong>Filter</strong></h3>
+
+<hr>
+
+<p>The function <strong>filter</strong> filters an iterable by removing items that don’t match a predicate (a function that returns a Boolean).  <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs mel">nums = [<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>]
+res = list(<span class="hljs-keyword">filter</span>(lambda x: x<span class="hljs-variable">%2</span>==<span class="hljs-number">0</span>, nums))
+<span class="hljs-keyword">print</span>(res)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>[22, 44]</p>
+  
+  <p><strong>Note:</strong> Like map, the result has to be explicitly converted to a list if you want to print it.</p>
+</blockquote>
+
+<p><strong>Example:</strong> <br>
+Fill in the blanks to remove all items that are greater than 4 from the list.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs php">nums = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>, <span class="hljs-number">7</span>]
+res = <span class="hljs-keyword">list</span>(filter(lambda x: x &lt; <span class="hljs-number">5</span>, nums))
+<span class="hljs-keyword">print</span>(res)</code></pre>
+
+
+
+<h3 id="generators-1"><strong>Generators-1</strong></h3>
+
+<hr>
+
+<p><strong>Generators</strong> are a type of iterable, like lists or tuples.  <br>
+Unlike lists, they don’t allow indexing with arbitrary indices, but they can still be iterated through with <strong>for</strong> loops.  <br>
+They can be created using functions and the <strong>yield</strong> statement. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">countdown</span><span class="hljs-params">()</span>:</span>
+  i=<span class="hljs-number">5</span>
+  <span class="hljs-keyword">while</span> i &gt; <span class="hljs-number">0</span>:
+    <span class="hljs-keyword">yield</span> i
+    i -= <span class="hljs-number">1</span>
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> countdown():
+  print(i)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>5 <br>
+  4 <br>
+  3 <br>
+  2 <br>
+  1</p>
+</blockquote>
+
+<p>The <strong>yield</strong> statement is used to define a <strong>generator</strong>, replacing the return of a function to provide a result to its caller without destroying local variables.</p>
+
+
+
+<h3 id="generators-2"><strong>Generators-2</strong></h3>
+
+<hr>
+
+<p>Due to the fact that they <strong>yield</strong> one item at a time, generators don’t have the memory restrictions of lists.  <br>
+In fact, they can be <strong>infinite</strong>!</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">infinite_sevens</span><span class="hljs-params">()</span>:</span>
+  <span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">7</span>
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> infinite_sevens():
+  print(i)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>7 <br>
+  7 <br>
+  7 <br>
+  7 <br>
+  7 <br>
+  7 <br>
+  7 <br>
+  …</p>
+</blockquote>
+
+<p><strong>Note:</strong> In short, <strong>generators</strong> allow you to declare a <strong>function</strong> that behaves like an iterator, i.e. it can be used in a <strong>for</strong> loop.</p>
+
+<p><strong>Example:</strong> <br>
+Fill in the blanks to create a prime number generator, that yields all prime numbers in a loop. (Consider having an is_prime function already defined):</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_primes</span><span class="hljs-params">()</span>:</span>
+  num = <span class="hljs-number">2</span>
+  <span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+    <span class="hljs-keyword">if</span> is_prime(num):
+      <span class="hljs-keyword">yield</span> num
+    num += <span class="hljs-number">1</span></code></pre>
+
+
+
+<h3 id="generators-3"><strong>Generators-3</strong></h3>
+
+<hr>
+
+<p>Finite generators can be converted into lists by passing them as arguments to the <strong>list</strong> function.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">numbers</span><span class="hljs-params">(x)</span>:</span>
+  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(x):
+    <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>:
+      <span class="hljs-keyword">yield</span> i
+
+print(list(numbers(<span class="hljs-number">11</span>)))</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>[0, 2, 4, 6, 8, 10]</p>
+</blockquote>
+
+<p><strong>Note:</strong> Using <strong>generators</strong> results in improved performance, which is the result of the lazy (on demand) generation of values, which translates to lower memory usage. Furthermore, we do not need to wait until all the elements have been generated before we start to use them.</p>
+
+
+
+<h3 id="decorators-1"><strong>Decorators-1</strong></h3>
+
+<hr>
+
+<p><strong>Decorators</strong> provide a way to modify functions using other functions.  <br>
+This is ideal when you need to extend the functionality of functions that you don’t want to modify. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decor</span><span class="hljs-params">(func)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrap</span><span class="hljs-params">()</span>:</span>
+    print(<span class="hljs-string">"============"</span>)
+    func()
+    print(<span class="hljs-string">"============"</span>)
+  <span class="hljs-keyword">return</span> wrap
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_text</span><span class="hljs-params">()</span>:</span>
+  print(<span class="hljs-string">"Hello world!"</span>)
+
+decorated = decor(print_text)
+decorated()</code></pre>
+
+<p>We defined a function named <strong>decor</strong> that has a single parameter <strong>func</strong>. Inside <strong>decor</strong>, we defined a nested function named <strong>wrap</strong>. The <strong>wrap</strong> function will print a string, then call <strong>func()</strong>, and print another string. The <strong>decor</strong> function returns the <strong>wrap</strong> function as its result. <br>
+We could say that the variable <strong>decorated</strong> is a decorated version of <strong>print_text</strong> - it’s <strong>print_text</strong> plus something.  <br>
+In fact, if we wrote a useful <strong>decorator</strong> we might want to replace <strong>print_text</strong> with the decorated version altogether so we always got our “plus something” version of <strong>print_text</strong>.  <br>
+This is done by re-assigning the variable that contains our function:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs fix"><span class="hljs-attribute">print_text </span>=<span class="hljs-string"> decor(print_text)
+print_text()</span></code></pre>
+
+<blockquote>
+  <p>Now print_text corresponds to our decorated version.</p>
+</blockquote>
+
+
+
+<h3 id="decorators-2"><strong>Decorators-2</strong></h3>
+
+<hr>
+
+<p>In our previous example, we decorated our function by replacing the variable containing the function with a wrapped version.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_text</span><span class="hljs-params">()</span>:</span>
+  print(<span class="hljs-string">"Hello world!"</span>)
+
+print_text = decor(print_text)</code></pre>
+
+<p>This pattern can be used at any time, to wrap any function.  <br>
+Python provides support to wrap a function in a decorator by pre-pending the function definition with a <strong>decorator</strong> name and the <strong>@ symbol</strong>.  <br>
+If we are defining a function we can “decorate” it with the @ symbol like:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-decorator">@decor</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_text</span><span class="hljs-params">()</span>:</span>
+  print(<span class="hljs-string">"Hello world!"</span>)
+Try It Yourself</code></pre>
+
+<p>This will have the same result as the above code.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> A single function can have multiple decorators.</p>
+</blockquote>
+
+
+
+<h3 id="recursion-1"><strong>Recursion-1</strong></h3>
+
+<hr>
+
+<p><strong>Recursion</strong> is a very important concept in functional programming.  <br>
+The fundamental part of recursion is <strong>self-reference - functions calling</strong> themselves. It is used to solve problems that can be broken up into easier sub-problems of the same type.</p>
+
+<p>A classic example of a function that is implemented recursively is the <strong>factorial function</strong>, which finds the product of all positive integers below a specified number.  <br>
+For example, 5! (5 factorial) is 5 * 4 * 3 * 2 * 1 (120). To implement this recursively, notice that 5! = 5 * 4!, 4! = 4 * 3!, 3! = 3 * 2!, and so on. Generally, n! = n * (n-1)!.  <br>
+Furthermore, 1! = 1. This is known as the <strong>base case</strong>, as it can be calculated without performing any more factorials.  <br>
+Below is a recursive implementation of the factorial function.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">factorial</span><span class="hljs-params">(x)</span>:</span>
+  <span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+  <span class="hljs-keyword">else</span>: 
+    <span class="hljs-keyword">return</span> x * factorial(x-<span class="hljs-number">1</span>)
+
+print(factorial(<span class="hljs-number">5</span>))</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>120</p>
+</blockquote>
+
+<p><strong>Note:</strong> <em>The base case acts as the exit condition of the recursion.</em></p>
+
+
+
+<h3 id="recursion-2"><strong>Recursion-2</strong></h3>
+
+<hr>
+
+<p>Recursive functions can be <strong>infinite</strong>, just like infinite <strong>while</strong> loops. These often occur when you forget to implement the base case.  <br>
+Below is an <strong>incorrect</strong> version of the factorial function. It has <strong>no base case</strong>, so it runs until the interpreter runs out of memory and crashes.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">factorial</span><span class="hljs-params">(x)</span>:</span>
+  <span class="hljs-keyword">return</span> x * factorial(x-<span class="hljs-number">1</span>)
+
+print(factorial(<span class="hljs-number">5</span>))</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>RuntimeError: maximum recursion depth exceeded</p>
+</blockquote>
+
+
+
+<h3 id="recursion-3"><strong>Recursion-3</strong></h3>
+
+<hr>
+
+<p>Recursion can also be <strong>indirect</strong>. One function can call a second, which calls the first, which calls the second, and so on. This can occur with any number of functions. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">is_even</span><span class="hljs-params">(x)</span>:</span>
+  <span class="hljs-keyword">if</span> x == <span class="hljs-number">0</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">True</span>
+  <span class="hljs-keyword">else</span>:
+    <span class="hljs-keyword">return</span> is_odd(x-<span class="hljs-number">1</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">is_odd</span><span class="hljs-params">(x)</span>:</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> is_even(x)
+
+
+print(is_odd(<span class="hljs-number">17</span>))
+print(is_even(<span class="hljs-number">23</span>))</code></pre>
+
+<p><strong>Result</strong>:</p>
+
+<blockquote>
+  <p>True <br>
+  False</p>
+</blockquote>
+
+
+
+<h3 id="sets-1"><strong>Sets-1</strong></h3>
+
+<hr>
+
+<p><strong>Sets</strong> are data structures, similar to <strong>lists</strong> or <strong>dictionaries</strong>. They are created using curly braces, or the <strong>set</strong> function. They share some functionality with lists, such as the use of <strong>in</strong> to check whether they contain a particular item.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs bash">num_<span class="hljs-keyword">set</span> = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>}
+word_<span class="hljs-keyword">set</span> = <span class="hljs-keyword">set</span>([<span class="hljs-string">"spam"</span>, <span class="hljs-string">"eggs"</span>, <span class="hljs-string">"sausage"</span>])
+
+print(<span class="hljs-number">3</span> <span class="hljs-keyword">in</span> num_<span class="hljs-keyword">set</span>)
+print(<span class="hljs-string">"spam"</span> not <span class="hljs-keyword">in</span> word_<span class="hljs-keyword">set</span>)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>True <br>
+  False</p>
+</blockquote>
+
+<p><strong>Note:</strong> <em>To create an empty set, you must use <strong>set()</strong>, as <strong>{}</strong> creates an empty dictionary.</em></p>
+
+
+
+<h3 id="sets-2"><strong>Sets-2</strong></h3>
+
+<hr>
+
+<p>Sets differ from lists in several ways, but share several list operations such as <strong>len</strong>.  <br>
+They are unordered, which means that they can’t be indexed.  <br>
+They <strong>cannot contain duplicate</strong> elements.  <br>
+Due to the way they’re stored, it’s <strong>faster</strong> to check whether an item is part of a set, rather than part of a list. <br>
+Instead of using <strong>append</strong> to add to a set, use <strong>add</strong>.  <br>
+The method <strong>remove</strong> removes a specific element from a set; <strong>pop</strong> removes an arbitrary element.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs erlang">nums = <span class="hljs-tuple">{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>}</span>
+<span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(nums)</span>
+<span class="hljs-title">nums</span>.<span class="hljs-title">add</span><span class="hljs-params">(-<span class="hljs-number">7</span>)</span>
+<span class="hljs-title">nums</span>.<span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span>
+<span class="hljs-title">print</span><span class="hljs-params">(nums)</span></span></code></pre>
+
+<p>Result:</p>
+
+<blockquote>
+  <p>{1, 2, 3, 4, 5, 6} <br>
+  {1, 2, 4, 5, 6, -7}</p>
+</blockquote>
+
+<p><strong>Note</strong>: <em>Basic uses of <strong>sets</strong> include membership testing and the <strong>elimination of duplicate entries</strong>.</em></p>
+
+
+
+<h3 id="sets-3"><strong>Sets-3</strong></h3>
+
+<hr>
+
+<p>Sets can be combined using mathematical operations. <br>
+The <strong>union</strong> operator <strong>|</strong> combines two sets to form a new one containing items in either.  <br>
+The <strong>intersection</strong> operator <strong>&amp;</strong> gets items only in both.  <br>
+The <strong>difference</strong> operator <strong>-</strong> gets items in the first set but not in the second.  <br>
+The <strong>symmetric</strong> <strong>difference</strong> operator <strong>^</strong> gets items in either set, but not both.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver"><span class="hljs-keyword">first</span> = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>}
+<span class="hljs-keyword">second</span> = {<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>}
+
+print(<span class="hljs-keyword">first</span> | <span class="hljs-keyword">second</span>)
+print(<span class="hljs-keyword">first</span> &amp; <span class="hljs-keyword">second</span>)
+print(<span class="hljs-keyword">first</span> - <span class="hljs-keyword">second</span>)
+print(<span class="hljs-keyword">second</span> - <span class="hljs-keyword">first</span>)
+print(<span class="hljs-keyword">first</span> ^ <span class="hljs-keyword">second</span>)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>{1, 2, 3, 4, 5, 6, 7, 8, 9} <br>
+  {4, 5, 6} <br>
+  {1, 2, 3} <br>
+  {8, 9, 7} <br>
+  {1, 2, 3, 7, 8, 9}</p>
+</blockquote>
+
+<p>StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible <strong>offline!</strong></p>
+
+
+
+<h3 id="data-structures"><strong>Data Structures</strong></h3>
+
+<hr>
+
+<p>As we have seen in the previous lessons, Python supports the following data structures: <strong>lists</strong>, <strong>dictionaries</strong>, <strong>tuples</strong>, <strong>sets</strong>.</p>
+
+<p><strong>When to use a dictionary:</strong></p>
+
+<ul>
+<li>When you need a logical association between a <strong>key:value pair</strong>.</li>
+<li>When you need <strong>fast lookup</strong> for your data, based on a custom <strong>key</strong>.</li>
+<li>When your data is being constantly modified. Remember, dictionaries are <strong>mutable</strong>.</li>
+</ul>
+
+<p><strong>When to use the other types:</strong></p>
+
+<ul>
+<li>Use <strong>lists</strong> if you have a collection of data that does <strong>not need random access</strong>. Try to choose lists when you need a simple, iterable collection that is modified frequently.</li>
+<li>Use a <strong>set</strong> if you need <strong>uniqueness</strong> for the elements. </li>
+<li>Use <strong>tuples</strong> when your data cannot change. </li>
+</ul>
+
+<blockquote>
+  <p>Many times, a <strong>tuple</strong> is used in combination with a <strong>dictionary</strong>, for example, a <strong>tuple</strong> might represent a key, because it’s <strong>immutable</strong>.</p>
+</blockquote>
+
+
+
+<h3 id="itertools-1"><strong>itertools-1</strong></h3>
+
+<hr>
+
+<p>The module <strong>itertools</strong> is a standard library that contains several functions that are useful in functional programming.  <br>
+One type of function it produces is <strong>infinite</strong> iterators.  <br>
+The function <strong>count</strong> counts up infinitely from a value.  <br>
+The function <strong>cycle</strong> infinitely iterates through an iterable (for instance a list or string).  <br>
+The function <strong>repeat</strong> repeats an object, either infinitely or a specific number of times. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> count
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> count(<span class="hljs-number">3</span>):
+  print(i)
+  <span class="hljs-keyword">if</span> i &gt;=<span class="hljs-number">11</span>:
+    <span class="hljs-keyword">break</span></code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>3 <br>
+  4 <br>
+  5 <br>
+  6 <br>
+  7 <br>
+  8 <br>
+  9 <br>
+  10 <br>
+  11</p>
+</blockquote>
+
+
+
+<h3 id="itertools-2"><strong>itertools-2</strong></h3>
+
+<hr>
+
+<p>There are many functions in <strong>itertools</strong> that operate on iterables, in a similar way to <strong>map</strong> and <strong>filter</strong>.  <br>
+<strong>Some examples:</strong> <br>
+<strong>takewhile</strong> - takes items from an iterable while a predicate function remains true; <br>
+<strong>chain</strong> - combines several iterables into one long one;  <br>
+<strong>accumulate</strong> - returns a running total of values in an iterable.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> accumulate, takewhile
+
+nums = list(accumulate(range(<span class="hljs-number">8</span>)))
+print(nums)
+print(list(takewhile(<span class="hljs-keyword">lambda</span> x: x&lt;= <span class="hljs-number">6</span>, nums)))</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>[0, 1, 3, 6, 10, 15, 21, 28] <br>
+  [0, 1, 3, 6]</p>
+</blockquote>
+
+
+
+<h3 id="itertools-3"><strong>itertools-3</strong></h3>
+
+<hr>
+
+<p>There are also several combinatoric functions in <strong>itertool</strong>, such as <strong>product</strong> and <strong>permutation</strong>. <br>
+These are used when you want to accomplish a task with all possible combinations of some items. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs php">from itertools import product, permutations
+
+letters = (<span class="hljs-string">"A"</span>, <span class="hljs-string">"B"</span>)
+<span class="hljs-keyword">print</span>(<span class="hljs-keyword">list</span>(product(letters, range(<span class="hljs-number">2</span>))))
+<span class="hljs-keyword">print</span>(<span class="hljs-keyword">list</span>(permutations(letters))) </code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>[(‘A’, 0), (‘A’, 1), (‘B’, 0), (‘B’, 1)] <br>
+  [(‘A’, ‘B’), (‘B’, ‘A’)]</p>
+</blockquote>
+
+
+
+<h2 id="object-oriented-programming"><strong><em>Object-Oriented Programming</em></strong></h2>
+
+
+
+<h3 id="classes-1"><strong>Classes-1</strong></h3>
+
+<hr>
+
+<p>We have previously looked at two paradigms of programming - <strong>imperative</strong> (using statements, loops, and functions as subroutines), and <strong>functional</strong> (using pure functions, higher-order functions, and recursion).</p>
+
+<p>Another very popular paradigm is <strong>object**</strong>-<strong>**oriented</strong> <strong>programming</strong> (<strong>OOP</strong>). <br>
+Objects are created using <strong>classes</strong>, which are actually the focal point of OOP. <br>
+The <strong>class</strong> describes what the object will be, but is separate from the object itself. In other words, a class can be described as an object’s blueprint, description, or definition. <br>
+You can use the same class as a blueprint for creating multiple different objects. </p>
+
+<p>Classes are created using the keyword <strong>class</strong> and an indented block, which contains class <strong>methods</strong> (which are functions).  <br>
+Below is an example of a simple class and its objects.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, color, legs)</span>:</span>
+    self.color = color
+    self.legs = legs
+
+felix = Cat(<span class="hljs-string">"ginger"</span>, <span class="hljs-number">4</span>)
+rover = Cat(<span class="hljs-string">"dog-colored"</span>, <span class="hljs-number">4</span>)
+stumpy = Cat(<span class="hljs-string">"brown"</span>, <span class="hljs-number">3</span>)</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> This code defines a class named <strong>Cat</strong>, which has two attributes: <strong>color</strong> and <strong>legs</strong>. <br>
+  Then the class is used to create 3 separate objects of that class.</p>
+</blockquote>
+
+
+
+<h4 id="init"><strong><code>__init__</code></strong></h4>
+
+<hr>
+
+<p>The <strong>init</strong> method is the most important method in a class.  <br>
+This is called when an instance (object) of the class is created, using the class name as a function.</p>
+
+<p>All methods must have <strong>self</strong> as their first parameter, although it isn’t explicitly passed, Python adds the <strong>self</strong> argument to the list for you; you do not need to include it when you call the methods. Within a method definition, <strong>self</strong> refers to the instance calling the method.</p>
+
+<p>Instances of a class have <strong>attributes</strong>, which are pieces of data associated with them. <br>
+In this example, <strong>Cat</strong> instances have attributes <strong>color</strong> and <strong>legs</strong>. These can be accessed by putting a <strong>dot</strong>, and the attribute name after an instance.  <br>
+In an <strong>init</strong> method, <strong>self.attribute</strong> can therefore be used to set the initial value of an instance’s attributes. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, color, legs)</span>:</span>
+    self.color = color
+    self.legs = legs
+
+felix = Cat(<span class="hljs-string">"ginger"</span>, <span class="hljs-number">4</span>)
+print(felix.color)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p><strong>Note:</strong> ginger</p>
+</blockquote>
+
+<p><strong>Note:</strong> In the example above, the <strong>init</strong> method takes two arguments and assigns them to the object’s attributes. The <strong>init</strong> method is called the class <strong>constructor</strong>.</p>
+
+
+
+<h4 id="methods"><strong>Methods</strong></h4>
+
+<hr>
+
+<p>Classes can have other <strong>methods</strong> defined to add functionality to them.  <br>
+Remember, that all methods must have <strong>self</strong> as their first <strong>parameter</strong>. <br>
+These methods are accessed using the same <strong>dot syntax</strong> as attributes.  <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Woof!"</span>)
+
+fido = Dog(<span class="hljs-string">"Fido"</span>, <span class="hljs-string">"brown"</span>)
+print(fido.name)
+fido.bark()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>Fido <br>
+  Woof!</p>
+</blockquote>
+
+<p>Classes can also have <strong>class attributes</strong>, created by assigning variables within the body of the class. These can be accessed either from instances of the class, or the class itself. <br>
+<strong>Example:</strong></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span>
+  legs = <span class="hljs-number">4</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
+
+fido = Dog(<span class="hljs-string">"Fido"</span>, <span class="hljs-string">"brown"</span>)
+print(fido.legs)
+print(Dog.legs)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>4 <br>
+  4</p>
+</blockquote>
+
+<p><strong>NOTE:</strong> Class attributes are shared by all instances of the class.</p>
+
+
+
+<h3 id="classes-2"><strong>Classes-2</strong></h3>
+
+<hr>
+
+<p>Trying to access an attribute of an instance that isn’t defined causes an <strong>AttributeError</strong>. This also applies when you call an <strong>undefined</strong> method.</p>
 
 <p><strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-who am i
-whoami
-<span class="hljs-built_in">pwd</span></code></pre>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>:</span> 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, width, height)</span>:</span>
+    self.width = width
+    self.height = height
 
-<p><strong>Output:</strong></p>
+rect = Rectangle(<span class="hljs-number">7</span>, <span class="hljs-number">8</span>)
+print(rect.color)</code></pre>
 
+<p><strong>Result:</strong></p>
 
-
-<pre class="prettyprint"><code class=" hljs ">joker    pts/3        2016-08-31 16:40 (:0.0) joker /home/joker/PycharmProjects/bash_script</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>who am i</code></td>
-  <td>shows user name, terminal number, date</td>
-</tr>
-<tr>
-  <td><code>whoami</code></td>
-  <td>shows only user name</td>
-</tr>
-<tr>
-  <td><code>pwd</code></td>
-  <td>prints the working directory</td>
-</tr>
-</tbody></table>
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/Y5mnE64WEDA" frameborder="0" allowfullscreen></iframe>
+<blockquote>
+  <p>AttributeError: ‘Rectangle’ object has no attribute ‘color’</p>
+</blockquote>
 
 
 
+<h3 id="inheritance-1"><strong>Inheritance-1</strong></h3>
 
-<h2 id="shell-scripting-tutorial-3-view-system-date-calender"><strong>Shell Scripting Tutorial-3:</strong> <em>View System Date, Calender</em></h2>
+<hr>
 
-
-
-<h3 id="calender">Calender</h3>
-
-<p>calender commands:  </p>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>cal</code></td>
-  <td>prints the calender</td>
-</tr>
-<tr>
-  <td><code>cal 7 2006</code></td>
-  <td>prints july 2006</td>
-</tr>
-<tr>
-  <td><code>cal feb 2033</code></td>
-  <td>prints february 2033</td>
-</tr>
-</tbody></table>
-
-
-
-
-<h3 id="date">Date</h3>
-
-<p><strong>date</strong> command prints date as <em><strong>Mon Aug  8 14:37:04 EEST 2016</strong></em>.  </p>
-
-<p>Output of date command can be customized. <br>
-$ date ‘+DATE: %m-%y%nTIME: %H:%M:%S’ <br>
+<p><strong>Inheritance</strong> provides a way to share functionality between classes.  <br>
+Imagine several classes, <strong>Cat</strong>, <strong>Dog</strong>, <strong>Rabbit</strong> and so on. Although they may differ in some ways (only <strong>Dog</strong> might have the method <strong>bark</strong>), they are likely to be similar in others (all having the attributes <strong>color</strong> and <strong>name</strong>).  <br>
+This similarity can be expressed by making them all inherit from a <strong>superclass</strong> <strong>Animal</strong>, which contains the shared functionality.  <br>
+To inherit a class from another class, put the superclass name in parentheses after the class name. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-cal <span class="hljs-comment"># prints the calender</span>
-cal <span class="hljs-number">7</span> <span class="hljs-number">2006</span> <span class="hljs-comment"># prints july 2006</span>
-cal feb <span class="hljs-number">2033</span>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>:</span> 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
 
-date <span class="hljs-comment"># prints date, time and year</span>
-date <span class="hljs-string">'+DATE: %m-%y%nTIME: %H:%M:%S'</span> <span class="hljs-comment"># customized date print</span></code></pre>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span><span class="hljs-params">(Animal)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">purr</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Purr..."</span>)
 
-<p><strong>Output:</strong></p>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span><span class="hljs-params">(Animal)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Woof!"</span>)
 
+fido = Dog(<span class="hljs-string">"Fido"</span>, <span class="hljs-string">"brown"</span>)
+print(fido.color)
+fido.bark()</code></pre>
 
+<p><strong>Result</strong>:</p>
 
-<pre class="prettyprint"><code class=" hljs css">    <span class="hljs-tag">August</span> 2016       
-<span class="hljs-tag">Su</span> <span class="hljs-tag">Mo</span> <span class="hljs-tag">Tu</span> <span class="hljs-tag">We</span> <span class="hljs-tag">Th</span> <span class="hljs-tag">Fr</span> <span class="hljs-tag">Sa</span>  
-    1  2  3  4  5  6  
- 7  8  9 10 11 12 13  
-14 15 16 17 18 19 20  
-21 22 23 24 25 26 27  
-28 29 30 31           
-
-     <span class="hljs-tag">July</span> 2006        
-<span class="hljs-tag">Su</span> <span class="hljs-tag">Mo</span> <span class="hljs-tag">Tu</span> <span class="hljs-tag">We</span> <span class="hljs-tag">Th</span> <span class="hljs-tag">Fr</span> <span class="hljs-tag">Sa</span>  
-                   1  
- 2  3  4  5  6  7  8  
- 9 10 11 12 13 14 15  
-16 17 18 19 20 21 22  
-23 24 25 26 27 28 29  
-30 31                 
-   <span class="hljs-tag">February</span> 2033      
-<span class="hljs-tag">Su</span> <span class="hljs-tag">Mo</span> <span class="hljs-tag">Tu</span> <span class="hljs-tag">We</span> <span class="hljs-tag">Th</span> <span class="hljs-tag">Fr</span> <span class="hljs-tag">Sa</span>  
-       1  2  3  4  5  
- 6  7  8  9 10 11 12  
-13 14 15 16 17 18 19  
-20 21 22 23 24 25 26  
-27 28                 
-
-<span class="hljs-tag">Wed</span> <span class="hljs-tag">Aug</span> 31 16<span class="hljs-pseudo">:43</span><span class="hljs-pseudo">:35</span> <span class="hljs-tag">EEST</span> 2016
-<span class="hljs-tag">DATE</span>: 08<span class="hljs-tag">-16</span>
-<span class="hljs-tag">TIME</span>: 16<span class="hljs-pseudo">:43</span><span class="hljs-pseudo">:35</span></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>date</code></td>
-  <td>prints date as “Mon Aug  8 14:37:04 EEST 2016”</td>
-</tr>
-<tr>
-  <td><code>date '+DATE: %m-%y%nTIME: %H:%M:%S'</code></td>
-  <td>prints date as “DATE: 08-16 TIME: 14:40:33”</td>
-</tr>
-</tbody></table>
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/ThQ6R1EM0e8" frameborder="0" allowfullscreen></iframe>
+<blockquote>
+  <p>brown <br>
+  Woof!</p>
+</blockquote>
 
 
 
+<h3 id="inheritance-2"><strong>Inheritance-2</strong></h3>
 
-<h2 id="shell-scripting-tutorial-4-create-files-directories"><strong>Shell Scripting Tutorial-4:</strong> <em>Create Files &amp; Directories</em></h2>
+<hr>
 
-<p><strong>touch</strong> is used to create empty files. <br>
-<strong>mkdir</strong> is used to create empty folder. <br>
-<strong>cd</strong> is used to navigate inside folders. <br>
+<p>A class that inherits from another class is called a <strong>subclass</strong>. <br>
+A class that is inherited from is called a <strong>superclass</strong>. <br>
+If a class inherits from another with the same attributes or methods, it overrides them.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wolf</span>:</span> 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name, color)</span>:</span>
+    self.name = name
+    self.color = color
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Grr..."</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span><span class="hljs-params">(Wolf)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bark</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"Woof"</span>)
+
+husky = Dog(<span class="hljs-string">"Max"</span>, <span class="hljs-string">"grey"</span>)
+husky.bark()</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>Woof</p>
+</blockquote>
+
+<p><strong>Note:</strong> In the example above, Wolf is the superclass, Dog is the subclass.</p>
+
+
+
+<h3 id="inheritance-3"><strong>Inheritance-3</strong></h3>
+
+<hr>
+
+<p>Inheritance can also be <strong>indirect</strong>. One class can inherit from another, and that class can inherit from a third class.  <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-touch empty_file1 empty_file2 empty_file3 <span class="hljs-comment"># creates empty file</span>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">method</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"A method"</span>)
 
-mkdir folder1 folder2 folder3 <span class="hljs-comment"># creates folder</span>
-mkdir Documents/folder1 <span class="hljs-comment"># creates folder in a specific path</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span><span class="hljs-params">(A)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">another_method</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"B method"</span>)
 
-<span class="hljs-built_in">cd</span> Documents/folder1</code></pre>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span><span class="hljs-params">(B)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">third_method</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-string">"C method"</span>)
 
-<p><strong>Output:</strong></p>
+c = C()
+c.method()
+c.another_method()
+c.third_method()</code></pre>
 
+<p><strong>Result:</strong></p>
 
+<blockquote>
+  <p>A method <br>
+  B method <br>
+  C method</p>
+</blockquote>
 
-<pre class="prettyprint"><code class=" hljs "></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>touch empty_file1 empty_file2</code></td>
-  <td>creates two empty files</td>
-</tr>
-<tr>
-  <td><code>mkdir folder1</code></td>
-  <td>creates a folder in working directory</td>
-</tr>
-<tr>
-  <td><code>mkdir Documents/folder1</code></td>
-  <td>creates a folder in Documents directory</td>
-</tr>
-</tbody></table>
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/0csDVuBloIQ" frameborder="0" allowfullscreen></iframe>
+<p><strong>Note:</strong> However, circular inheritance is not possible.</p>
 
 
 
+<h3 id="inheritance-4"><strong>Inheritance-4</strong></h3>
 
-<h2 id="shell-scripting-tutorial-5-text-files-create-merge-play"><strong>Shell Scripting Tutorial-5:</strong> <em>Text Files: Create, Merge &amp; Play</em></h2>
+<hr>
 
-<p><strong>cat</strong> creates file with text. <br>
-<code>$ cat &gt; test_file</code> <br>
-<code>test_file content bla bla..</code>  </p>
-
-<p><strong>cat</strong> shows content of the file. <br>
-<code>$ cat test_file</code> <br>
-<code>$ cat &lt; test_file</code>  </p>
-
-<p><strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-cat &gt; test_file <span class="hljs-comment"># creates file with text</span>
-<span class="hljs-comment"># test_file content is entered here...</span>
-
-cat &lt; test_file <span class="hljs-comment"># prints the content</span>
-cat test_file <span class="hljs-comment"># prints the content</span>
-
-cat &gt; test_file2 <span class="hljs-comment"># creates file with text</span>
-<span class="hljs-comment"># test_file2 content is entered here..</span>
-
-cat test_file test_file2 &gt; merged_test_files <span class="hljs-comment"># merge two files</span>
-
-cat &lt; merged_test_files <span class="hljs-comment"># shows both test files' content</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">test_file_content <span class="hljs-number">1</span> <span class="hljs-constant">EOF</span>
-test_file_content <span class="hljs-number">1</span> <span class="hljs-constant">EOF</span>
-test_file_content <span class="hljs-number">1</span> <span class="hljs-constant">EOF</span>
-test_file2_content <span class="hljs-number">2</span> <span class="hljs-constant">EOF</span>
-test_file_content <span class="hljs-number">1</span> <span class="hljs-constant">EOF</span>
-test_file2_content <span class="hljs-number">2</span> <span class="hljs-constant">EOF</span></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>cat &gt; test_file</code></td>
-  <td>creates file with text</td>
-</tr>
-<tr>
-  <td><code>cat &lt; test_file</code></td>
-  <td>prints the content</td>
-</tr>
-<tr>
-  <td><code>cat test_file</code></td>
-  <td>prints the content</td>
-</tr>
-<tr>
-  <td><code>cat &gt; test_file2</code></td>
-  <td>creates file with text</td>
-</tr>
-<tr>
-  <td><code>cat test_file test_file2 &gt; merged_test_files</code></td>
-  <td>merge two files</td>
-</tr>
-<tr>
-  <td><code>cat &lt; merged_test_files</code></td>
-  <td>shows both test files’ content</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/viEmljLt-Fo" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-6-rename-delete-files-directories"><strong>Shell Scripting Tutorial-6:</strong> <em>Rename &amp; Delete Files &amp; Directories</em></h2>
-
-
-
-<h3 id="rename-files-directories">Rename Files &amp; Directories</h3>
-
-<p><strong>mv</strong> renames files and directories <br>
-<code>mv file1 file2</code>  </p>
-
-
-
-<h3 id="delete-files-directories">Delete Files &amp; Directories</h3>
-
-<p><strong>rm</strong> deletes file <br>
-<code>rm file</code>  </p>
-
-<p><strong>rm -r</strong> deletes directory <br>
-<code>rm -r directory/</code>  </p>
-
-<p><strong>rmdir</strong> deletes empty directory <br>
-<code>rmdir empty_directory</code> <br>
+<p>The function <strong>super</strong> is a useful inheritance-related function that refers to the parent class. It can be used to find the method with a certain name in an object’s superclass. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-touch farm_village
-mv farm_village red_cliff <span class="hljs-comment"># renames the file</span>
-rm red_cliff <span class="hljs-comment"># deletes the file</span>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spam</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-number">1</span>)
 
-mkdir new
-rm -r new <span class="hljs-comment"># deletes the directory</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span><span class="hljs-params">(A)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">spam</span><span class="hljs-params">(self)</span>:</span>
+    print(<span class="hljs-number">2</span>)
+    super().spam()
 
-mkdir test
-rmdir test <span class="hljs-comment"># deletes the directory</span>
-</code></pre>
+B().spam()</code></pre>
 
-<p><strong>Output:</strong></p>
+<p><strong>Result:</strong></p>
 
+<blockquote>
+  <p>2 <br>
+  1    </p>
+</blockquote>
 
-
-<pre class="prettyprint"><code class=" hljs "></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>mv file1 file2</code></td>
-  <td>renames the file</td>
-</tr>
-<tr>
-  <td><code>mv directory1 directory2</code></td>
-  <td>renames the directory</td>
-</tr>
-<tr>
-  <td><code>rm file2</code></td>
-  <td>deletes the file</td>
-</tr>
-<tr>
-  <td><code>rm -r directory2</code></td>
-  <td>deletes the directory</td>
-</tr>
-<tr>
-  <td><code>rmdir empty_directory</code></td>
-  <td>deletes the empty directory</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/4r2r9HNCm0o" frameborder="0" allowfullscreen></iframe>
+<p><strong>Note:</strong> <strong><em>super().spam()</em></strong> calls the <strong>spam</strong> method of the superclass.</p>
 
 
 
+<h3 id="magic-methods-1"><strong>Magic Methods-1</strong></h3>
 
-<h2 id="shell-scripting-tutorial-7-create-copies-links-to-files-directories"><strong>Shell Scripting Tutorial-7:</strong> <em>Create Copies, Links to Files &amp; Directories</em></h2>
+<hr>
+
+<p><strong>Magic methods</strong> are special methods which have <strong>double underscores</strong> at the beginning and end of their names.  <br>
+They are also known as <strong>dunders.</strong>  <br>
+So far, the only one we have encountered is <code>__init__</code>, but there are several others.  <br>
+They are used to create functionality that can’t be represented as a normal method. </p>
+
+<p>One common use of them is <strong>operator overloading</strong>.  <br>
+This means defining operators for custom classes that allow operators such as <strong>+ and *</strong> to be used on them. <br>
+An example magic method is <code>__add__</code> for <strong>+</strong>.</p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector2D</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, x, y)</span>:</span>
+    self.x = x
+    self.y = y
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__add__</span><span class="hljs-params">(self, other)</span>:</span>
+    <span class="hljs-keyword">return</span> Vector2D(self.x + other.x, self.y + other.y)
+
+first = Vector2D(<span class="hljs-number">5</span>, <span class="hljs-number">7</span>)
+second = Vector2D(<span class="hljs-number">3</span>, <span class="hljs-number">9</span>)
+result = first + second
+print(result.x)
+print(result.y)</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<blockquote>
+  <p>8 <br>
+  16    </p>
+</blockquote>
+
+<p>The <code>__add__</code> method allows for the definition of a custom behavior for the <strong>+ operator</strong> in our class.  <br>
+As you can see, it adds the corresponding attributes of the objects and returns a new object, containing the result. <br>
+Once it’s defined, we can add two objects of the class together.</p>
 
 
 
-<h3 id="copy-files">Copy Files</h3>
+<h3 id="magic-methods-2"><strong>Magic Methods-2</strong></h3>
 
-<p><strong>cp</strong> is used to copy files from one location to other. <br>
-<strong>cp</strong> copies the file <strong>mv</strong> cuts and pastes the file. <br>
-<code>cp file /home/Music/file_new_name</code>  </p>
+<hr>
 
+<p>More magic methods for common operators: <br>
+<code>__sub__</code> for <strong>-</strong> <br>
+<code>__mul__</code> for <strong>*</strong> <br>
+<code>__truediv__</code> for <strong>/</strong> <br>
+<code>__floordiv__</code> for <strong>//</strong> <br>
+<code>__mod__</code> for <strong>%</strong> <br>
+<code>__pow__</code> for <strong>**</strong> <br>
+<code>__and__</code> for <strong>&amp;</strong> <br>
+<code>__xor__</code> for <strong>^</strong> <br>
+<code>__or__</code> for <strong>|</strong></p>
 
-
-<h3 id="links">Links</h3>
-
-<p><strong>ln</strong> creates hard link for a file. <br>
-<strong>Hard link</strong> is replica of original one. <br>
-Any changes from old file, also exists in new one. <br>
-Removing the original one does not effect new one. <br>
-<code>ln old_file new_file</code>  </p>
-
-<p><strong>ln -s</strong> creates soft link. <br>
-Any changes from old file, also exists in new one. <br>
-Removing the original makes soft link useless. <br>
-<code>ln -s old old_soft</code> <br>
+<p>The expression <code>x + y</code> is translated into <code>x.__add__(y)</code>.  <br>
+However, if x hasn’t implemented <code>__add__</code>, and x and y are of different types, then <code>y.__radd__(x)</code> is called.  <br>
+There are equivalent r methods for all magic methods just mentioned. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-touch old
-cp old /home/Music/new_file <span class="hljs-comment"># copy files with new name</span>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpecialString</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, cont)</span>:</span>
+    self.cont = cont
 
-ln old new <span class="hljs-comment"># creates hard links</span>
-<span class="hljs-comment"># any changes from old file, also exists in new one (HARD link)</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__truediv__</span><span class="hljs-params">(self, other)</span>:</span>
+    line = <span class="hljs-string">"="</span> * len(other.cont)
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"\n"</span>.join([self.cont, line, other.cont])
 
-ln <span class="hljs-operator">-s</span>  old old_soft <span class="hljs-comment"># creates soft  link</span>
-</code></pre>
+spam = SpecialString(<span class="hljs-string">"spam"</span>)
+hello = SpecialString(<span class="hljs-string">"Hello world!"</span>)
+print(spam / hello)</code></pre>
 
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs "></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>cp old_file /home/Music/new_file</code></td>
-  <td>copy files to new location with new name</td>
-</tr>
-<tr>
-  <td><code>ln file hard_file</code></td>
-  <td>creates a hard link</td>
-</tr>
-<tr>
-  <td><code>ln -s file soft_file</code></td>
-  <td>creates a soft link</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/8CEpUQCJKhc" frameborder="0" allowfullscreen></iframe>
+<p><strong>Result:</strong>  </p>
 
 
 
+<pre class="prettyprint"><code class=" hljs asciidoc"><span class="hljs-header">spam
+============</span>
+Hello world!</code></pre>
 
-<h2 id="shell-scripting-tutorial-8-file-permissions"><strong>Shell Scripting Tutorial-8:</strong> <em>File Permissions</em></h2>
+<p><strong>Note:</strong> In the example above, we defined the <strong>division</strong> operation for our class <strong>SpecialString</strong>.</p>
+
+<h3 id="magic-methods-3"><strong>Magic Methods-3</strong></h3>
+
+<hr>
+
+<p>Python also provides magic methods for comparisons. <br>
+<code>__lt__</code> for <strong>&lt;</strong> <br>
+<code>__le__</code> for <strong>&lt;=</strong> <br>
+<code>__eq__</code> for <strong>==</strong> <br>
+<code>__ne__</code> for <strong>!=</strong> <br>
+<code>__gt__</code> for <strong>&gt;</strong> <br>
+<code>__ge__</code> for <strong>&gt;=</strong></p>
+
+<p>If <code>__ne__</code> is not implemented, it returns the opposite of <code>__eq__</code>.  <br>
+<strong>Note:</strong> There are no other relationships between the other operators. <br>
+<strong>Example:</strong></p>
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpecialString</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, cont)</span>:</span>
+    self.cont = cont
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__gt__</span><span class="hljs-params">(self, other)</span>:</span>
+    <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> range(len(other.cont)+<span class="hljs-number">1</span>):
+      result = other.cont[:index] + <span class="hljs-string">"&gt;"</span> + self.cont
+      result += <span class="hljs-string">"&gt;"</span> + other.cont[index:]
+      print(result)
+
+spam = SpecialString(<span class="hljs-string">"spam"</span>)
+eggs = SpecialString(<span class="hljs-string">"eggs"</span>)
+spam &gt; eggs</code></pre>
+
+<p><strong>Result:</strong></p>
 
 
 
-<h3 id="file-permission">File Permission</h3>
+<pre class="prettyprint"><code class=" hljs ">&gt;spam&gt;eggs
+e&gt;spam&gt;ggs
+eg&gt;spam&gt;gs
+egg&gt;spam&gt;s
+eggs&gt;spam&gt;</code></pre>
 
-<p><strong>owner</strong>, <strong>group</strong> and <strong>other</strong> are 3 permission part.  </p>
-
-<p><strong>read</strong>, <strong>write</strong> and <strong>execute</strong> are 3 type of permission. <br>
-- <strong>read</strong>: has numeric value “<strong>4</strong>“. <br>
-- <strong>write</strong>: has numeric value “<strong>2</strong>“. <br>
-- <strong>execute</strong>: has numeric value “<strong>1</strong>“.  </p>
-
+<p><strong>Note:</strong> As you can see, you can define any custom behavior for the overloaded operators.</p>
 
 
-<h3 id="umask-usage">“umask” Usage</h3>
 
-<p><strong>umask</strong> is used to specify permission values. <br>
-Assume <strong>umask</strong> value is <strong><em>0022</em></strong>. <br>
-<code>file permission = 666 - 022 = 644</code> which means owner(read, write=6), group(read=4), other(read=4) <br>
-<code>directory permission = 777 - 022 = 755</code> which means owner(read, write, execute=7), group/other(read, execute=5) <br>
+<h3 id="magic-methods-4"><strong>Magic Methods-4</strong></h3>
+
+<hr>
+
+<p>There are several magic methods for making classes act like containers. <br>
+<code>__len__</code> for <strong>len()</strong> <br>
+<code>__getitem__</code> for <strong>indexing</strong> <br>
+<code>__setitem__</code> for <strong>assigning</strong> to indexed values <br>
+<code>__delitem__</code> for <strong>deleting</strong> indexed values <br>
+<code>__iter__</code> for <strong>iteration</strong> over objects (e.g., in for loops) <br>
+<code>__contains__</code> for <strong>in</strong></p>
+
+<p>There are many other magic methods that we won’t cover here, such as <code>__call__</code> for calling objects as functions, and <code>__int__</code>, <code>__str__</code>, and the like, for converting objects to built-in types.  <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-umask <span class="hljs-comment"># shows the number that is used to create defaul file permission.</span>
-<span class="hljs-comment"># output: 0022</span>
-<span class="hljs-comment"># which means:</span>
-<span class="hljs-comment"># - file permissions will be     = 666-022 = 644 (owner-&gt;read,write group/other-&gt;read)</span>
-<span class="hljs-comment"># - directory permission will be = 777-022 = 755 (owner-&gt;r,w,e group/other-&gt;r,e)</span>
-</code></pre>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-keyword">import</span> random
 
-<p><strong>Output:</strong></p>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VagueList</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, cont)</span>:</span>
+    self.cont = cont
 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__getitem__</span><span class="hljs-params">(self, index)</span>:</span>
+    <span class="hljs-keyword">return</span> self.cont[index + random.randint(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)]
 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__len__</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> random.randint(<span class="hljs-number">0</span>, len(self.cont)*<span class="hljs-number">2</span>)
 
-<pre class="prettyprint"><code class=" hljs ">0022</code></pre>
+vague_list = VagueList([<span class="hljs-string">"A"</span>, <span class="hljs-string">"B"</span>, <span class="hljs-string">"C"</span>, <span class="hljs-string">"D"</span>, <span class="hljs-string">"E"</span>])
+print(len(vague_list))
+print(len(vague_list))
+print(vague_list[<span class="hljs-number">2</span>])
+print(vague_list[<span class="hljs-number">2</span>])</code></pre>
 
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>umask</code></td>
-  <td>shows file and directory permission creation base number</td>
-</tr>
-</tbody></table>
+<p><strong>Result:</strong></p>
 
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/jID3dFxuFR8" frameborder="0" allowfullscreen></iframe>
+<blockquote>
+  <p>6 <br>
+  7 <br>
+  D <br>
+  C</p>
+</blockquote>
 
-
-
-
-<h2 id="shell-scripting-tutorial-9-see-whats-using-in-ls"><strong>Shell Scripting Tutorial-9:</strong> <em>See What’s Using in ‘ls’</em></h2>
+<p><strong>Note:</strong> We have overridden the <strong>len()</strong> function for the class VagueList to return a random number. <br>
+The indexing function also returns a random item in a range from the list, based on the expression.</p>
 
 
 
-<h3 id="usage-of-ls">Usage of ‘ls’</h3>
+<h3 id="object-lifecycle-1"><strong>Object Lifecycle-1</strong></h3>
 
-<p><strong>ls</strong> shows the list of files and directories. <br>
-<code>ls -l</code> shows the following <br>
-<code>total 4</code> <br>
-<code>-rw-r--r-- 2 joker joker    0 Aug  9 13:58 forrest_village</code> <br>
-<code>-rw-r--r-- 2 joker joker    0 Aug  9 13:58 new</code> <br>
-<code>-rw-r--r-- 1 joker joker    0 Aug  9 15:10 sample</code> <br>
-<code>drwxr-xr-x 2 joker joker 4096 Aug  9 14:05 sdf</code>    </p>
+<hr>
 
-<p><strong>“d”</strong> letter at the beginnig of the last line shows that it is a <strong>directory</strong>. <br>
-Any <strong>“l”</strong> letter at the beginning of the line shows that it is a <strong>soft link</strong>.  </p>
+<p>The lifecycle of an object is made up of its <strong>creation</strong>, <strong>manipulation</strong>, and <strong>destruction</strong>.</p>
 
-<p>Next characters shows the permissions owner(read,write,execute)group(read,write,execute)other(read,write,execute)  </p>
+<p>The first stage of the life-cycle of an object is the <strong>definition</strong> of the class to which it belongs. <br>
+The next stage is the <strong>instantiation</strong> of an instance, when <code>__init__</code> is called. Memory is allocated to store the instance. Just before this occurs, the <code>__new__</code> method of the class is called. This is usually overridden only in special cases.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> After this has happened, the object is ready to be used. Other code can then interact with the object, by calling functions on <br>
+  it and accessing its attributes.  Eventually, it will finish being <br>
+  used, and can be <strong>destroyed</strong>.</p>
+</blockquote>
 
 
 
-<h3 id="hidden-files-and-ls-a">Hidden files and ‘ls -a’</h3>
+<h3 id="object-lifecycle-2"><strong>Object Lifecycle-2</strong></h3>
 
-<p>Hidden files are created using . at the beginning of the file name. <br>
-<code>touch .test</code>  </p>
+<hr>
 
-<p><code>ls -a</code> shows all files in the directory, inclued hidden files. <br>
+<p>When an object is <strong>destroyed</strong>, the memory allocated to it is freed up, and can be used for other purposes. <br>
+Destruction of an object occurs when its <strong>reference count</strong> reaches zero. Reference count is the number of variables and other elements that refer to an object. <br>
+If nothing is referring to it (it has a reference count of zero) nothing can interact with it, so it can be safely deleted.</p>
+
+<p>In some situations, two (or more) objects can be referred to by each other only, and therefore can be deleted as well.  <br>
+The del statement reduces the reference count of an object by one, and this often leads to its deletion. <br>
+The magic method for the <strong>del</strong> statement is <code>__del__</code>.  <br>
+The process of deleting objects when they are no longer needed is called <strong>garbage collection</strong>. <br>
+In summary, an object’s reference count increases when it is assigned a new name or placed in a container (list, tuple, or dictionary). The object’s reference count decreases when it’s deleted with <strong>del</strong>, its reference is reassigned, or its reference goes out of scope. When an object’s reference count reaches zero, Python automatically deletes it. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-cat &gt; test
-<span class="hljs-comment"># random text in test file...</span>
+<pre class="prettyprint"><code class=" hljs sql">a = 42  # <span class="hljs-operator"><span class="hljs-keyword">Create</span> object &lt;<span class="hljs-number">42</span>&gt;
+b = a  # Increase ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt; 
+c = [a]  # Increase ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt; 
 
-ls <span class="hljs-comment"># lists the files and directories</span>
+del a  # Decrease ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt;
+b = <span class="hljs-number">100</span>  # Decrease ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt; 
+c[<span class="hljs-number">0</span>] = -<span class="hljs-number">1</span>  # Decrease ref. <span class="hljs-aggregate">count</span>  <span class="hljs-keyword">of</span> &lt;<span class="hljs-number">42</span>&gt;</span></code></pre>
 
-ls <span class="hljs-operator">-l</span> <span class="hljs-comment"># lists the file permissions.</span>
-
-touch .test <span class="hljs-comment"># creates a hidden files</span>
-ls <span class="hljs-operator">-a</span> <span class="hljs-comment"># lists all files and directories including hidden ones.</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
+<blockquote>
+  <p><strong>Note:</strong> Lower level languages like C don’t have this kind of automatic memory management.</p>
+</blockquote>
 
 
 
-<pre class="prettyprint"><code class=" hljs livecodeserver">list <span class="hljs-operator">of</span> all <span class="hljs-built_in">files</span> will be printed.</code></pre>
+<h3 id="data-hiding-1"><strong>Data Hiding-1</strong></h3>
 
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>ls</code></td>
-  <td>lists files and directories</td>
-</tr>
-<tr>
-  <td><code>ls -l</code></td>
-  <td>lists files and directories with permissions</td>
-</tr>
-<tr>
-  <td><code>touch .test</code></td>
-  <td>creates a hidden file</td>
-</tr>
-<tr>
-  <td><code>ls -a</code></td>
-  <td>list all files and directories including hidden ones</td>
-</tr>
-</tbody></table>
+<hr>
 
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/bFL05iO9k2M" frameborder="0" allowfullscreen></iframe>
+<p>A key part of object-oriented programming is <strong>encapsulation</strong>, which involves packaging of related variables and functions into a single easy-to-use object - an instance of a class. <br>
+A related concept is <strong>data hiding</strong>, which states that implementation details of a class should be hidden, and a clean standard interface be presented for those who want to use the class.  <br>
+In other programming languages, this is usually done with private methods and attributes, which block external access to certain methods and attributes in a class.</p>
+
+<p>The Python philosophy is slightly different. It is often stated as <strong>“we are all consenting adults here”</strong>, meaning that you shouldn’t put arbitrary restrictions on accessing parts of a class. Hence there are no ways of enforcing a method or attribute be strictly private. </p>
+
+<blockquote>
+  <p><strong>Note:</strong> However, there are ways to discourage people from accessing parts of a class, such as by denoting that it is an implementation <br>
+  detail, and should be used at their own risk.</p>
+</blockquote>
 
 
 
+<h3 id="data-hiding-2"><strong>Data Hiding-2</strong></h3>
 
-<h2 id="shell-scripting-tutorial-10-change-file-permissions-using-chmod"><strong>Shell Scripting Tutorial-10:</strong> <em>Change File Permissions Using ‘chmod’</em></h2>
+<hr>
 
+<p><strong>Weakly private</strong> methods and attributes have a <strong>single underscore</strong> at the beginning. <br>
+This signals that they are private, and shouldn’t be used by external code. However, it is mostly only a convention, and does not stop external code from accessing them.  <br>
+Its only actual effect is that <strong>from module_name import *</strong> won’t import variables that start with a single underscore. <br>
+<strong>Example:</strong></p>
 
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Queue</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, contents)</span>:</span>
+    self._hiddenlist = list(contents)
 
-<h3 id="usage-of-chmod">Usage of ‘chmod’</h3>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">push</span><span class="hljs-params">(self, value)</span>:</span>
+    self._hiddenlist.insert(<span class="hljs-number">0</span>, value)
 
-<p><code>**chmod**</code> changes file permissions. <br>
-<code>chmod 777 test</code> gives read, write and execute permissions to owner,group and other  </p>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pop</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self._hiddenlist.pop(-<span class="hljs-number">1</span>)
 
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Queue({})"</span>.format(self._hiddenlist)
 
+queue = Queue([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+print(queue)
+queue.push(<span class="hljs-number">0</span>)
+print(queue)
+queue.pop()
+print(queue)
+print(queue._hiddenlist)</code></pre>
 
-<h3 id="usage-of-uname">Usage of ‘uname’</h3>
+<p><strong>Result:</strong></p>
 
-<p><code>**uname**</code> shows all about machine. <br>
-<code>$ uname -a</code>  <br>
-output: <br>
-<code>**Linux joker 3.16.0-38-generic #52~14.04.1-Ubuntu SMP Fri May 8 09:43:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux**</code>  </p>
+<blockquote>
+  <p>Queue([1, 2, 3]) <br>
+  Queue([0, 1, 2, 3]) <br>
+  Queue([0, 1, 2]) <br>
+  [0, 1, 2]</p>
+</blockquote>
 
-<p><strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-touch test
-ls <span class="hljs-operator">-l</span>
-
-chmod <span class="hljs-number">777</span> test <span class="hljs-comment"># gives all permissions to owner, group and others.</span>
-ls <span class="hljs-operator">-l</span>
-
-uname <span class="hljs-operator">-a</span> <span class="hljs-comment"># shows all about machine</span>
-<span class="hljs-comment"># output:</span>
-<span class="hljs-comment"># Linux joker 3.16.0-38-generic #52~14.04.1-Ubuntu SMP Fri May 8 09:43:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-comment">####file list will be printed here.</span>
-Linux joker <span class="hljs-number">3.16</span>.<span class="hljs-number">0</span>-<span class="hljs-number">38</span>-generic <span class="hljs-comment">#52~14.04.1-Ubuntu SMP Fri May 8 09:43:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>chmod 777 test</code></td>
-  <td>gives all permissions to all users</td>
-</tr>
-<tr>
-  <td><code>uname -a</code></td>
-  <td>shows all details about machine and kernel</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/QBlENrp2wns" frameborder="0" allowfullscreen></iframe>
+<p><strong>Note:</strong> In the code above, the attribute <code>_hiddenlist</code> is marked as private, but it can still be accessed in the outside code. <br>
+The <code>__repr__</code> magic method is used for string representation of the instance.</p>
 
 
 
+<h3 id="data-hiding-3"><strong>Data Hiding-3</strong></h3>
 
-<h2 id="shell-scripting-tutorial-11-count-lines-words-characters-using-wc"><strong>Shell Scripting Tutorial-11:</strong> <em>Count Lines, Words &amp; Characters Using ‘wc’</em></h2>
+<hr>
 
-
-
-<h3 id="usage-of-file">Usage of ‘file’</h3>
-
-<p><strong><code>file</code></strong> shows the type of files. <br>
-<code>file *</code> <br>
-output: <br>
-<code>aaa:             symbolic link to 'new'</code> <br>
-<code>bbb:             empty</code> <br>
-<code>forrest_village: empty</code> <br>
-<code>jazz:            ASCII text</code> <br>
-<code>new:             empty</code> <br>
-<code>sdf:             directory</code>  </p>
-
-
-
-<h3 id="usage-of-wc">Usage of ‘wc’</h3>
-
-<p><code>wc file</code> <br>
-output: <br>
-<code>4  7 48 file</code> <br>
-4 : number of lines <br>
-7 : number of words <br>
-48: number of characters  </p>
-
-<p><code>wc -l file</code> show line count <br>
-<code>wc -w file</code> show word count <br>
-<code>wc -c file</code> show character count <br>
+<p><strong>Strongly private</strong> methods and attributes have a <strong>double underscore</strong> at the beginning of their names. This causes their names to be mangled, which means that they can’t be accessed from outside the class.  <br>
+The purpose of this isn’t to ensure that they are kept private, but to avoid bugs if there are subclasses that have methods or attributes with the same names. <br>
+Name mangled methods can still be accessed externally, but by a different name. The method <code>__privatemethod</code> of class <strong>Spam</strong> could be accessed externally with <code>_Spam__privatemethod</code>. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs vhdl">#!/usr/bin/env bash
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Spam</span>:</span>
+  __egg = <span class="hljs-number">7</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_egg</span><span class="hljs-params">(self)</span>:</span>
+    print(self.__egg)
 
-<span class="hljs-keyword">file</span> * # shows the <span class="hljs-keyword">type</span> <span class="hljs-keyword">of</span> files
-<span class="hljs-keyword">file</span> test # shows the <span class="hljs-keyword">type</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">file</span> test
+s = Spam()
+s.print_egg()
+print(s._Spam__egg)
+print(s.__egg)</code></pre>
 
-wc test # shows the number <span class="hljs-keyword">of</span> lines,words <span class="hljs-keyword">and</span> chracters <span class="hljs-keyword">of</span> <span class="hljs-keyword">file</span> test
-wc -l test # shows the number <span class="hljs-keyword">of</span> lines <span class="hljs-keyword">of</span> <span class="hljs-keyword">file</span> test
-wc -w test # shows the number <span class="hljs-keyword">of</span> words <span class="hljs-keyword">of</span> <span class="hljs-keyword">file</span> test
-wc -c test # shows the number <span class="hljs-keyword">of</span> characters <span class="hljs-keyword">of</span> <span class="hljs-keyword">file</span> test</code></pre>
+<p><strong>Result:</strong></p>
 
-<p><strong>Output:</strong></p>
+<blockquote>
+  <p>7 <br>
+  7 <br>
+  AttributeError: ‘Spam’ object has no attribute ‘__egg’</p>
+</blockquote>
 
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">commandlist_tutorial_50:     ASCII <span class="hljs-keyword">text</span>
-create_consecutive_files.sh: Bourne-Again <span class="hljs-built_in">shell</span> script, ASCII <span class="hljs-keyword">text</span> executable
-empty_file1:                 <span class="hljs-constant">empty</span> 
-empty_file2:                 <span class="hljs-constant">empty</span> 
-empty_file3:                 <span class="hljs-constant">empty</span> 
-folder1:                     <span class="hljs-built_in">directory</span> 
-test: ASCII <span class="hljs-keyword">text</span>
- <span class="hljs-number">1</span>  <span class="hljs-number">2</span> <span class="hljs-number">10</span> test
-<span class="hljs-number">1</span> test
-<span class="hljs-number">2</span> test
-<span class="hljs-number">10</span> test
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>file *</code></td>
-  <td>shows file types of all files</td>
-</tr>
-<tr>
-  <td><code>wc file</code></td>
-  <td>shows number of lines, words and chracters of file</td>
-</tr>
-<tr>
-  <td><code>wc -l file</code></td>
-  <td>shows number of lines</td>
-</tr>
-<tr>
-  <td><code>wc -w file</code></td>
-  <td>shows number of words</td>
-</tr>
-<tr>
-  <td><code>wc -c file</code></td>
-  <td>shows number of chracters</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/Ex-mzjPwrmo" frameborder="0" allowfullscreen></iframe>
+<p><strong>Note:</strong> Basically, Python protects those members by internally changing the name to include the class name.</p>
 
 
 
+<h3 id="class-methods"><strong>Class Methods</strong></h3>
 
-<h2 id="shell-scripting-tutorial-12-sort"><strong>Shell Scripting Tutorial-12:</strong> <em>Sort</em></h2>
+<hr>
 
-
-
-<h3 id="usage-of-sort">Usage of ‘sort’</h3>
-
-<p><strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vala"><span class="hljs-preprocessor">#!/usr/bin/env bash</span>
-
-cat &gt; animals
-<span class="hljs-preprocessor"># dogs</span>
-<span class="hljs-preprocessor"># cats</span>
-<span class="hljs-preprocessor"># birds</span>
-<span class="hljs-preprocessor"># monkeys</span>
-<span class="hljs-preprocessor"># elephants</span>
-
-sort animals # sort lines alphabetically
-
-cat &gt; sports
-<span class="hljs-preprocessor"># cricet</span>
-<span class="hljs-preprocessor"># tennis</span>
-<span class="hljs-preprocessor"># football</span>
-<span class="hljs-preprocessor"># basketball</span>
-<span class="hljs-preprocessor"># wrestling</span>
-
-sort sports # sort lines alphabetically
-
-sort
-<span class="hljs-preprocessor"># Apocalypse</span>
-<span class="hljs-preprocessor"># Avatar</span>
-<span class="hljs-preprocessor"># Forrest Gump</span>
-<span class="hljs-preprocessor"># Saving Private Ryan</span>
-
-<span class="hljs-preprocessor"># hit "ctrl+d" sorts the lines</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs php">dogs
-cats
-birds
-monkeys
-elephants
-birds
-cats
-dogs
-elephants
-monkeys
-cricet
-tennis
-football
-basketball
-wrestling
-basketball
-cricet
-football
-tennis
-wrestling
-Apocalypse
-Avatar
-Forrest Gump
-Saving <span class="hljs-keyword">Private</span> Ryan
-Apocalypse
-Avatar
-Forrest Gump
-Saving <span class="hljs-keyword">Private</span> Ryan
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>sort animals</code></td>
-  <td>sorts alphabetically the lines of file</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/kL08uSQZbHA" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-13-cut-through-your-files"><strong>Shell Scripting Tutorial-13:</strong> <em>Cut Through Your Files</em></h2>
-
-
-
-<h3 id="usage-of-cut">Usage of ‘cut’</h3>
-
-<p><strong><code>cut</code></strong> uses - as default saperater. <br>
-<code>cut -d"-" -f 1,3 file_name</code>  </p>
-
-<p><strong><em>-d</em></strong>: specify the delimeter character <br>
-<strong><em>-f</em></strong>: specify the fields that will be printed <br>
+<p>Methods of objects we’ve looked at so far are called by an instance of a class, which is then passed to the <strong>self</strong> parameter of the method. <br>
+<strong>Class methods</strong> are different - they are called by a class, which is passed to the <strong>cls</strong> parameter of the method.  <br>
+A common use of these are factory methods, which instantiate an instance of a class, using different parameters than those usually passed to the class constructor.  <br>
+Class methods are marked with a <strong>classmethod</strong> <strong>decorator</strong>. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-cat &gt; players
-<span class="hljs-comment"># Name-Sport-Age</span>
-<span class="hljs-comment"># Roger-Tennis-30</span>
-<span class="hljs-comment"># Rafel-Tennis-25</span>
-<span class="hljs-comment"># Tiger-Golf-27</span>
-<span class="hljs-comment"># Michael-Swimmer-27</span>
-<span class="hljs-comment"># Kobe-Basketball-34</span>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, width, height)</span>:</span>
+    self.width = width
+    self.height = height
 
-cut <span class="hljs-operator">-d</span><span class="hljs-string">"-"</span> <span class="hljs-operator">-f</span> <span class="hljs-number">1</span>,<span class="hljs-number">3</span> players <span class="hljs-comment"># prints 1 and 3 column of players file using - delimeter</span>
-</code></pre>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">calculate_area</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.width * self.height
 
-<p><strong>Output:</strong></p>
+  <span class="hljs-decorator">@classmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">new_square</span><span class="hljs-params">(cls, side_length)</span>:</span>
+    <span class="hljs-keyword">return</span> cls(side_length, side_length)
 
+square = Rectangle.new_square(<span class="hljs-number">5</span>)
+print(square.calculate_area())</code></pre>
 
+<p><strong>Result:</strong></p>
 
-<pre class="prettyprint"><code class=" hljs lasso">Name<span class="hljs-attribute">-Sport</span><span class="hljs-attribute">-Age</span>
-Roger<span class="hljs-attribute">-Tennis</span><span class="hljs-subst">-</span><span class="hljs-number">30</span>
-Rafel<span class="hljs-attribute">-Tennis</span><span class="hljs-subst">-</span><span class="hljs-number">25</span>
-Tiger<span class="hljs-attribute">-Golf</span><span class="hljs-subst">-</span><span class="hljs-number">27</span>
-Michael<span class="hljs-attribute">-Swimmer</span><span class="hljs-subst">-</span><span class="hljs-number">27</span>
-Kobe<span class="hljs-attribute">-Basketball</span><span class="hljs-subst">-</span><span class="hljs-number">34</span>
+<blockquote>
+  <p>25</p>
+</blockquote>
 
-Name<span class="hljs-attribute">-Age</span>
-Roger<span class="hljs-subst">-</span><span class="hljs-number">30</span>
-Rafel<span class="hljs-subst">-</span><span class="hljs-number">25</span>
-Tiger<span class="hljs-subst">-</span><span class="hljs-number">27</span>
-Michael<span class="hljs-subst">-</span><span class="hljs-number">27</span>
-Kobe<span class="hljs-subst">-</span><span class="hljs-number">34</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>cut -d"-" 1,3 file_name</code></td>
-  <td>prints the 1 and 3 column of the file, and - is delimeter</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/CA00GqJibZA" frameborder="0" allowfullscreen></iframe>
+<p><strong>new_square</strong> is a class method and is called on the class, rather than on an instance of the class. It returns a new object of the class <strong>cls</strong>. <br>
+Technically, the parameters <strong>self</strong> and <strong>cls</strong> are just conventions; they could be changed to anything else. However, they are universally followed, so it is wise to stick to using them.</p>
 
 
 
+<h3 id="static-methods"><strong>Static Methods</strong></h3>
 
-<h2 id="shell-scripting-tutorial-14-convert-copy-files-with-dd"><strong>Shell Scripting Tutorial-14:</strong> <em>Convert &amp; Copy Files with ‘dd’</em></h2>
+<hr>
 
-
-
-<h3 id="usage-of-dd">Usage of ‘dd’</h3>
-
-<p>converts all characters from lowercase to uppercase in a file. <br>
-<code>dd if=test of=test1 conv=ucase</code>  </p>
-
-<p>converts encoding to european based encoding. <br>
-<code>dd if=test of=test2 conv=ebcdic</code> <br>
+<p><strong>Static methods</strong> are similar to class methods, except they don’t receive any additional arguments; they are identical to normal functions that belong to a class.  <br>
+They are marked with the <strong>staticmethod decorator.</strong> <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-cat &gt; test
-<span class="hljs-comment"># this is a test file.</span>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
+    self.toppings = toppings
 
-dd <span class="hljs-keyword">if</span>=test of=test1 conv=ucase <span class="hljs-comment"># converts all lowercase character to uppercase with in a new file.</span>
-cat test
-cat test1
+  <span class="hljs-decorator">@staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">validate_topping</span><span class="hljs-params">(topping)</span>:</span>
+    <span class="hljs-keyword">if</span> topping == <span class="hljs-string">"pineapple"</span>:
+      <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"No pineapples!"</span>)
+    <span class="hljs-keyword">else</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">True</span>
 
-dd <span class="hljs-keyword">if</span>=test of=test2 conv=ebcdic <span class="hljs-comment"># conerts encoding to european based encoding.</span>
-cat test
-cat test2
-</code></pre>
+ingredients = [<span class="hljs-string">"cheese"</span>, <span class="hljs-string">"onions"</span>, <span class="hljs-string">"spam"</span>]
+<span class="hljs-keyword">if</span> all(Pizza.validate_topping(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> ingredients):
+  pizza = Pizza(ingredients) </code></pre>
 
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vhdl">this <span class="hljs-keyword">is</span> a test <span class="hljs-keyword">file</span>.
-<span class="hljs-number">0</span>+<span class="hljs-number">1</span> records <span class="hljs-keyword">in</span>
-<span class="hljs-number">0</span>+<span class="hljs-number">1</span> records <span class="hljs-keyword">out</span>
-<span class="hljs-number">21</span> bytes (<span class="hljs-number">21</span> B) copied, <span class="hljs-number">0.000277341</span> s, <span class="hljs-number">75.7</span> kB/s
-this <span class="hljs-keyword">is</span> a test <span class="hljs-keyword">file</span>.
-THIS <span class="hljs-keyword">IS</span> A TEST <span class="hljs-keyword">FILE</span>.
-<span class="hljs-number">0</span>+<span class="hljs-number">1</span> records <span class="hljs-keyword">in</span>
-<span class="hljs-number">0</span>+<span class="hljs-number">1</span> records <span class="hljs-keyword">out</span>
-<span class="hljs-number">21</span> bytes (<span class="hljs-number">21</span> B) copied, <span class="hljs-number">0.000301356</span> s, <span class="hljs-number">69.7</span> kB/s
-this <span class="hljs-keyword">is</span> a test <span class="hljs-keyword">file</span>.
-����@��@�@����@����K%</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>dd if=test of=test1 conv=ucase</code></td>
-  <td>converts all lowercase to uppercase in a new file</td>
-</tr>
-<tr>
-  <td><code>dd if=test of=test2 conv=ebcdic</code></td>
-  <td>converts encoding to european based encoding</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/6N4HyE11UFs" frameborder="0" allowfullscreen></iframe>
+<blockquote>
+  <p><strong>Note:</strong> Static methods behave like plain functions, except for the fact that you can call them from an instance of the class.</p>
+</blockquote>
 
 
 
+<h3 id="properties-1"><strong>Properties-1</strong></h3>
 
-<h2 id="shell-scripting-tutorial-15-get-help-view-fancy-text-reduce-file-size"><strong>Shell Scripting Tutorial-15:</strong> <em>Get Help, View Fancy Text &amp; Reduce File Size</em></h2>
+<hr>
 
-
-
-<h3 id="getting-help">Getting Help</h3>
-
-<p><code>man &lt;command name&gt;</code> shows the help manual of the command. <br>
-<code>man cat</code>  </p>
-
-<p>exiting manual page by using Q key.  </p>
-
-
-
-<h3 id="view-fancy-text">View Fancy Text</h3>
-
-<p><code>banner my name is mustafa celik</code> <br>
-<code>banner "my name is mustafa celik"</code> banner shows 10 character in one line.    </p>
-
-
-
-<h3 id="reduce-file-size">Reduce File Size</h3>
-
-<p>reducing the size of a file. <br>
-<code>compress -v test</code>  </p>
-
-<p>printing compressed file in a readable format. <br>
-<code>zcat -v test.Z</code>  </p>
-
-<p>uncompressing the compressed file. <br>
-<code>uncompress test.Z</code> <br>
+<p><strong>Properties</strong> provide a way of customizing access to instance attributes.  <br>
+They are created by putting the <strong>property decorator</strong> above a method, which means when the instance attribute with the same name as the method is accessed, the method will be called instead.  <br>
+One common use of a property is to make an attribute <strong>read-only</strong>. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-man cat
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
+    self.toppings = toppings
 
-banner my name is mustafa celik <span class="hljs-comment"># prints fancy text</span>
-banner <span class="hljs-string">"my name is mustafa celik"</span> <span class="hljs-comment"># prints fancy text in one line</span>
+  <span class="hljs-decorator">@property</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pineapple_allowed</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">False</span>
 
-compress -v test <span class="hljs-comment"># compress the file</span>
-zcat -v test.Z  <span class="hljs-comment"># prints compressed file readable.</span>
+pizza = Pizza([<span class="hljs-string">"cheese"</span>, <span class="hljs-string">"tomato"</span>])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = <span class="hljs-keyword">True</span></code></pre>
 
-uncompress -v test.Z <span class="hljs-comment"># uncompress the compresed file.</span></code></pre>
+<p><strong>Result:</strong></p>
 
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ruleslanguage">Whole Man Page of cat command will be printed.
-
- <span class="hljs-array">#    </span><span class="hljs-array">#   </span><span class="hljs-array">#   </span>#
- #<span class="hljs-array">#  </span>#<span class="hljs-array">#    </span><span class="hljs-array"># </span>#
- <span class="hljs-array"># </span>#<span class="hljs-array"># </span><span class="hljs-array">#     </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#     </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#     </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#     </span>#
-
-
- <span class="hljs-array">#    </span><span class="hljs-array">#    </span>#<span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>######
- #<span class="hljs-array">#   </span><span class="hljs-array">#   </span><span class="hljs-array">#  </span><span class="hljs-array">#   </span>#<span class="hljs-array">#  </span>#<span class="hljs-array">#  </span>#
- <span class="hljs-array"># </span><span class="hljs-array">#  </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array"># </span>#<span class="hljs-array"># </span><span class="hljs-array">#  </span>#####
- <span class="hljs-array">#  </span><span class="hljs-array"># </span><span class="hljs-array">#  </span>#####<span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#
- <span class="hljs-array">#   </span>#<span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>######
-
-
-    <span class="hljs-array">#     </span>####
-    <span class="hljs-array">#    </span>#
-    <span class="hljs-array">#     </span>####
-    <span class="hljs-array">#         </span>#
-    <span class="hljs-array">#    </span><span class="hljs-array">#    </span>#
-    <span class="hljs-array">#     </span>####
-
-
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#   </span>###<span class="hljs-array">#    </span>####<span class="hljs-array">#    </span>#<span class="hljs-array">#    </span>#####<span class="hljs-array">#    </span>##
- #<span class="hljs-array">#  </span>#<span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#          </span><span class="hljs-array">#     </span><span class="hljs-array">#  </span><span class="hljs-array">#   </span><span class="hljs-array">#        </span><span class="hljs-array">#  </span>#
- <span class="hljs-array"># </span>#<span class="hljs-array"># </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#   </span>###<span class="hljs-array">#      </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>####<span class="hljs-array">#   </span><span class="hljs-array">#    </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#       </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span>#####<span class="hljs-array">#  </span><span class="hljs-array">#       </span>######
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#       </span><span class="hljs-array">#    </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#   </span>###<span class="hljs-array">#    </span>###<span class="hljs-array">#      </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#       </span><span class="hljs-array">#    </span>#
-
-
-  ###<span class="hljs-array">#   </span>#####<span class="hljs-array">#  </span><span class="hljs-array">#          </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#       </span><span class="hljs-array">#          </span><span class="hljs-array">#    </span><span class="hljs-array">#   </span>#
- <span class="hljs-array">#       </span>####<span class="hljs-array">#   </span><span class="hljs-array">#          </span><span class="hljs-array">#    </span>####
- <span class="hljs-array">#       </span><span class="hljs-array">#       </span><span class="hljs-array">#          </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#       </span><span class="hljs-array">#          </span><span class="hljs-array">#    </span><span class="hljs-array">#   </span>#
-  ###<span class="hljs-array">#   </span>#####<span class="hljs-array">#  </span>#####<span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span>#
-
-
- <span class="hljs-array">#    </span><span class="hljs-array">#   </span><span class="hljs-array">#   </span><span class="hljs-array">#          </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span>#<span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#####<span class="hljs-array">#             </span><span class="hljs-array">#     </span>####
- #<span class="hljs-array">#  </span>#<span class="hljs-array">#    </span><span class="hljs-array"># </span><span class="hljs-array">#           </span>#<span class="hljs-array">#   </span><span class="hljs-array">#   </span><span class="hljs-array">#  </span><span class="hljs-array">#   </span>#<span class="hljs-array">#  </span>#<span class="hljs-array">#  </span><span class="hljs-array">#                  </span><span class="hljs-array">#    </span>#
- <span class="hljs-array"># </span>#<span class="hljs-array"># </span><span class="hljs-array">#     </span><span class="hljs-array">#            </span><span class="hljs-array"># </span><span class="hljs-array">#  </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array"># </span>#<span class="hljs-array"># </span><span class="hljs-array">#  </span>####<span class="hljs-array">#              </span><span class="hljs-array">#     </span>####
- <span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#            </span><span class="hljs-array">#  </span><span class="hljs-array"># </span><span class="hljs-array">#  </span>#####<span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#                  </span><span class="hljs-array">#         </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#            </span><span class="hljs-array">#   </span>#<span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#                  </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#            </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#####<span class="hljs-array">#             </span><span class="hljs-array">#     </span>####
-
-test: No compression -- test unchanged
-gzip: test.Z: No such file or directory
-gzip: test.Z: No such file or directory
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>man &lt;command&gt;</code></td>
-  <td>shows the manuel of the command. Note: use Q key to quit.</td>
-</tr>
-<tr>
-  <td><code>banner some text</code></td>
-  <td>prints fancy text</td>
-</tr>
-<tr>
-  <td><code>banner "some text"</code></td>
-  <td>prints fancy text in one line. Note: limited to 10 character.</td>
-</tr>
-<tr>
-  <td><code>compress -v test</code></td>
-  <td>compresses the test file.</td>
-</tr>
-<tr>
-  <td><code>zcat -v test.Z</code></td>
-  <td>prints the readable version of the compressed file.</td>
-</tr>
-<tr>
-  <td><code>uncompress test.Z</code></td>
-  <td>uncompress the compressed file.</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/R9qkOKZoYWc" frameborder="0" allowfullscreen></iframe>
+<blockquote>
+  <p>False</p>
+  
+  <p>AttributeError: can’t set attribute</p>
+</blockquote>
 
 
 
+<h3 id="properties-2"><strong>Properties-2</strong></h3>
 
-<h2 id="shell-scripting-tutorial-16-hello-world"><strong>Shell Scripting Tutorial-16:</strong> <em>Hello World!</em></h2>
+<hr>
 
-<p>hello world example is implemented using <code>echo</code> command. <br>
+<p>Properties can also be set by defining <strong>setter/getter</strong> functions. <br>
+The <strong>setter</strong> function sets the corresponding property’s value. <br>
+The <strong>getter</strong> gets the value. <br>
+To define a <strong>setter</strong>, you need to use a <strong>decorator</strong> of the same name as the property, followed by a <strong>dot</strong> and the <strong>setter</strong> keyword. <br>
+The same applies to defining <strong>getter</strong> functions. <br>
 <strong>Example:</strong></p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello World!"</span></code></pre>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pizza</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, toppings)</span>:</span>
+    self.toppings = toppings
+    self._pineapple_allowed = <span class="hljs-keyword">False</span>
 
-<p><strong>Output:</strong></p>
+  <span class="hljs-decorator">@property</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pineapple_allowed</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self._pineapple_allowed
 
+  <span class="hljs-decorator">@pineapple_allowed.setter</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pineapple_allowed</span><span class="hljs-params">(self, value)</span>:</span>
+    <span class="hljs-keyword">if</span> value:
+      password = input(<span class="hljs-string">"Enter the password: "</span>)
+      <span class="hljs-keyword">if</span> password == <span class="hljs-string">"Sw0rdf1sh!"</span>:
+        self._pineapple_allowed = value
+      <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">"Alert! Intruder!"</span>)
 
+pizza = Pizza([<span class="hljs-string">"cheese"</span>, <span class="hljs-string">"tomato"</span>])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = <span class="hljs-keyword">True</span>
+print(pizza.pineapple_allowed)</code></pre>
 
-<pre class="prettyprint"><code class=" hljs erlang-repl"><span class="hljs-variable">Hello</span> <span class="hljs-variable">World</span><span class="hljs-exclamation_mark">!</span></code></pre>
+<p><strong>Result:</strong></p>
 
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>echo "Hello World!"</code></td>
-  <td>prints hello world to terminal.</td>
-</tr>
-</tbody></table>
+<blockquote>
+  <p>False <br>
+  Enter the password to permit pineapple: Sw0rdf1sh! <br>
+  True</p>
+</blockquote>
 
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/PLzZ0OjeCrE" frameborder="0" allowfullscreen></iframe>
 
 
+<h3 id="a-simple-game"><strong>A Simple Game</strong></h3>
 
+<hr>
 
-<h2 id="shell-scripting-tutorial-17-use-command-in-your-script"><strong>Shell Scripting Tutorial-17:</strong> <em>Use Command in Your Script</em></h2>
+<p>Object-orientation is very useful when managing different objects and their relations. That is especially useful when you are developing games with different characters and features.</p>
 
-<p>Use commands in the script. <br>
-<code>pwd</code> <br>
-<code>ls -l</code> <br>
-<code>banner "The End"</code> <br>
-<strong>Example:</strong></p>
+<p>Let’s look at an example project that shows how classes are used in game development. <br>
+The game to be developed is an old fashioned text-based adventure game. <br>
+Below is the function handling input and simple parsing.</p>
 
 
 
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># Shell_scripting_tutorial_17: Use Command in Your Script</span>
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_input</span><span class="hljs-params">()</span>:</span>
+  command = input(<span class="hljs-string">": "</span>).split()
+  verb_word = command[<span class="hljs-number">0</span>]
+  <span class="hljs-keyword">if</span> verb_word <span class="hljs-keyword">in</span> verb_dict:
+    verb = verb_dict[verb_word]
+  <span class="hljs-keyword">else</span>:
+    print(<span class="hljs-string">"Unknown verb {}"</span>. format(verb_word))
+    <span class="hljs-keyword">return</span>
 
-<span class="hljs-built_in">pwd</span>
-ls <span class="hljs-operator">-l</span>
-banner <span class="hljs-string">"The End"</span></code></pre>
+  <span class="hljs-keyword">if</span> len(command) &gt;= <span class="hljs-number">2</span>:
+    noun_word = command[<span class="hljs-number">1</span>]
+    <span class="hljs-keyword">print</span> (verb(noun_word))
+  <span class="hljs-keyword">else</span>:
+    print(verb(<span class="hljs-string">"nothing"</span>))
 
-<p><strong>Output:</strong></p>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">say</span><span class="hljs-params">(noun)</span>:</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'You said "{}"'</span>.format(noun)
 
-
-
-<pre class="prettyprint"><code class=" hljs ruleslanguage">/home/joker/PycharmProjects/bash_script
-total <span class="hljs-number">348</span>
--rw-r--r-- <span class="hljs-number">1</span> joker joker    <span class="hljs-number">34</span> Aug <span class="hljs-number">31</span> <span class="hljs-number">17</span>:<span class="hljs-number">11</span> animals
--rw-r--r-- <span class="hljs-number">1</span> joker joker    <span class="hljs-number">18</span> Aug <span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">07</span> commandlist_tutorial_50
--rw-r--r-- <span class="hljs-number">1</span> joker joker   <span class="hljs-number">507</span> Aug <span class="hljs-number">27</span> <span class="hljs-number">21</span>:<span class="hljs-number">07</span> create_consecutive_files.sh
--rw-r--r-- <span class="hljs-number">1</span> joker joker     <span class="hljs-number">0</span> Aug <span class="hljs-number">31</span> <span class="hljs-number">16</span>:<span class="hljs-number">59</span> empty_file1
--rw-r--r-- <span class="hljs-number">1</span> joker joker     <span class="hljs-number">0</span> Aug <span class="hljs-number">31</span> <span class="hljs-number">16</span>:<span class="hljs-number">59</span> empty_file2
--rw-r--r-- <span class="hljs-number">1</span> joker joker     <span class="hljs-number">0</span> Aug <span class="hljs-number">31</span> <span class="hljs-number">16</span>:<span class="hljs-number">59</span> empty_file3
-drwxr-xr-x <span class="hljs-number">2</span> joker joker  <span class="hljs-number">4096</span> Aug <span class="hljs-number">31</span> <span class="hljs-number">16</span>:<span class="hljs-number">59</span> folder1
-
-######<span class="hljs-array">#                         </span>#######
-   <span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#####<span class="hljs-array">#         </span><span class="hljs-array">#        </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#####
-   <span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#              </span><span class="hljs-array">#        </span>#<span class="hljs-array">#   </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span>#
-   <span class="hljs-array">#     </span>#####<span class="hljs-array">#  </span>####<span class="hljs-array">#          </span>####<span class="hljs-array">#    </span><span class="hljs-array"># </span><span class="hljs-array">#  </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span>#
-   <span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#              </span><span class="hljs-array">#        </span><span class="hljs-array">#  </span><span class="hljs-array"># </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span>#
-   <span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#              </span><span class="hljs-array">#        </span><span class="hljs-array">#   </span>#<span class="hljs-array">#  </span><span class="hljs-array">#    </span>#
-   <span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#####<span class="hljs-array">#         </span>######<span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span>#####
-
-</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/Jh9h52BQ5VA" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-18-shell-variables-grab-user-input-using-read"><strong>Shell Scripting Tutorial-18:</strong> <em>Shell Variables, Grab User Input Using ‘read’</em></h2>
-
-
-
-<h3 id="shell-variables">Shell Variables</h3>
-
-<p>Shell scripting has some rules for variables. <br>
-- variable names starts with an <strong>alphabet</strong> or <strong>underscore</strong> symbol. <br>
-- variables are case sensitive. <code>my_var</code> and <code>MY_VAR</code> are different variables.  </p>
-
-
-
-<h3 id="grab-user-input-using-read">Grab User Input Using ‘read’</h3>
-
-<p><strong>read</strong> is used to get user input from terminal. <br>
-<code>echo "Enter your name: "</code> <br>
-<code>read name</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Please enter your name: "</span>
-<span class="hljs-built_in">read</span> my_name
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hello <span class="hljs-variable">$my_name</span>"</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs applescript">Please enter your <span class="hljs-property">name</span>: 
-mustafa celik
-Hello mustafa celik
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>read name</code></td>
-  <td>reads input from user and assign it to name variable</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/x6hRT1VppAc" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-19-positional-parameters"><strong>Shell Scripting Tutorial-19:</strong> <em>Positional Parameters</em></h2>
-
-<p>Renaming a file using one positional parameter. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># This file takes a file name as an argument and renames it.</span>
-<span class="hljs-comment"># run following commands for the script:</span>
-<span class="hljs-comment"># cat &gt; test</span>
-<span class="hljs-comment"># this is a test file.</span>
-<span class="hljs-comment"># ctrl+d</span>
-<span class="hljs-comment"># sh video_tutorial_19.sh test</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"provide a file name to change: "</span>
-<span class="hljs-built_in">read</span> name
-mv <span class="hljs-variable">$1</span> <span class="hljs-variable">$name</span>
-cat <span class="hljs-variable">$name</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">provide <span class="hljs-operator">a</span> <span class="hljs-built_in">file</span> name <span class="hljs-built_in">to</span> change: 
-new_name
-falkdsjflad sgadg
-</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/lADppydI1EA" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-20-more-on-positional-parameters"><strong>Shell Scripting Tutorial-20:</strong> <em>More on Positional Parameters</em></h2>
-
-<p>setting positional parameters from the content of a file. <br>
-<code>set cat test</code> this usage is wrong which assigns <script type="math/tex" id="MathJax-Element-1">1:cat and </script>2:test <br>
-<code>echo $*</code> <br>
-“set `cat test`”  this assigns file content as parameters <br>
-<code>cat test</code> <br>
-<code>echo $*</code>  </p>
-
-<p>özetle <br>
-reverse quotes: ters tirnak isareti <br>
-accent grave: tirnak arasinda komut calistirilan kisim <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-chmod <span class="hljs-number">744</span> <span class="hljs-variable">$1</span>
-ls <span class="hljs-operator">-l</span> <span class="hljs-variable">$1</span>
-
-<span class="hljs-keyword">set</span> word1 word2 word3
-<span class="hljs-built_in">echo</span> $*</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs brainfuck"><span class="hljs-literal">-</span><span class="hljs-comment">rw</span><span class="hljs-literal">-</span><span class="hljs-comment">r</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">r</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">1</span> <span class="hljs-comment">joker</span> <span class="hljs-comment">joker</span>   <span class="hljs-comment">375</span> <span class="hljs-comment">Aug</span> <span class="hljs-comment">27</span> <span class="hljs-comment">21:07</span> <span class="hljs-comment">video_tutorial_60</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span>
-<span class="hljs-literal">-</span><span class="hljs-comment">rw</span><span class="hljs-literal">-</span><span class="hljs-comment">r</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">r</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">1</span> <span class="hljs-comment">joker</span> <span class="hljs-comment">joker</span>   <span class="hljs-comment">201</span> <span class="hljs-comment">Aug</span> <span class="hljs-comment">27</span> <span class="hljs-comment">21:07</span> <span class="hljs-comment">video_tutorial_61</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span>
-<span class="hljs-literal">-</span><span class="hljs-comment">rw</span><span class="hljs-literal">-</span><span class="hljs-comment">r</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">r</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">1</span> <span class="hljs-comment">joker</span> <span class="hljs-comment">joker</span>     <span class="hljs-comment">0</span> <span class="hljs-comment">Aug</span> <span class="hljs-comment">26</span> <span class="hljs-comment">02:08</span> <span class="hljs-comment">video_tutorial_62</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span>
-<span class="hljs-comment">word1</span> <span class="hljs-comment">word2</span> <span class="hljs-comment">word3</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td>set <code>cat test</code></td>
-  <td>assigns content of test file to positional parameters</td>
-</tr>
-<tr>
-  <td>set <code>who am i</code></td>
-  <td>assigns output of the command to positional parameters</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/3JyuX6ncPDs" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-21-reverse-quotes-accent-graves"><strong>Shell Scripting Tutorial-21:</strong> <em>Reverse Quotes &amp; Accent Graves</em></h2>
-
-<p><code>set shell scripting is cool</code> <br>
-<code>echo $1</code> <br>
-<code>echo $2</code> <br>
-<code>echo $3</code> <br>
-<code>echo $4</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># Renames a file to file.name</span>
-<span class="hljs-comment"># Where name is the login name of the user executing the script</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># run following commands before the script:</span>
-<span class="hljs-comment"># cat &gt; test</span>
-<span class="hljs-comment"># my neighbour's dog is annoying.</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># set cat test</span>
-<span class="hljs-comment"># echo $*</span>
-<span class="hljs-comment"># set `cat test`</span>
-<span class="hljs-comment"># echo $*</span>
-
-name=<span class="hljs-variable">$1</span>
-<span class="hljs-keyword">set</span> `who am i`
-mv <span class="hljs-variable">$name</span> <span class="hljs-variable">$name</span>.<span class="hljs-variable">$1</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vhdl"># name <span class="hljs-keyword">of</span> the <span class="hljs-keyword">file</span> should be changed. <span class="hljs-keyword">type</span> ls <span class="hljs-keyword">to</span> observe.</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>set word1 word2 word3</code></td>
-  <td>assigns <script type="math/tex" id="MathJax-Element-2">1: word1 </script>2: word2 and $3: word3</td>
-</tr>
-<tr>
-  <td><code>echo $*</code></td>
-  <td>prints all positional parameters</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/gh0Ms3YRQzM" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-22-count-the-number-of-command-line-arguments-using"><strong>Shell Scripting Tutorial-22:</strong> <em>Count the Number of Command Line Arguments Using ‘$#’</em></h2>
-
-<p>Finding number of positional parameters that comes from <strong>command line</strong> and <strong><code>set</code></strong> command. <br>
-<code>set this is video tutorial about shell scripting</code> <br>
-<code>echo $#</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># Run following command before the script:</span>
-<span class="hljs-comment"># sh vidoe_tutorial_22.sh *</span>
-
-<span class="hljs-built_in">echo</span> The total number of items <span class="hljs-keyword">in</span> current directory is=<span class="hljs-variable">$#</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">The total <span class="hljs-built_in">number</span> <span class="hljs-operator">of</span> <span class="hljs-keyword">items</span> <span class="hljs-operator">in</span> current <span class="hljs-built_in">directory</span> is=<span class="hljs-number">91</span></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>echo $#</code></td>
-  <td>prints the number of parameter.</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/WtEwpiLVs54" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-23-math-on-integers-using-expr"><strong>Shell Scripting Tutorial-23:</strong> <em>Math on Integers Using ‘expr’</em></h2>
-
-<p>arithmetic operations on shell script. <br>
-“a=30 b=15” <br>
-“echo <code>expr $a + $b</code>” <br>
-“echo <code>expr $a - $b</code>” <br>
-“echo <code>expr $a \* $b</code>” <br>
-“echo <code>expr $a / $b</code>” <br>
-“echo <code>expr $a % $b</code>” <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># Arithmetic operations</span>
-
-a=<span class="hljs-number">30</span> b=<span class="hljs-number">15</span>
-<span class="hljs-built_in">echo</span> `expr <span class="hljs-variable">$a</span> + <span class="hljs-variable">$b</span>`
-<span class="hljs-built_in">echo</span> `expr <span class="hljs-variable">$a</span> - <span class="hljs-variable">$b</span>`
-<span class="hljs-built_in">echo</span> `expr <span class="hljs-variable">$a</span> \* <span class="hljs-variable">$b</span>`
-<span class="hljs-built_in">echo</span> `expr <span class="hljs-variable">$a</span> / <span class="hljs-variable">$b</span>`
-<span class="hljs-built_in">echo</span> `expr <span class="hljs-variable">$a</span> % <span class="hljs-variable">$b</span>`</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ">45
-15
-450
-2
-0
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td>echo <code>expr $a + $b</code></td>
-  <td>addition</td>
-</tr>
-<tr>
-  <td>echo <code>expr $a - $b</code></td>
-  <td>substraction</td>
-</tr>
-<tr>
-  <td>echo <code>expr $a \* $b</code></td>
-  <td>multiplication</td>
-</tr>
-<tr>
-  <td>echo <code>expr $a / $b</code></td>
-  <td>division</td>
-</tr>
-<tr>
-  <td>echo <code>expr $a % $b</code></td>
-  <td>modular division</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/dRNcGgAYF5o" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-24-operator-precedence"><strong>Shell Scripting Tutorial-24:</strong> <em>Operator Precedence</em></h2>
-
-<p>/, *, % operations have first priority. <br>
-+, - operations have second priority.  </p>
-
-<p>echo <code>expr $a \* \( $b + $c \) / $d</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># Arithmetic Operation Precedence</span>
-
-a=<span class="hljs-number">30</span> b=<span class="hljs-number">15</span> c=<span class="hljs-number">2</span> d=<span class="hljs-number">5</span>
-<span class="hljs-built_in">echo</span> `expr <span class="hljs-variable">$a</span> \* \( <span class="hljs-variable">$b</span> + <span class="hljs-variable">$c</span> \) / <span class="hljs-variable">$d</span>`</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ">102</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td>echo <code>expr $a \* \( $b + $c \) / $d</code></td>
-  <td>operation precedence using \</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/nqn2NLwb8cI" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-25-math-on-real-numbers"><strong>Shell Scripting Tutorial-25:</strong> <em>Math on Real Numbers</em></h2>
-
-<p><strong>bc</strong> usage is explained in this tutorial. <br>
-<code>echo $a + $b | bc</code> <br>
-<code>echo $a - $b | bc</code> <br>
-<code>echo $a \* $b | bc</code> <br>
-<code>echo $a / $b | bc</code>  </p>
-
-<p><strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># Floating Point Arithmetic Operations</span>
-
-a=<span class="hljs-number">10.5</span>
-b=<span class="hljs-number">3.5</span>
-
-c=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span> + <span class="hljs-variable">$b</span> | bc`
-d=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span> - <span class="hljs-variable">$b</span> | bc`
-e=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span> \* <span class="hljs-variable">$b</span> | bc`
-f=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span> / <span class="hljs-variable">$b</span> | bc`
-
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$c</span> <span class="hljs-variable">$d</span> <span class="hljs-variable">$e</span> <span class="hljs-variable">$f</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ">14.0 7.0 36.7 3
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>echo $a + $b (or) bc</code></td>
-  <td>bs is used for floating point operations with pipe or</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/qCXjZ0xa-lM" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-26-escape-sequences"><strong>Shell Scripting Tutorial-26:</strong> <em>Escape Sequences</em></h2>
-
-<p>customizing(text color, border etc.) the <strong>echo</strong> outputs. <br>
-- new line: <strong>\n</strong> -&gt; <code>echo "hello \nworld"</code> <br>
-- return: <strong>\r</strong> -&gt; <code>echo "hello \rworld"</code> basa donerek üzerine yazar. <br>
-- tab: <strong>\t</strong> -&gt; <code>echo "hello \tworld"</code> <br>
-- backspace:  <strong>\b</strong> -&gt; <code>echo "Hey World, \b\b\b\b\b\b\bwhat's up?"</code> bir onceki karakterin uzerine yaziyor. <br>
-- bold: <strong>\033[1m</strong> <strong>\033[0m</strong> -&gt; <code>echo "\033[1mHey World, what's up?\033[0m"</code> writes the text in bold format <br>
-- black background: <strong>\033[7m</strong> <strong>\033[0m</strong> -&gt; <code>echo "\033[7mHey World, what's up?\033[0m"</code> prints black background <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># Escape Sequences</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hey World, \nwhat's up?"</span> <span class="hljs-comment"># new line</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hey World, \rwhat's"</span> <span class="hljs-comment"># starts from beginning and prints on the previos one</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hey World, \twhat's up?"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hey World, \b\b\b\b\b\b\bwhat's up?"</span> <span class="hljs-comment"># comes back one character</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\033[1mHey World, what's up?\033[0m"</span> <span class="hljs-comment"># writes the text in bold format</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\033[7mHey World, what's up?\033[0m"</span> <span class="hljs-comment"># writes the text with black background</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vbnet">Hey World, 
-what<span class="hljs-comment">'s up?</span>
-what<span class="hljs-comment">'srld, </span>
-Hey World,  what<span class="hljs-comment">'s up?</span>
-Hey what<span class="hljs-comment">'s up?</span>
-Hey World, what<span class="hljs-comment">'s up?</span>
-Hey World, what<span class="hljs-comment">'s up?</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>echo "hello \nworld"</code></td>
-  <td>new line</td>
-</tr>
-<tr>
-  <td><code>echo "hello \rworld"</code></td>
-  <td>return character writes from the beginning over the previous print</td>
-</tr>
-<tr>
-  <td><code>echo "hello \tworld"</code></td>
-  <td>tab character</td>
-</tr>
-<tr>
-  <td><code>echo "Hey World, \b\b\b\b\b\b\bwhat's up?"</code></td>
-  <td>backspace comes 1 character back</td>
-</tr>
-<tr>
-  <td><code>echo "\033[1mHey World, what's up?\033[0m"</code></td>
-  <td>bold character</td>
-</tr>
-<tr>
-  <td><code>echo "\033[7mHey World, what's up?\033[0m"</code></td>
-  <td>black background</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/M6sPYzHhask" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-27-do-cool-things-with-tput"><strong>Shell Scripting Tutorial-27:</strong> <em>Do Cool Things with ‘tput’</em></h2>
-
-<p>clearing terminal. <br>
-<code>tput clear</code> <br>
-determining the number of rows and  columns of the terminal. <br>
-<code>tput lines</code> shows number of rows. <br>
-<code>tput cols</code> shows number of columns. <br>
-printing character in bold. <br>
-<code>tput bold</code> <br>
-positioning the cursor to a specific row and column. <br>
-<code>tput cup 15 20</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># tput-in action</span>
-
-tput clear
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Total number of rows on screen=\c"</span>
-tput lines
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Total number of columns on screen=\c"</span>
-tput cols
-tput cup <span class="hljs-number">15</span> <span class="hljs-number">20</span> <span class="hljs-comment"># cursor position row, column</span>
-tput bold
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"This is a bold text"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\033[0mbye bye"</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Total <span class="hljs-built_in">number</span> <span class="hljs-operator">of</span> rows <span class="hljs-command"><span class="hljs-keyword">on</span> <span class="hljs-title">screen</span>=<span class="hljs-title">35</span></span>
-Total <span class="hljs-built_in">number</span> <span class="hljs-operator">of</span> columns <span class="hljs-command"><span class="hljs-keyword">on</span> <span class="hljs-title">screen</span>=<span class="hljs-title">134</span></span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    This is <span class="hljs-operator">a</span> bold <span class="hljs-keyword">text</span>
-bye bye
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>tput clear</code></td>
-  <td>clear the terminal</td>
-</tr>
-<tr>
-  <td><code>tput lines</code></td>
-  <td>Total number of rows on screen</td>
-</tr>
-<tr>
-  <td><code>tput cols</code></td>
-  <td>Total number of columns on screen</td>
-</tr>
-<tr>
-  <td><code>tput cup 15 20</code></td>
-  <td>position cursor to new row and column</td>
-</tr>
-<tr>
-  <td><code>tput bold</code></td>
-  <td>print in bold format</td>
-</tr>
-<tr>
-  <td><code>echo "\033[0mbye bye"</code></td>
-  <td>ends printing in bold</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/9WisxGxVzgM" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-28-if-then-statement-in-action"><strong>Shell Scripting Tutorial-28:</strong> <em>‘if-then’ Statement in Action</em></h2>
-
-<p>terminalde her komut calistiktan sonra, komutun basarili olup olmadigini gosteren bir sayi doner. <br>
-bu ciktiyi gormek icin su komut kullanilir: <br>
-<code>mkdir new</code> <br>
-<code>echo $?</code>  </p>
-
-<p>renaming a file using if statement. <br>
-<code>if mv source.txt target.txt</code> <br>
-<code>then</code> <br>
-<code>echo "Your file has been succesfully renamed."</code> <br>
-<code>fi</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># if-then statement in action</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># touch test</span>
-<span class="hljs-comment"># sh video_tutorial_28.sh </span>
-<span class="hljs-comment"># sh video_tutorial_28.sh</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter source and target file names:"</span>
-<span class="hljs-built_in">read</span> <span class="hljs-built_in">source</span> target
-<span class="hljs-keyword">if</span> mv <span class="hljs-variable">$source</span> <span class="hljs-variable">$target</span>
-<span class="hljs-keyword">then</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Your file has been successfully renamed."</span>
-<span class="hljs-keyword">fi</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Enter source <span class="hljs-operator">and</span> target <span class="hljs-built_in">file</span> names:
-test new_name     
-Your <span class="hljs-built_in">file</span> has been successfully renamed.
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td>usage of if-then statement</td>
-</tr>
-<tr>
-  <td><code>if something_true</code></td>
-</tr>
-<tr>
-  <td><code>then</code></td>
-</tr>
-<tr>
-  <td><code>echo "condition is correct"</code></td>
-</tr>
-<tr>
-  <td><code>fi</code></td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/elN9wmcIumE" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-29-the-if-then-else-statement"><strong>Shell Scripting Tutorial-29:</strong> <em>The ‘if-then-else’ Statement</em></h2>
-
-<p>renaming a file using if statement. <br>
-<code>if mv source.txt target.txt</code> <br>
-<code>then</code> <br>
-<code>echo "Your file has been successfully renamed."</code> <br>
-<code>else</code> <br>
-<code>echo "file has NOT been  renamed."</code> <br>
-<code>fi</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># if-then-else statement in action</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># touch test</span>
-<span class="hljs-comment"># sh video_tutorial_29.sh</span>
-<span class="hljs-comment"># sh video_tutorial_29.sh</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter source and target file names."</span>
-<span class="hljs-built_in">read</span> <span class="hljs-built_in">source</span> target
-<span class="hljs-keyword">if</span> mv <span class="hljs-variable">$source</span> <span class="hljs-variable">$target</span>
-<span class="hljs-keyword">then</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Your file has been successfully renamed."</span>
-<span class="hljs-keyword">else</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Your file has NOT been successfully renamed."</span>
-<span class="hljs-keyword">fi</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">bash_script@pc $ sh video_tutorial_29.sh 
-Enter source <span class="hljs-operator">and</span> target <span class="hljs-built_in">file</span> names.
-test new_name
-Your <span class="hljs-built_in">file</span> has been successfully renamed.
-bash_script@pc $ sh video_tutorial_29.sh 
-Enter source <span class="hljs-operator">and</span> target <span class="hljs-built_in">file</span> names.
-test new_name
-mv: cannot stat ‘test’: No such <span class="hljs-built_in">file</span> <span class="hljs-operator">or</span> <span class="hljs-built_in">directory</span>
-Your <span class="hljs-built_in">file</span> has NOT been successfully renamed.</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td>usage of if-then statement</td>
-</tr>
-<tr>
-  <td><code>if something_true_or_false</code></td>
-</tr>
-<tr>
-  <td><code>then</code></td>
-</tr>
-<tr>
-  <td><code>echo "condition is true"</code></td>
-</tr>
-<tr>
-  <td><code>else</code></td>
-</tr>
-<tr>
-  <td><code>echo "condition is false"</code></td>
-</tr>
-<tr>
-  <td><code>fi</code></td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/1s3r0Cnsy3U" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-30-run-checks-on-numbers"><strong>Shell Scripting Tutorial-30:</strong> <em>Run Checks on Numbers</em></h2>
-
-<p>if checks statements are following: <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a number between 10 and 20: \c"</span>
-<span class="hljs-built_in">read</span> num
-
-<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$num</span> <span class="hljs-operator">-lt</span> <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">then</span> 
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"That was under the belt partner."</span>
-<span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$num</span> <span class="hljs-operator">-gt</span> <span class="hljs-number">20</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"That went over my head."</span>
-<span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$num</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"That is equal to 10."</span>
-<span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$num</span> -le <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"That is less than and equal to 10."</span>
-<span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$num</span> -ge <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"That is greater than and equal to 10."</span>
-<span class="hljs-keyword">elif</span> [ <span class="hljs-variable">$num</span> <span class="hljs-operator">-ne</span> <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"That is not equal to 10."</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Now you are making sense."</span>
-<span class="hljs-keyword">fi</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs applescript">Enter a <span class="hljs-type">number</span> <span class="hljs-keyword">between</span> <span class="hljs-number">10</span> <span class="hljs-keyword">and</span> <span class="hljs-number">20</span>: <span class="hljs-number">12</span>
-That <span class="hljs-keyword">is</span> <span class="hljs-keyword">greater than</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">equal</span> <span class="hljs-keyword">to</span> <span class="hljs-number">10.</span></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>-eq</code></td>
-  <td>equal</td>
-</tr>
-<tr>
-  <td><code>-lt</code></td>
-  <td>less than</td>
-</tr>
-<tr>
-  <td><code>-gt</code></td>
-  <td>greater than</td>
-</tr>
-<tr>
-  <td><code>-le</code></td>
-  <td>less than and equal</td>
-</tr>
-<tr>
-  <td><code>-ge</code></td>
-  <td>greater than and equal</td>
-</tr>
-<tr>
-  <td><code>-ne</code></td>
-  <td>not equal</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/YhtHm9gyMxE" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-31-run-checks-on-files"><strong>Shell Scripting Tutorial-31:</strong> <em>Run Checks on Files</em></h2>
-
-<p><strong>character space file</strong>: text files <br>
-<strong>block space file</strong>: video and image files which can not be displayed by text editor <br>
-<strong>directory space file</strong>: folders are also a file  </p>
-
-<p><code>if [ -f $fname ]</code> checks is it file or not.  </p>
-
-<p><strong>-f</strong>: checks for file <br>
-<strong>-d</strong>: checks for directory <br>
-<strong>-c</strong>: checks for character space file(text file) <br>
-<strong>-b</strong>: checks for block space file(image, video) <br>
-<strong>-r</strong>: checks read permission <br>
-<strong>-w</strong>: checks write permission <br>
-<strong>-x</strong>: checks execute permission <br>
-<strong>-s</strong>: checks if the file size is greater 0 or not <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a name: \c"</span>
-<span class="hljs-built_in">read</span> fname
-<span class="hljs-keyword">if</span> [ <span class="hljs-operator">-f</span> <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks file</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You indeed entered a file name."</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-keyword">if</span> [ <span class="hljs-operator">-d</span> <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks directory</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You indeed entered a folder name."</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-keyword">if</span> [ -c <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks character space file</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You indeed entered a character space(text) file name."</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-keyword">if</span> [ -b <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks block space file</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You indeed entered a block space(image,videp) file name."</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-keyword">if</span> [ -r <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks read permission</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"File has read permission."</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-keyword">if</span> [ -w <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks write permission</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"File has write permission."</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-keyword">if</span> [ -x <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks execute permission</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"File has execute permission."</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-keyword">if</span> [ <span class="hljs-operator">-s</span> <span class="hljs-variable">$fname</span> ] <span class="hljs-comment"># checks size is greater than 0 or not</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"File size is gretaer than zero."</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Enter <span class="hljs-operator">a</span> name: new_name
-You indeed entered <span class="hljs-operator">a</span> <span class="hljs-built_in">file</span> name.
-File has <span class="hljs-built_in">read</span> permission.
-File has <span class="hljs-built_in">write</span> permission.
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>if [ -f $fname ]</code></td>
-  <td>checks file or not</td>
-</tr>
-<tr>
-  <td><code>if [ -d $fname ]</code></td>
-  <td>checks directory or not</td>
-</tr>
-<tr>
-  <td><code>if [ -c $fname ]</code></td>
-  <td>checks character space file or not</td>
-</tr>
-<tr>
-  <td><code>if [ -b $fname ]</code></td>
-  <td>checks block space file or not</td>
-</tr>
-<tr>
-  <td><code>if [ -r $fname ]</code></td>
-  <td>checks has read permission or not</td>
-</tr>
-<tr>
-  <td><code>if [ -w $fname ]</code></td>
-  <td>checks has write permission or not</td>
-</tr>
-<tr>
-  <td><code>if [ -x $fname ]</code></td>
-  <td>checks has execute permission or not</td>
-</tr>
-<tr>
-  <td><code>if [ -s $fname ]</code></td>
-  <td>checks size is greater than 0 or not</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/LGT3HaKg4lU" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-32-append-text-to-a-file-through-shell-script"><strong>Shell Scripting Tutorial-32:</strong> <em>Append Text to a File Through Shell Script</em></h2>
-
-<p>usage of the if else statement and file checks command. <br>
-example code: <br>
-<code>echo "Enter file name:\c"</code> <br>
-<code>read fname</code> <br>
-<code>if [ -f $fname ]</code> <br>
-<code>then</code> <br>
-<code>if [ -w $fname ]</code> <br>
-<code>then</code> <br>
-<code>echo "Type matter to append. To quit press ctrl+d."</code> <br>
-<code>cat &gt;&gt; $fname</code> <br>
-<code>else</code> <br>
-<code>echo "You do not have permission to write."</code> <br>
-<code>fi</code> <br>
-<code>fi</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># 1. script ask users to enter a name.</span>
-<span class="hljs-comment"># 2. check the folder exist or not</span>
-<span class="hljs-comment"># 3. if file exists check the user has write permission.</span>
-<span class="hljs-comment"># 4. if the user has write permission, presents append option to user.</span>
-<span class="hljs-comment"># 5. if the user has not write permission, display message show not permitted.</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter file name:\c"</span>
-<span class="hljs-built_in">read</span> fname
-<span class="hljs-keyword">if</span> [ <span class="hljs-operator">-f</span> <span class="hljs-variable">$fname</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-keyword">if</span> [ -w <span class="hljs-variable">$fname</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"Type matter to append. To quit press ctrl+d."</span>
-        cat &gt;&gt; <span class="hljs-variable">$fname</span>
-    <span class="hljs-keyword">else</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"You do not have permission to write."</span>
-    <span class="hljs-keyword">fi</span>
-<span class="hljs-keyword">fi</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vhdl">Enter <span class="hljs-keyword">file</span> name:new_name
-<span class="hljs-keyword">Type</span> matter <span class="hljs-keyword">to</span> append. <span class="hljs-keyword">To</span> quit press ctrl+d.
-skdg
-ssdgfs
-</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/VOAVGwPbwlI" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-
-<h2 id="shell-scripting-tutorial-33-run-checks-on-strings"><strong>Shell Scripting Tutorial-33:</strong> <em>Run Checks on Strings</em></h2>
-
-<p>string checks: <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># comparison of the strings (string checks)</span>
-
-str1=<span class="hljs-string">"Hey You!"</span>
-str2=<span class="hljs-string">"What's up?"</span>
-str3=<span class="hljs-string">""</span> <span class="hljs-comment"># null variable</span>
-str3=   <span class="hljs-comment"># null variable</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"str1: <span class="hljs-variable">$str1</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"str2: <span class="hljs-variable">$str2</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"str3: <span class="hljs-variable">$str3</span>"</span>
-
-
-[ <span class="hljs-string">"<span class="hljs-variable">$str1</span>"</span> = <span class="hljs-string">"<span class="hljs-variable">$str2</span>"</span> ] <span class="hljs-comment"># equal</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"str1 = str2 \t-&gt; $?"</span>
-
-[ <span class="hljs-string">"<span class="hljs-variable">$str1</span>"</span> != <span class="hljs-string">"<span class="hljs-variable">$str2</span>"</span> ] <span class="hljs-comment"># not equal</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"str1 != str2 \t-&gt; $?"</span>
-
-[ -n <span class="hljs-string">"<span class="hljs-variable">$str1</span>"</span> ] <span class="hljs-comment"># greater than zero</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"[ -n str1 ] \t-&gt; $?"</span>
-
-[ -n <span class="hljs-string">"<span class="hljs-variable">$str3</span>"</span> ] <span class="hljs-comment"># greater than zero</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"[ -n str3 ] \t-&gt; $?"</span>
-
-[ -z <span class="hljs-string">"<span class="hljs-variable">$str1</span>"</span> ] <span class="hljs-comment"># length of string is zero or not?</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"[ -z str1 ] \t-&gt; $?"</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs erlang-repl"><span class="hljs-function_or_atom">str1</span>: <span class="hljs-variable">Hey</span> <span class="hljs-variable">You</span><span class="hljs-exclamation_mark">!</span>
-<span class="hljs-function_or_atom">str2</span>: <span class="hljs-variable">What's</span> <span class="hljs-function_or_atom">up</span>?
-<span class="hljs-function_or_atom">str3</span>: 
-<span class="hljs-function_or_atom">str1</span> = <span class="hljs-function_or_atom">str2</span>     <span class="hljs-arrow">-&gt;</span> <span class="hljs-number">1</span>
-<span class="hljs-function_or_atom">str1</span> <span class="hljs-exclamation_mark">!</span>= <span class="hljs-function_or_atom">str2</span>    <span class="hljs-arrow">-&gt;</span> <span class="hljs-number">0</span>
-[ -<span class="hljs-function_or_atom">n</span> <span class="hljs-function_or_atom">str1</span> ]     <span class="hljs-arrow">-&gt;</span> <span class="hljs-number">0</span>
-[ -<span class="hljs-function_or_atom">n</span> <span class="hljs-function_or_atom">str3</span> ]     <span class="hljs-arrow">-&gt;</span> <span class="hljs-number">1</span>
-[ -<span class="hljs-function_or_atom">z</span> <span class="hljs-function_or_atom">str1</span> ]     <span class="hljs-arrow">-&gt;</span> <span class="hljs-number">1</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>[ "$str1" = "$str2" ]</code></td>
-  <td>checks if string are equal</td>
-</tr>
-<tr>
-  <td><code>[ "$str1" != "$str2" ]</code></td>
-  <td>checks if string are not equal</td>
-</tr>
-<tr>
-  <td><code>[ -n "$str1"</code></td>
-  <td>checks if string length is greater than zero</td>
-</tr>
-<tr>
-  <td><code>[ -z "$str1" ]</code></td>
-  <td>checks if string length is zero</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/IIhh1e1fURU" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-34-run-checks-on-stringthe-and-logical-operator"><strong>Shell Scripting Tutorial-34:</strong> <em>Run Checks on StringThe ‘AND’ Logical Operator</em></h2>
-
-<p><strong>-a</strong> is the ‘AND’ operator for shell scripting. <br>
-Following if statement checks the variable if it is between 50 and 100. <br>
-<code>if [ $num -le 100 -a $num -ge 50 ]</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># 1. script ask users to enter a number between 50-100</span>
-<span class="hljs-comment"># 2. store input</span>
-<span class="hljs-comment"># 3. check the input between 50-100</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a number between 50 and 100:\c"</span>
-<span class="hljs-built_in">read</span> num
-
-<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$num</span> -le <span class="hljs-number">100</span> <span class="hljs-operator">-a</span> <span class="hljs-variable">$num</span> -ge <span class="hljs-number">50</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The number is between 50 and 100."</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The number is not between 50 and 100."</span>
-<span class="hljs-keyword">fi</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs applescript">Enter a <span class="hljs-type">number</span> <span class="hljs-keyword">between</span> <span class="hljs-number">50</span> <span class="hljs-keyword">and</span> <span class="hljs-number">100</span>:<span class="hljs-number">54</span>
-The <span class="hljs-type">number</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">between</span> <span class="hljs-number">50</span> <span class="hljs-keyword">and</span> <span class="hljs-number">100.</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>if [ $num -le 100 -a $num -ge 50 ]</code></td>
-  <td>usage of AND operator</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/t7pJDlAkgy4" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-35-count-the-number-of-characters-in-users-input-in-your-script"><strong>Shell Scripting Tutorial-35:</strong> <em>Count the Number of Characters in User’s Input in Your Script</em></h2>
-
-<p>checking the number of the character of the variable. <br>
-<code>if [ 'echo $var | wc -c' -eq 2 ]</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># 1. script ask users to enter a character</span>
-<span class="hljs-comment"># 2. check if one character is entered or not</span>
-<span class="hljs-comment"># 3. if not print invalid input</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter  a character:\c"</span>
-<span class="hljs-built_in">read</span> var
-
-<span class="hljs-keyword">if</span> [ `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$var</span> | wc -c` <span class="hljs-operator">-eq</span> <span class="hljs-number">2</span> ] <span class="hljs-comment"># check if there is one character or not. 2 because of enter character.</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You entered a character."</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Invalid input."</span>
-<span class="hljs-keyword">fi</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Enter  <span class="hljs-operator">a</span> <span class="hljs-keyword">character</span>:d
-You entered <span class="hljs-operator">a</span> <span class="hljs-keyword">character</span>.</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td>`if [ ‘echo $var</td>
-  <td>wc -c’ -eq 2 ]`</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/B0tiwZQYBQA" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-36-the-or-logical-operator"><strong>Shell Scripting Tutorial-36:</strong> <em>The ‘OR’ Logical Operator</em></h2>
-
-<p><strong>-0</strong> is the ‘OR’ operator for shell scripting. <br>
-Following if statement checks the variable if it is vowel or not. <br>
-<code>if [ $var  = a -o $var  = e -o $var  = i -o $var  = u -o $var  = o ]</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># 1. script ask users to enter a character</span>
-<span class="hljs-comment"># 2. check if one character is entered or more than character</span>
-<span class="hljs-comment"># 3. if one character is input, check if it is vowel or not</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a lowercase character:\c"</span>
-<span class="hljs-built_in">read</span> var
-
-<span class="hljs-keyword">if</span> [ `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$var</span> | wc -c` <span class="hljs-operator">-eq</span> <span class="hljs-number">2</span> ] <span class="hljs-comment"># check if there is one character or not. 2 because of enter character.</span>
-<span class="hljs-keyword">then</span>
-    <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$var</span>  = a -o <span class="hljs-variable">$var</span>  = e -o <span class="hljs-variable">$var</span>  = i -o <span class="hljs-variable">$var</span>  = u -o <span class="hljs-variable">$var</span>  = o ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"You entered a vowel."</span>
-    <span class="hljs-keyword">else</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"You did not enter a vowel."</span>
-    <span class="hljs-keyword">fi</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Invalid input."</span>
-<span class="hljs-keyword">fi</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Enter <span class="hljs-operator">a</span> lowercase <span class="hljs-keyword">character</span>:m
-You did <span class="hljs-operator">not</span> enter <span class="hljs-operator">a</span> vowel.
-
-Enter <span class="hljs-operator">a</span> lowercase <span class="hljs-keyword">character</span>:<span class="hljs-operator">a</span>
-You entered <span class="hljs-operator">a</span> vowel.</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>if [ $var  = a -o $var  = e -o $var  = i -o $var  = u -o $var  = o ]</code></td>
-  <td>usage of OR operator</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/vP8yT1Ni9JY" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-37-the-case-statement"></h2><strong>Shell Scripting Tutorial-37:</strong> <em>The ‘case’ Statement</em> ##</h2>
-
-<p>The case statement is the fourth version of the condition statements. <br>
-1. if <br>
-2. if else <br>
-3. elif <br>
-4. case</p>
-
-<p>usage of case statement: <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># 1. script ask users to enter a character</span>
-<span class="hljs-comment"># 2. check whether the character is lowercase or uppercase or digit or special character</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a character:\c"</span>
-<span class="hljs-built_in">read</span> var
-
-<span class="hljs-keyword">case</span> <span class="hljs-variable">$var</span> <span class="hljs-keyword">in</span>
-[a-z])
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You entered a lowercase character."</span>
-    ;;
-[A-Z])
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You entered an uppercase character."</span>
-    ;;
-[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>])
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You entered a digit."</span>
-    ;;
-?)
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You entered a special character."</span>
-    ;;
-*)
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"You entered more than one character."</span>
-    ;;
-<span class="hljs-keyword">esac</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Enter <span class="hljs-operator">a</span> <span class="hljs-keyword">character</span>:d
-You entered <span class="hljs-operator">a</span> lowercase <span class="hljs-keyword">character</span>.
-
-Enter <span class="hljs-operator">a</span> <span class="hljs-keyword">character</span>:D
-You entered <span class="hljs-operator">an</span> uppercase <span class="hljs-keyword">character</span>.
-
-Enter <span class="hljs-operator">a</span> <span class="hljs-keyword">character</span>:ad
-You entered more than <span class="hljs-constant">one</span> <span class="hljs-keyword">character</span>.
-
-Enter <span class="hljs-operator">a</span> <span class="hljs-keyword">character</span>:<span class="hljs-number">4</span>
-You entered <span class="hljs-operator">a</span> digit.</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/bVL9pDfvAMc" frameborder="0" allowfullscreen></iframe>
-
-
-
-<h2 id="shell-scripting-tutorial-38-another-date-with-case-statement"><strong>Shell Scripting Tutorial-38:</strong> <em>Another Date with ‘case’ Statement</em></h2>
-
-<p>Another example of case statement. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># 1. script ask users to enter a word</span>
-<span class="hljs-comment"># 2. 1 check if word starts a vowel character or not</span>
-<span class="hljs-comment"># 3. 2 check if the word starts with a digit</span>
-<span class="hljs-comment"># 4. 3 check if the word ends with a digit</span>
-<span class="hljs-comment"># 5. 4 check if the word s 3-letter word</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a word:\c"</span>
-<span class="hljs-built_in">read</span> word
-
-<span class="hljs-keyword">case</span> <span class="hljs-variable">$word</span> <span class="hljs-keyword">in</span>
-[aeiou]* | [AEIOU]*)
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The words begins with a vowel."</span>
-    ;;
-[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>]*)
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The words begins with a digit."</span>
-    ;;
-*[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>])
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The words ends with a digit."</span>
-    ;;
-???)
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"The words is a 3-letter word."</span>
-    ;;
-*)
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Something else."</span>
-    ;;
-<span class="hljs-keyword">esac</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Enter <span class="hljs-operator">a</span> <span class="hljs-built_in">word</span>:mustafa
-Something <span class="hljs-keyword">else</span>.
-
-Enter <span class="hljs-operator">a</span> <span class="hljs-built_in">word</span>:<span class="hljs-number">234</span>
-The <span class="hljs-keyword">words</span> <span class="hljs-operator">begins</span> <span class="hljs-operator">with</span> <span class="hljs-operator">a</span> digit.
-
-Enter <span class="hljs-operator">a</span> <span class="hljs-built_in">word</span>:msd 
-The <span class="hljs-keyword">words</span> is <span class="hljs-operator">a</span> <span class="hljs-number">3</span>-letter <span class="hljs-built_in">word</span>.
-
-Enter <span class="hljs-operator">a</span> <span class="hljs-built_in">word</span>:asasdf3
-The <span class="hljs-keyword">words</span> <span class="hljs-operator">begins</span> <span class="hljs-operator">with</span> <span class="hljs-operator">a</span> vowel.
-
-Enter <span class="hljs-operator">a</span> <span class="hljs-built_in">word</span>:dfds3
-The <span class="hljs-keyword">words</span> <span class="hljs-operator">ends</span> <span class="hljs-operator">with</span> <span class="hljs-operator">a</span> digit.
-</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/pyhzv8XZnww" frameborder="0" allowfullscreen></iframe>
-
-
-
-<h2 id="shell-scripting-tutorial-39-the-while-loop"><strong>Shell Scripting Tutorial-39:</strong> <em>The ‘while’ Loop</em></h2>
-
-<p>usage of ‘while’ loop. <br>
-display the number 1 to 10. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># while loop in action</span>
-
-<span class="hljs-comment"># 1. display number 1 to 10.</span>
-
-count=<span class="hljs-number">1</span>
-<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$count</span> -le <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$count</span>
-    count=`expr <span class="hljs-variable">$count</span> + <span class="hljs-number">1</span>`
-<span class="hljs-keyword">done</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>while [ $count -le 10 ]</code></td>
-  <td>usage of while loop</td>
-</tr>
-<tr>
-  <td><code>do</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>echo $count</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>done</code></td>
-  <td></td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/50UH6IPM1KE" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-40-the-until-loop"><strong>Shell Scripting Tutorial-40:</strong> <em>The ‘until’ Loop</em></h2>
-
-<p>usage of until loop. <br>
-display the numbers 1 to 9. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># until loop in action</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># 1. display number 1 to 9.</span>
-
-count=<span class="hljs-number">1</span>
-until [ <span class="hljs-variable">$count</span> -ge <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$count</span>"</span>
-    count=`expr <span class="hljs-variable">$count</span> + <span class="hljs-number">1</span>`
-<span class="hljs-keyword">done</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ">1
-2
-3
-4
-5
-6
-7
-8
-9</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>until [ $count -gt 10 ]</code></td>
-  <td>usage of until loop</td>
-</tr>
-<tr>
-  <td><code>do</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>echo $count</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>done</code></td>
-  <td></td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/UYjodeCOQRo" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-41-the-for-loop"><strong>Shell Scripting Tutorial-41:</strong> <em>The ‘for’ Loop</em></h2>
-
-<p>usage of for loop. <br>
-for loop is pretty different than until and while loop. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. display folders in the directory not the files</span>
-
-<span class="hljs-comment"># list the directories</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\ndirectories: "</span>
-<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> * <span class="hljs-comment"># asterics means all the items in the current directory</span>
-<span class="hljs-keyword">do</span>
-    <span class="hljs-keyword">if</span> [ <span class="hljs-operator">-d</span> <span class="hljs-variable">$item</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$item</span>"</span>
-    <span class="hljs-keyword">fi</span>
-<span class="hljs-keyword">done</span>
-
-<span class="hljs-comment"># list the files</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\nfiles:"</span>
-<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> * <span class="hljs-comment"># asterics means all the items in the current directory</span>
-<span class="hljs-keyword">do</span>
-    <span class="hljs-keyword">if</span> [ <span class="hljs-operator">-f</span> <span class="hljs-variable">$item</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$item</span>"</span>
-    <span class="hljs-keyword">fi</span>
-<span class="hljs-keyword">done</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs avrasm"><span class="hljs-label">directories:</span> 
-folder1
-folder2
-folder3
-sandbox
-
-<span class="hljs-label">files:</span>
-animals
-commandlist_tutorial_50
-create_consecutive_files<span class="hljs-preprocessor">.sh</span>
-empty_file1
-empty_file2
-empty_file3
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>for item in *</code></td>
-  <td>usage of for loop. * means all items in current directory</td>
-</tr>
-<tr>
-  <td><code>do</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>...</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>done</code></td>
-  <td></td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/sIYmF32Ic8s" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-42-rant-little-work"><strong>Shell Scripting Tutorial-42:</strong> <em>Rant &amp; Little Work</em></h2>
-
-<p>comparison of real number.  </p>
-
-<p>another comparison for floating point numbers. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. comparison of the real numbers</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"following method is for integers and not working for real numbers: "</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"a=4.5
-b=4.5
-[ a -eq b ]
-echo ?
-"</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"change real numbers to string to compare"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"a=4.5
-b=4.5
-[ "</span>a<span class="hljs-string">" = "</span>b<span class="hljs-string">" ]
-echo ?
-"</span>
-
-a=<span class="hljs-number">4.5</span>
-b=<span class="hljs-number">4.5</span>
-[ <span class="hljs-string">"<span class="hljs-variable">$a</span>"</span> = <span class="hljs-string">"<span class="hljs-variable">$b</span>"</span> ]
-<span class="hljs-built_in">echo</span> $?
-
-<span class="hljs-comment"># another comparison example</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\nanother comparison example:"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"min=12.45
-val=10.35
-
-if [ 1 -eq (echo {val} &lt; {min}| bc) ]
-then
-    min={val}
-fi
-
-echo min"</span>
-
-min=<span class="hljs-number">12.45</span>
-val=<span class="hljs-number">10.35</span>
-
-<span class="hljs-keyword">if</span> [ <span class="hljs-number">1</span> <span class="hljs-operator">-eq</span> <span class="hljs-string">"<span class="hljs-variable">$(echo "${val} &lt; ${min}" | bc)</span>"</span> ]
-<span class="hljs-keyword">then</span>
-    min=<span class="hljs-variable">${val}</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$min</span>"</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs oxygene">following <span class="hljs-function"><span class="hljs-keyword">method</span> <span class="hljs-title">is</span> <span class="hljs-title">for</span> <span class="hljs-title">integers</span> <span class="hljs-title">and</span> <span class="hljs-title">not</span> <span class="hljs-title">working</span> <span class="hljs-title">for</span> <span class="hljs-title">real</span> <span class="hljs-title">numbers</span>:</span> 
-a=<span class="hljs-number">4.5</span>
-b=<span class="hljs-number">4.5</span>
-[ a -eq b ]
-echo ?
-
-change real numbers <span class="hljs-keyword">to</span> string <span class="hljs-keyword">to</span> compare
-a=<span class="hljs-number">4.5</span>
-b=<span class="hljs-number">4.5</span>
-[ a = b ]
-echo ?
-
-<span class="hljs-number">0</span>
-
-another comparison example:
-min=<span class="hljs-number">12.45</span>
-val=<span class="hljs-number">10.35</span>
-
-<span class="hljs-keyword">if</span> [ <span class="hljs-number">1</span> -eq (echo <span class="hljs-comment">{val}</span> &lt; <span class="hljs-comment">{min}</span>| bc) ]
-<span class="hljs-keyword">then</span>
-    min=<span class="hljs-comment">{val}</span>
-fi
-
-echo min
-<span class="hljs-number">10.35</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>[ $a -eq $b ]</code></td>
-  <td>this is for integers and not working for real numbers</td>
-</tr>
-<tr>
-  <td><code>[ "$a" = "$b" ]</code></td>
-  <td>this converts number to string and compares them</td>
-</tr>
-<tr>
-  <td><code>min=12.45</code></td>
-  <td>another comparison example for floating point numbers</td>
-</tr>
-<tr>
-  <td><code>val=10.35</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td>`if [ 1 -eq “<script type="math/tex" id="MathJax-Element-3">(echo “</script>{val} &lt; ${min}”</td>
-  <td>bc)” ]`</td>
-</tr>
-<tr>
-  <td><code>then</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>min=${val}</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>fi</code></td>
-  <td></td>
-</tr>
-<tr>
-  <td><code>echo "$min"</code></td>
-  <td></td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/H-QPEjNri1U" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-43-search-patterns-using-grep"><strong>Shell Scripting Tutorial-43:</strong> <em>Search Patterns Using ‘grep’</em></h2>
-
-<p>Usage of ‘grep’ command. <br>
-<strong>grep</strong> is same as using <strong>ctrl+f</strong> option in a file.  </p>
-
-<p><strong>grep -i</strong>: ignores case sensitivity <br>
-<strong>grep -n</strong>: shows line numbers for search results. <br>
-<strong>grep -c</strong>: shows the total number of the line that has money. <br>
-<strong>grep -v</strong>: shows the grep result for not matching lines. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. search text in file text_tutorial_43</span>
-
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># create a file name text_tutorial_43 with text contains money word.</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Search money in the file with case sensitivity:"</span>
-grep money text_tutorial_43
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\nSearch money in the file without case sensitivity:"</span>
-grep -i money text_tutorial_43
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\nSearch money in the file with case sensitivity and line numbers:"</span>
-grep -i -n money text_tutorial_43
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\nSearch money in the file with case sensitivity, line numbers and shows count:"</span>
-grep -i -n -c money text_tutorial_43
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\nSearch money in the file with case sensitivity, line numbers and shows count of money does not exist:"</span>
-grep -i -n -c -v money text_tutorial_43</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs applescript">Search money <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> <span class="hljs-type">file</span> <span class="hljs-keyword">with</span> case sensitivity:
-
-Search money <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> <span class="hljs-type">file</span> <span class="hljs-keyword">without</span> case sensitivity:
-Money, <span class="hljs-keyword">get</span> away
-Money, <span class="hljs-keyword">it</span>'s a gas
-Money, <span class="hljs-keyword">get</span> <span class="hljs-keyword">back</span>
-Money, <span class="hljs-keyword">it</span>'s a hit 
-Money, <span class="hljs-keyword">it</span>'s a crime 
-Money, so they <span class="hljs-command">say</span> 
-
-Search money <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> <span class="hljs-type">file</span> <span class="hljs-keyword">with</span> case sensitivity <span class="hljs-keyword">and</span> line numbers:
-<span class="hljs-number">1</span>:Money, <span class="hljs-keyword">get</span> away
-<span class="hljs-number">3</span>:Money, <span class="hljs-keyword">it</span>'s a gas
-<span class="hljs-number">8</span>:Money, <span class="hljs-keyword">get</span> <span class="hljs-keyword">back</span>
-<span class="hljs-number">10</span>:Money, <span class="hljs-keyword">it</span>'s a hit 
-<span class="hljs-number">15</span>:Money, <span class="hljs-keyword">it</span>'s a crime 
-<span class="hljs-number">17</span>:Money, so they <span class="hljs-command">say</span> 
-
-Search money <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> <span class="hljs-type">file</span> <span class="hljs-keyword">with</span> case sensitivity, line numbers <span class="hljs-keyword">and</span> shows <span class="hljs-command">count</span>:
-<span class="hljs-number">6</span>
-
-Search money <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> <span class="hljs-type">file</span> <span class="hljs-keyword">with</span> case sensitivity, line numbers <span class="hljs-keyword">and</span> shows <span class="hljs-command">count</span> <span class="hljs-keyword">of</span> money <span class="hljs-keyword">does</span> <span class="hljs-keyword">not</span> exist:
-<span class="hljs-number">16</span></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>grep money text_file</code></td>
-  <td>search “money” in text_file</td>
-</tr>
-<tr>
-  <td><code>grep -i money text_file</code></td>
-  <td>search “money” in text_file by ignoring case sensitivity.</td>
-</tr>
-<tr>
-  <td><code>grep -i -n money text_file</code></td>
-  <td>search “money” in text_file by ignoring case sensitivity, and shows line numbers</td>
-</tr>
-<tr>
-  <td><code>grep -i -c money text_file</code></td>
-  <td>search “money” in text_file by ignoring case sensitivity, and shows count of money line</td>
-</tr>
-<tr>
-  <td><code>grep -i -v money text_file</code></td>
-  <td>search “money” in text_file by ignoring case sensitivity, and shows the lines that has no money</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/bQ_yxb25wEk" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-44-the-passwd-file-explained"><strong>Shell Scripting Tutorial-44:</strong> <em>The ‘passwd’ File Explained</em></h2>
-
-<p>Usage of file “passwd”.  </p>
-
-<p><code>cat /etc/passwd</code> command shows the content of passwd file. <br>
-<strong>joker:x:1000:1000:joker,,,:/home/joker:/bin/bash</strong>  </p>
-
-<p>filed 1 -&gt; <strong>joker</strong>: user name <br>
-field 2 -&gt; <strong>x</strong>: password is encrypted for the user <br>
-field 3 -&gt; <strong>1000</strong>: uid (userid). from 1 to 99 id are reserved for predefined accounts <br>
-field 4 -&gt; <strong>1000</strong>: group id. <br>
-field 5 -&gt; <strong>joker,,,</strong>: the name of the computer <br>
-field 6 -&gt; <strong>/home/joker</strong>: home folder <br>
-field 7 -&gt; <strong>/bin/bash</strong>: shell  <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs asciidoc">#!/usr/bin/env bash
-
-cat /etc/passwd
-
-echo "\n\nfiled 1 -&gt; *<span class="hljs-strong">*joker*</span><span class="hljs-strong">*: user name
-field 2 -&gt; *</span><span class="hljs-strong">*x*</span><span class="hljs-strong">*: password is encrypted for the user
-field 3 -&gt; *</span><span class="hljs-strong">*1000*</span><span class="hljs-strong">*: uid (userid). from 1 to 99 id are reserved for predefined accounts
-field 4 -&gt; *</span><span class="hljs-strong">*1000*</span><span class="hljs-strong">*: group id.
-field 5 -&gt; *</span><span class="hljs-strong">*joker,,,*</span><span class="hljs-strong">*: the name of the computer
-field 6 -&gt; *</span><span class="hljs-strong">*/home/joker*</span><span class="hljs-strong">*: home folder
-field 7 -&gt; *</span><span class="hljs-strong">*/bin/bash*</span><span class="hljs-strong">*: shell "</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ruby"><span class="hljs-symbol">root:</span><span class="hljs-symbol">x:</span><span class="hljs-number">0</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span><span class="hljs-symbol">:root</span><span class="hljs-symbol">:/root</span><span class="hljs-symbol">:/bin/bash</span>
-<span class="hljs-symbol">daemon:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1</span><span class="hljs-symbol">:</span><span class="hljs-number">1</span><span class="hljs-symbol">:daemon</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">bin:</span><span class="hljs-symbol">x:</span><span class="hljs-number">2</span><span class="hljs-symbol">:</span><span class="hljs-number">2</span><span class="hljs-symbol">:bin</span><span class="hljs-symbol">:/bin</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">sys:</span><span class="hljs-symbol">x:</span><span class="hljs-number">3</span><span class="hljs-symbol">:</span><span class="hljs-number">3</span><span class="hljs-symbol">:sys</span><span class="hljs-symbol">:/dev</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">sync:</span><span class="hljs-symbol">x:</span><span class="hljs-number">4</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:sync</span><span class="hljs-symbol">:/bin</span><span class="hljs-symbol">:/bin/sync</span>
-<span class="hljs-symbol">games:</span><span class="hljs-symbol">x:</span><span class="hljs-number">5</span><span class="hljs-symbol">:</span><span class="hljs-number">60</span><span class="hljs-symbol">:games</span><span class="hljs-symbol">:/usr/games</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">man:</span><span class="hljs-symbol">x:</span><span class="hljs-number">6</span><span class="hljs-symbol">:</span><span class="hljs-number">12</span><span class="hljs-symbol">:man</span><span class="hljs-symbol">:/var/cache/man</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">lp:</span><span class="hljs-symbol">x:</span><span class="hljs-number">7</span><span class="hljs-symbol">:</span><span class="hljs-number">7</span><span class="hljs-symbol">:lp</span><span class="hljs-symbol">:/var/spool/lpd</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">mail:</span><span class="hljs-symbol">x:</span><span class="hljs-number">8</span><span class="hljs-symbol">:</span><span class="hljs-number">8</span><span class="hljs-symbol">:mail</span><span class="hljs-symbol">:/var/mail</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">news:</span><span class="hljs-symbol">x:</span><span class="hljs-number">9</span><span class="hljs-symbol">:</span><span class="hljs-number">9</span><span class="hljs-symbol">:news</span><span class="hljs-symbol">:/var/spool/news</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">uucp:</span><span class="hljs-symbol">x:</span><span class="hljs-number">10</span><span class="hljs-symbol">:</span><span class="hljs-number">10</span><span class="hljs-symbol">:uucp</span><span class="hljs-symbol">:/var/spool/uucp</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">proxy:</span><span class="hljs-symbol">x:</span><span class="hljs-number">13</span><span class="hljs-symbol">:</span><span class="hljs-number">13</span><span class="hljs-symbol">:proxy</span><span class="hljs-symbol">:/bin</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-www-<span class="hljs-symbol">data:</span><span class="hljs-symbol">x:</span><span class="hljs-number">33</span><span class="hljs-symbol">:</span><span class="hljs-number">33</span><span class="hljs-symbol">:www-data</span><span class="hljs-symbol">:/var/www</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">backup:</span><span class="hljs-symbol">x:</span><span class="hljs-number">34</span><span class="hljs-symbol">:</span><span class="hljs-number">34</span><span class="hljs-symbol">:backup</span><span class="hljs-symbol">:/var/backups</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">list:</span><span class="hljs-symbol">x:</span><span class="hljs-number">38</span><span class="hljs-symbol">:</span><span class="hljs-number">38</span><span class="hljs-symbol">:Mailing</span> <span class="hljs-constant">List</span> <span class="hljs-constant">Manager</span><span class="hljs-symbol">:/var/list</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">irc:</span><span class="hljs-symbol">x:</span><span class="hljs-number">39</span><span class="hljs-symbol">:</span><span class="hljs-number">39</span><span class="hljs-symbol">:ircd</span><span class="hljs-symbol">:/var/run/ircd</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">gnats:</span><span class="hljs-symbol">x:</span><span class="hljs-number">41</span><span class="hljs-symbol">:</span><span class="hljs-number">41</span><span class="hljs-symbol">:Gnats</span> <span class="hljs-constant">Bug</span>-<span class="hljs-constant">Reporting</span> <span class="hljs-constant">System</span> (admin)<span class="hljs-symbol">:/var/lib/gnats</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">nobody:</span><span class="hljs-symbol">x:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:nobody</span><span class="hljs-symbol">:/nonexistent</span><span class="hljs-symbol">:/usr/sbin/nologin</span>
-<span class="hljs-symbol">libuuid:</span><span class="hljs-symbol">x:</span><span class="hljs-number">100</span><span class="hljs-symbol">:</span><span class="hljs-number">101</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/lib/libuuid</span><span class="hljs-symbol">:</span>
-<span class="hljs-symbol">syslog:</span><span class="hljs-symbol">x:</span><span class="hljs-number">101</span><span class="hljs-symbol">:</span><span class="hljs-number">104</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/home/syslog</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">messagebus:</span><span class="hljs-symbol">x:</span><span class="hljs-number">102</span><span class="hljs-symbol">:</span><span class="hljs-number">106</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/var/run/dbus</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">usbmux:</span><span class="hljs-symbol">x:</span><span class="hljs-number">103</span><span class="hljs-symbol">:</span><span class="hljs-number">46</span><span class="hljs-symbol">:usbmux</span> daemon,,,<span class="hljs-symbol">:/home/usbmux</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">dnsmasq:</span><span class="hljs-symbol">x:</span><span class="hljs-number">104</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:dnsmasq</span>,,,<span class="hljs-symbol">:/var/lib/misc</span><span class="hljs-symbol">:/bin/false</span>
-avahi-<span class="hljs-symbol">autoipd:</span><span class="hljs-symbol">x:</span><span class="hljs-number">105</span><span class="hljs-symbol">:</span><span class="hljs-number">114</span><span class="hljs-symbol">:Avahi</span> autoip daemon,,,<span class="hljs-symbol">:/var/lib/avahi-autoipd</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">kernoops:</span><span class="hljs-symbol">x:</span><span class="hljs-number">106</span><span class="hljs-symbol">:</span><span class="hljs-number">65534</span><span class="hljs-symbol">:Kernel</span> <span class="hljs-constant">Oops</span> <span class="hljs-constant">Tracking</span> <span class="hljs-constant">Daemon</span>,,,<span class="hljs-symbol">:/</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">avahi:</span><span class="hljs-symbol">x:</span><span class="hljs-number">107</span><span class="hljs-symbol">:</span><span class="hljs-number">116</span><span class="hljs-symbol">:Avahi</span> mDNS daemon,,,<span class="hljs-symbol">:/var/run/avahi-daemon</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">colord:</span><span class="hljs-symbol">x:</span><span class="hljs-number">108</span><span class="hljs-symbol">:</span><span class="hljs-number">118</span><span class="hljs-symbol">:colord</span> colour management daemon,,,<span class="hljs-symbol">:/var/lib/colord</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">hplip:</span><span class="hljs-symbol">x:</span><span class="hljs-number">109</span><span class="hljs-symbol">:</span><span class="hljs-number">7</span><span class="hljs-symbol">:HPLIP</span> system user,,,<span class="hljs-symbol">:/var/run/hplip</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">pulse:</span><span class="hljs-symbol">x:</span><span class="hljs-number">110</span><span class="hljs-symbol">:</span><span class="hljs-number">119</span><span class="hljs-symbol">:PulseAudio</span> daemon,,,<span class="hljs-symbol">:/var/run/pulse</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">mdm:</span><span class="hljs-symbol">x:</span><span class="hljs-number">111</span><span class="hljs-symbol">:</span><span class="hljs-number">121</span><span class="hljs-symbol">:MDM</span> <span class="hljs-constant">Display</span> <span class="hljs-constant">Manager</span><span class="hljs-symbol">:/var/lib/mdm</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">rtkit:</span><span class="hljs-symbol">x:</span><span class="hljs-number">112</span><span class="hljs-symbol">:</span><span class="hljs-number">123</span><span class="hljs-symbol">:RealtimeKit</span>,,,<span class="hljs-symbol">:/proc</span><span class="hljs-symbol">:/bin/false</span>
-<span class="hljs-symbol">saned:</span><span class="hljs-symbol">x:</span><span class="hljs-number">113</span><span class="hljs-symbol">:</span><span class="hljs-number">124</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:/home/saned</span><span class="hljs-symbol">:/bin/false</span>
-speech-<span class="hljs-symbol">dispatcher:</span><span class="hljs-symbol">x:</span><span class="hljs-number">114</span><span class="hljs-symbol">:</span><span class="hljs-number">29</span><span class="hljs-symbol">:Speech</span> <span class="hljs-constant">Dispatcher</span>,,,<span class="hljs-symbol">:/var/run/speech-dispatcher</span><span class="hljs-symbol">:/bin/sh</span>
-<span class="hljs-symbol">joker:</span><span class="hljs-symbol">x:</span><span class="hljs-number">1000</span><span class="hljs-symbol">:</span><span class="hljs-number">1000</span><span class="hljs-symbol">:joker</span>,,,<span class="hljs-symbol">:/home/joker</span><span class="hljs-symbol">:/bin/bash</span>
-
-
-filed <span class="hljs-number">1</span> -&gt; **joker**<span class="hljs-symbol">:</span> user name
-field <span class="hljs-number">2</span> -&gt; **x**<span class="hljs-symbol">:</span> password is encrypted <span class="hljs-keyword">for</span> the user
-field <span class="hljs-number">3</span> -&gt; **<span class="hljs-number">1000</span>**<span class="hljs-symbol">:</span> uid (userid). from <span class="hljs-number">1</span> to <span class="hljs-number">99</span> id are reserved <span class="hljs-keyword">for</span> predefined accounts
-field <span class="hljs-number">4</span> -&gt; **<span class="hljs-number">1000</span>**<span class="hljs-symbol">:</span> group id.
-field <span class="hljs-number">5</span> -&gt; **joker,,,**<span class="hljs-symbol">:</span> the name of the computer
-field <span class="hljs-number">6</span> -&gt; **<span class="hljs-regexp">/home/joker</span>**<span class="hljs-symbol">:</span> home folder
-field <span class="hljs-number">7</span> -&gt; **<span class="hljs-regexp">/bin/bash</span>**<span class="hljs-symbol">:</span> shell </code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>cat /etc/passwd</code></td>
-  <td>shows info about the accounts of the computer</td>
-</tr>
-<tr>
-  <td><code>joker:x:1000:1000:joker,,,:/home/joker:/bin/bash</code></td>
-  <td>output of the file</td>
-</tr>
-<tr>
-  <td><code>joker</code></td>
-  <td>field 1: username</td>
-</tr>
-<tr>
-  <td><code>x</code></td>
-  <td>field 2: password</td>
-</tr>
-<tr>
-  <td><code>1000</code></td>
-  <td>field 3: user id</td>
-</tr>
-<tr>
-  <td><code>1000</code></td>
-  <td>field 4: group id</td>
-</tr>
-<tr>
-  <td><code>joker,,,</code></td>
-  <td>field 5: name of the computer</td>
-</tr>
-<tr>
-  <td><code>/home/joker</code></td>
-  <td>field 6: home folder of the user</td>
-</tr>
-<tr>
-  <td><code>/bin/bash</code></td>
-  <td>field 7: shell</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/rVcwqdG7a0s?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-45-the-internal-field-separator"><strong>Shell Scripting Tutorial-45:</strong> <em>The Internal Field Separator</em></h2>
-
-<p>Usage of IFS (internal field separator)   </p>
-
-<p><code>set this is the forty fifth tutorial.</code> sets the positional parameter  </p>
-
-<p>default IFS character is space. It can be changed as following: <br>
-<code>IFS=:</code> so, IFS is changed to : <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. change the value of the IFS and set will be changed.</span>
-
-<span class="hljs-comment"># usage of default IFS</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"default IFS usage:"</span>
-line=<span class="hljs-string">"Shell scripting is fun."</span>
-<span class="hljs-keyword">set</span> <span class="hljs-variable">$line</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$1</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$2</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$3</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$4</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\nIFS is changed to ':' and the result is:"</span>
-IFS=: <span class="hljs-comment"># IFS is changed to :</span>
-<span class="hljs-keyword">set</span> <span class="hljs-variable">$line</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$1</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$2</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$3</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$4</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\ntext is separated using column character and IFS is column:"</span>
-line=<span class="hljs-string">"Shell:scripting:is:fun."</span>
-<span class="hljs-keyword">set</span> <span class="hljs-variable">$line</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$1</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$2</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$3</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-variable">$4</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs oxygene"><span class="hljs-keyword">default</span> IFS usage:
-Shell
-scripting
-<span class="hljs-keyword">is</span>
-fun.
-
-IFS <span class="hljs-keyword">is</span> changed <span class="hljs-keyword">to</span> <span class="hljs-string">':'</span> <span class="hljs-keyword">and</span> the <span class="hljs-keyword">result</span> <span class="hljs-keyword">is</span>:
-Shell scripting <span class="hljs-keyword">is</span> fun.
-
-
-
-
-text <span class="hljs-keyword">is</span> separated <span class="hljs-keyword">using</span> column character <span class="hljs-keyword">and</span> IFS <span class="hljs-keyword">is</span> column:
-Shell
-scripting
-<span class="hljs-keyword">is</span>
-fun.
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>IFS=:</code></td>
-  <td>Internal file separator is changed</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/zro2K3hay3Y?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-46-passwd-file-revisited"><strong>Shell Scripting Tutorial-46:</strong> <em>‘passwd’ File Revisited</em></h2>
-
-<p>Example of using passwd file, IFS, grep and set command. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. shows some information from passwd file to users.</span>
-<span class="hljs-comment"># 2. IFS is used.</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter Username:\c"</span>
-<span class="hljs-built_in">read</span> logname
-
-<span class="hljs-comment"># takes the line that is associated with the username</span>
-line=`grep <span class="hljs-variable">$logname</span> /etc/passwd`
-
-IFS=: <span class="hljs-comment"># the separator is : in passwd file</span>
-<span class="hljs-keyword">set</span> <span class="hljs-variable">$line</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Username:<span class="hljs-variable">$1</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"User ID: <span class="hljs-variable">$3</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Group ID: <span class="hljs-variable">$4</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Comment Field: <span class="hljs-variable">$5</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Home Folder: <span class="hljs-variable">$6</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Default shell: <span class="hljs-variable">$7</span>"</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs autohotkey"><span class="hljs-label">Enter Username:</span>joker
-<span class="hljs-label">Username:</span>joker
-<span class="hljs-label">User ID:</span> <span class="hljs-number">1000</span>
-<span class="hljs-label">Group ID:</span> <span class="hljs-number">1000</span>
-<span class="hljs-label">Comment Field:</span> joker,,,
-<span class="hljs-label">Home Folder:</span> /home/joker
-<span class="hljs-label">Default shell:</span> /bin/bash</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/Htv2kkKe-_g?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-<h2 id="shell-scripting-tutorial-47-reading-from-a-file"><strong>Shell Scripting Tutorial-47:</strong> <em>Reading From a File</em></h2>
-
-<p>First, file should load to <strong>exec</strong>, at the same time current settings should be kept. <br>
-<strong>terminal</strong> variable holds the current settings and it assigns back the settings after reading operation.  </p>
-
-<p><code>terminal='tty'</code> <br>
-<code>exec &lt; $fname</code>  </p>
-
-<p><code>while read line</code> <br>
-<code>do</code> <br>
-<code>echo "$line"</code> <br>
-<code>done</code>  </p>
-
-<p><code>exec &lt; $terminal</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. script shows the line numbers of the text with the text</span>
-
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># create text file name text_tutorial_47</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a file name(text_tutorial_47):\c"</span>
-<span class="hljs-built_in">read</span> fname
-
-<span class="hljs-keyword">if</span> [ -z <span class="hljs-string">"<span class="hljs-variable">$name</span>"</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"exit"</span>
-<span class="hljs-keyword">fi</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"\ntty contains info about terminal setting."</span>
-terminal=`tty`
-
-<span class="hljs-keyword">exec</span> &lt; <span class="hljs-variable">$fname</span>
-
-count=<span class="hljs-number">1</span>
-<span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line
-<span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$count</span>.<span class="hljs-variable">$line</span>
-    count=`expr <span class="hljs-variable">$count</span> + <span class="hljs-number">1</span>`
-<span class="hljs-keyword">done</span>
-
-<span class="hljs-keyword">exec</span> &lt; <span class="hljs-variable">$terminal</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs applescript">Enter a <span class="hljs-type">file</span> <span class="hljs-property">name</span>(text_tutorial_47):text_tutorial_47
-<span class="hljs-keyword">exit</span>
-
-tty <span class="hljs-keyword">contains</span> info <span class="hljs-keyword">about</span> terminal setting.
-<span class="hljs-number">1.</span>Money, <span class="hljs-keyword">get</span> away
-<span class="hljs-number">2.</span>Get a good job <span class="hljs-keyword">with</span> more pay <span class="hljs-keyword">and</span> you're okay
-<span class="hljs-number">3.</span>Money, <span class="hljs-keyword">it</span>'s a gas
-<span class="hljs-number">4.</span>Grab <span class="hljs-keyword">that</span> cash <span class="hljs-keyword">with</span> both hands <span class="hljs-keyword">and</span> make a stash
-<span class="hljs-number">5.</span>New car, caviar, four star daydream
-<span class="hljs-number">6.</span>Think I'll buy <span class="hljs-keyword">me</span> a football team
-<span class="hljs-number">7.</span>
-<span class="hljs-number">8.</span>Money, <span class="hljs-keyword">get</span> <span class="hljs-keyword">back</span>
-<span class="hljs-number">9.</span>I'm all right Jack keep your hands off <span class="hljs-keyword">of</span> <span class="hljs-keyword">my</span> stack
-<span class="hljs-number">10.</span>Money, <span class="hljs-keyword">it</span>'s a hit
-<span class="hljs-number">11.</span>Don't give <span class="hljs-keyword">me</span> <span class="hljs-keyword">that</span> do goody good bullshit
-<span class="hljs-number">12.</span>I'm <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> high-fidelity <span class="hljs-keyword">first</span> <span class="hljs-type">class</span> traveling <span class="hljs-keyword">set</span>
-<span class="hljs-number">13.</span>And I think I need a Lear jet
-<span class="hljs-number">14.</span>
-<span class="hljs-number">15.</span>Money, <span class="hljs-keyword">it</span>'s a crime
-<span class="hljs-number">16.</span>Share <span class="hljs-keyword">it</span> fairly <span class="hljs-keyword">but</span> don't take a slice <span class="hljs-keyword">of</span> <span class="hljs-keyword">my</span> pie
-<span class="hljs-number">17.</span>Money, so they <span class="hljs-command">say</span>
-<span class="hljs-number">18.</span>Is <span class="hljs-keyword">the</span> root <span class="hljs-keyword">of</span> all evil today
-<span class="hljs-number">19.</span>But <span class="hljs-keyword">if</span> you ask <span class="hljs-keyword">for</span> payrise <span class="hljs-keyword">it</span>'s no surprise
-<span class="hljs-number">20.</span>That they're giving none away
-<span class="hljs-number">21.</span>Away, away, way
-<span class="hljs-number">22.</span>Away, away, away
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>terminal='tty'</code></td>
-  <td>takes the current settings of the terminal</td>
-</tr>
-<tr>
-  <td><code>exec &lt; $fname</code></td>
-  <td>loads the file content</td>
-</tr>
-<tr>
-  <td><code>while read line</code></td>
-  <td>reads the line of the exec which is $fname in this case</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/DJAgtcB9V54?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-48-sleep-while-you-are-at-work"><strong>Shell Scripting Tutorial-48:</strong> <em>Sleep While You are at Work</em></h2>
-
-<p>Usage of <strong>sleep</strong> command. Sleep makes a time delay on the execution of shell. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. ask user to enter a sentence</span>
-<span class="hljs-comment"># 2. display one word at a time and use time delay</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a sentence:\c"</span>
-<span class="hljs-built_in">read</span> str
-<span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> <span class="hljs-variable">$str</span>
-<span class="hljs-keyword">do</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$word</span>"</span>
-    sleep <span class="hljs-number">2</span>
-<span class="hljs-keyword">done</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs applescript">Enter a sentence:shell <span class="hljs-keyword">script</span> tutorial <span class="hljs-keyword">is</span> cool :)
-shell
-<span class="hljs-keyword">script</span>
-tutorial
-<span class="hljs-keyword">is</span>
-cool
-:)</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>sleep 5</code></td>
-  <td>shell execution sleeps 5 seconds</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/jFxLzOVPTBc?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-49-count-the-number-of-words-sentences-in-a-text-file-without-using-wc"><strong>Shell Scripting Tutorial-49:</strong> <em>Count the number of words &amp; sentences in a text file without using ‘wc’</em></h2>
-
-<p>An example is ran.  </p>
-
-<p><strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. counts line number and word number</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># create text file name text_tutorial_49 with following content</span>
-<span class="hljs-comment"># Money, get away</span>
-<span class="hljs-comment"># Get a good job with more pay and you're okay </span>
-<span class="hljs-comment"># Money, it's a gas</span>
-<span class="hljs-comment"># Grab that cash with both hands and make a stash</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter a file name(text_tutorial_49):\c"</span>
-<span class="hljs-built_in">read</span> fname 
-
-terminal=`tty`
-
-<span class="hljs-keyword">exec</span> &lt; <span class="hljs-variable">$fname</span>
-
-nol=<span class="hljs-number">0</span> <span class="hljs-comment"># number of lines</span>
-now=<span class="hljs-number">0</span> <span class="hljs-comment"># number of words</span>
-
-<span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line
-<span class="hljs-keyword">do</span>
-    nol=`expr <span class="hljs-variable">$nol</span> + <span class="hljs-number">1</span>`
-    <span class="hljs-keyword">set</span> <span class="hljs-variable">$line</span>
-    now=`expr <span class="hljs-variable">$now</span> + <span class="hljs-variable">$#</span>`
-    <span class="hljs-comment"># for word in $line</span>
-    <span class="hljs-comment"># do </span>
-    <span class="hljs-comment">#   now=`expr $now + 1`</span>
-    <span class="hljs-comment"># done</span>
-<span class="hljs-keyword">done</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"number of lines: <span class="hljs-variable">$nol</span>"</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"number of words: <span class="hljs-variable">$now</span>"</span>
-
-<span class="hljs-keyword">exec</span> &lt; <span class="hljs-variable">$terminal</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs livecodeserver">Enter <span class="hljs-operator">a</span> <span class="hljs-built_in">file</span> name(text_tutorial_49):text_tutorial_49
-<span class="hljs-built_in">number</span> <span class="hljs-operator">of</span> <span class="hljs-keyword">lines</span>: <span class="hljs-number">3</span>
-<span class="hljs-built_in">number</span> <span class="hljs-operator">of</span> <span class="hljs-keyword">words</span>: <span class="hljs-number">17</span>
-</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/vliYprapjXY?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-50-fetch-redirect-man-pages-of-commands-using-for-loop"><strong>Shell Scripting Tutorial-50:</strong> <em>Fetch &amp; Redirect Man Pages of commands using ‘for loop’</em></h2>
-
-<p><strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. use the command in the commandlist_tutorial_50</span>
-<span class="hljs-comment"># 2. iterate the commands using for loop</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># create a file name commandlist_tutorial_50 with the following content:</span>
-<span class="hljs-comment"># cat</span>
-<span class="hljs-comment"># date</span>
-<span class="hljs-comment"># cal</span>
-<span class="hljs-comment"># touch</span>
-<span class="hljs-comment"># run command and check the file "helpfile"</span>
-
-<span class="hljs-keyword">for</span> cmd <span class="hljs-keyword">in</span> `cat commandlist_tutorial_50`
-<span class="hljs-keyword">do</span>
-    man <span class="hljs-variable">$cmd</span> &gt;&gt; helpfile
-<span class="hljs-keyword">done</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs oxygene"># <span class="hljs-keyword">take</span> a look <span class="hljs-keyword">to</span> content <span class="hljs-keyword">of</span> helpfile</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>man cat &gt;&gt; helpfile</code></td>
-  <td>appends output of man command to helpfile</td>
-</tr>
-<tr>
-  <td><code>for cmd in 'cat commandlist'</code></td>
-  <td>for loop iteration of a file</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/RwDiD9Y4rB0?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-51-nested-loops"><strong>Shell Scripting Tutorial-51:</strong> <em>Nested Loops</em></h2>
-
-<p>Example for nested loop. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. display all combination of  number 1 2 3</span>
-
-a=<span class="hljs-number">1</span>
-<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$a</span> -le <span class="hljs-number">3</span> ]
-<span class="hljs-keyword">do</span>
-    b=<span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span> [ <span class="hljs-variable">$b</span> -le <span class="hljs-number">3</span> ]
-    <span class="hljs-keyword">do</span>
-        c=<span class="hljs-number">1</span>
-        <span class="hljs-keyword">while</span> [ <span class="hljs-variable">$c</span> -le <span class="hljs-number">3</span> ]
-        <span class="hljs-keyword">do</span>
-            <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$a</span><span class="hljs-variable">$b</span><span class="hljs-variable">$c</span>"</span>
-            c=`expr <span class="hljs-variable">$c</span> + <span class="hljs-number">1</span>`
-        <span class="hljs-keyword">done</span>
-        b=`expr <span class="hljs-variable">$b</span> + <span class="hljs-number">1</span>`
-    <span class="hljs-keyword">done</span>
-    a=`expr <span class="hljs-variable">$a</span> + <span class="hljs-number">1</span>`
-<span class="hljs-keyword">done</span>
-</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ">111
-112
-113
-121
-122
-123
-131
-132
-133
-211
-212
-213
-221
-222
-223
-231
-232
-233
-311
-312
-313
-321
-322
-323
-331
-332
-333</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/WLoLcl1pTS0?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-<h2 id="shell-scripting-tutorial-52-the-break-statement"><strong>Shell Scripting Tutorial-52:</strong> <em>The ‘break’ Statement</em></h2>
-
-<p>break terminates the loop. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. generate 10 number using while loop</span>
-
-count=<span class="hljs-number">1</span>
-<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$count</span> -le <span class="hljs-number">10</span> ]
-<span class="hljs-keyword">do</span>
-    <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$count</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">6</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-keyword">break</span>
-    <span class="hljs-keyword">fi</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$count</span>
-    count=`expr <span class="hljs-variable">$count</span> + <span class="hljs-number">1</span>`
-<span class="hljs-keyword">done</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"We are out of the loop"</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vhdl"><span class="hljs-number">1</span>
-<span class="hljs-number">2</span>
-<span class="hljs-number">3</span>
-<span class="hljs-number">4</span>
-<span class="hljs-number">5</span>
-We are <span class="hljs-keyword">out</span> <span class="hljs-keyword">of</span> the <span class="hljs-keyword">loop</span>
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>break</code></td>
-  <td>ends the loop iteration</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/60kgR8mLac8?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-53-the-continue-statement"><strong>Shell Scripting Tutorial-53:</strong> <em>The ‘continue’ Statement</em></h2>
-
-<p>continue sends execution the beginning of the loop. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. generate 10 number using while loop</span>
-
-count=<span class="hljs-number">0</span>
-<span class="hljs-keyword">while</span> [ <span class="hljs-variable">$count</span> -le <span class="hljs-number">9</span> ]
-<span class="hljs-keyword">do</span>
-    count=`expr <span class="hljs-variable">$count</span> + <span class="hljs-number">1</span>`
-    <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$count</span> <span class="hljs-operator">-eq</span> <span class="hljs-number">5</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-keyword">continue</span>
-    <span class="hljs-keyword">fi</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$count</span>
-<span class="hljs-keyword">done</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"End of the loop"</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vbnet"><span class="hljs-number">1</span>
-<span class="hljs-number">2</span>
-<span class="hljs-number">3</span>
-<span class="hljs-number">4</span>
-<span class="hljs-number">6</span>
-<span class="hljs-number">7</span>
-<span class="hljs-number">8</span>
-<span class="hljs-number">9</span>
-<span class="hljs-number">10</span>
-<span class="hljs-keyword">End</span> <span class="hljs-keyword">of</span> the <span class="hljs-keyword">loop</span></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>continue</code></td>
-  <td>returns back to start of loop</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/sx4_7-amjF0?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-54-more-on-metacharacters"><strong>Shell Scripting Tutorial-54:</strong> <em>More on Metacharacters</em></h2>
-
-<p>Running more than one command a line. <br>
-<code>ls ; cal ; banner "mustafa celik"</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash
-</span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># create file text_tutorial_54 with some text</span>
-
-ls ; cal ; banner <span class="hljs-string">"mustafa celik"</span>
-
-grep -i money text_tutorial_54 &gt; pattern &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"Task was completed."</span>
-
-cat pattern</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs applescript">animals              script_2_tutorial_61  video_tutorial_10.sh  video_tutorial_29.sh  video_tutorial_48.sh
-commandlist_tutorial_50      script_3_tutorial_61  video_tutorial_11.sh  video_tutorial_30.sh  video_tutorial_49.sh
-create_consecutive_files.sh  sports        video_tutorial_12.sh  video_tutorial_31.sh  video_tutorial_50.sh
-empty_file1          test1         video_tutorial_13.sh  video_tutorial_32.sh  video_tutorial_51.sh
-empty_file2          test2         video_tutorial_14.sh  video_tutorial_33.sh  video_tutorial_52.sh
-empty_file3          test_file         video_tutorial_15.sh  video_tutorial_34.sh  video_tutorial_53.sh
-folder1              test_file2        video_tutorial_16.sh  video_tutorial_35.sh  video_tutorial_54.sh
-folder2              text_tutorial_43      video_tutorial_17.sh  video_tutorial_36.sh  video_tutorial_55.sh
-folder3              text_tutorial_47      video_tutorial_18.sh  video_tutorial_37.sh  video_tutorial_56.sh
-helpfile             text_tutorial_49      video_tutorial_19.sh  video_tutorial_38.sh  video_tutorial_57.sh
-merged_test_files        text_tutorial_54      video_tutorial_20.sh  video_tutorial_39.sh  video_tutorial_58.sh
-<span class="hljs-keyword">my</span>.joker             video_tutorial_02.sh  video_tutorial_21.sh  video_tutorial_40.sh  video_tutorial_59.sh
-new              video_tutorial_03.sh  video_tutorial_22.sh  video_tutorial_41.sh  video_tutorial_60.sh
-new_name             video_tutorial_04.sh  video_tutorial_23.sh  video_tutorial_42.sh  video_tutorial_61.sh
-old              video_tutorial_05.sh  video_tutorial_24.sh  video_tutorial_43.sh  video_tutorial_62.sh
-old_soft             video_tutorial_06.sh  video_tutorial_25.sh  video_tutorial_44.sh
-players              video_tutorial_07.sh  video_tutorial_26.sh  video_tutorial_45.sh
-sandbox              video_tutorial_08.sh  video_tutorial_27.sh  video_tutorial_46.sh
-script_1_tutorial_61         video_tutorial_09.sh  video_tutorial_28.sh  video_tutorial_47.sh
-    August <span class="hljs-number">2016</span>       
-Su Mo Tu We Th Fr Sa  
-    <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>  <span class="hljs-number">5</span>  <span class="hljs-number">6</span>  
- <span class="hljs-number">7</span>  <span class="hljs-number">8</span>  <span class="hljs-number">9</span> <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span> <span class="hljs-number">13</span>  
-<span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">16</span> <span class="hljs-number">17</span> <span class="hljs-number">18</span> <span class="hljs-number">19</span> <span class="hljs-number">20</span>  
-<span class="hljs-number">21</span> <span class="hljs-number">22</span> <span class="hljs-number">23</span> <span class="hljs-number">24</span> <span class="hljs-number">25</span> <span class="hljs-number">26</span> <span class="hljs-number">27</span>  
-<span class="hljs-number">28</span> <span class="hljs-number">29</span> <span class="hljs-number">30</span> <span class="hljs-number">31</span>           
-
-
- <span class="hljs-comment">#    #  #    #   ####    #####    ##    ######    ##             ####   ######</span>
- <span class="hljs-comment">##  ##  #    #  #          #     #  #   #        #  #           #    #  #</span>
- <span class="hljs-comment"># ## #  #    #   ####      #    #    #  #####   #    #          #       #####</span>
- <span class="hljs-comment">#    #  #    #       #     #    ######  #       ######          #       #</span>
- <span class="hljs-comment">#    #  #    #  #    #     #    #    #  #       #    #          #    #  #</span>
- <span class="hljs-comment">#    #   ####    ####      #    #    #  #       #    #           ####   ######</span>
-
-Task was completed.
-Money, <span class="hljs-keyword">get</span> away
-Money, <span class="hljs-keyword">it</span>'s a gas
-Money, <span class="hljs-keyword">get</span> <span class="hljs-keyword">back</span>
-Money, <span class="hljs-keyword">it</span>'s a hit 
-Money, <span class="hljs-keyword">it</span>'s a crime 
-Money, so they <span class="hljs-command">say</span> 
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>ls ; cal ; banner "hello"</code></td>
-  <td>running more than one command</td>
-</tr>
-<tr>
-  <td><code>grep -i money text_tutorial_54 &gt; pattern &amp;&amp; echo "Task was completed."</code></td>
-  <td>&amp;&amp; works if first part is ok</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/moRVYU-fpXw?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-55-adding-removing-users"><strong>Shell Scripting Tutorial-55:</strong> <em>Adding &amp; Removing Users</em></h2>
-
-<p>by using GUI user can be added and deleted.  </p>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>sudo login</code></td>
-  <td>change the user</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/kmDCgGk7P7k?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-56-know-when-users-log-in-part-one"><strong>Shell Scripting Tutorial-56:</strong> <em>Know when users log in Part One</em></h2>
-
-<p>Login example. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. checks every minute the user login or not</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter username:\c"</span>
-<span class="hljs-built_in">read</span> logname
-
-time=<span class="hljs-number">0</span>
-
-<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>
-<span class="hljs-keyword">do</span>
-    who | grep <span class="hljs-string">"<span class="hljs-variable">$logname</span>"</span> &gt; /dev/null
-    <span class="hljs-keyword">if</span> [ $? <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$logname</span> has logged in."</span>
-        <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$time</span> <span class="hljs-operator">-ne</span> <span class="hljs-number">0</span> ]
-        <span class="hljs-keyword">then</span>
-            <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$logname</span> was <span class="hljs-variable">$time</span> minutes late in logging in."</span>
-        <span class="hljs-keyword">fi</span>
-        <span class="hljs-keyword">exit</span>
-    <span class="hljs-keyword">else</span>
-        time=`expr <span class="hljs-variable">$time</span> + <span class="hljs-number">1</span>`
-        sleep <span class="hljs-number">60</span>
-    <span class="hljs-keyword">fi</span>
-<span class="hljs-keyword">done</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs oxygene">Enter username:joker
-joker <span class="hljs-keyword">has</span> logged <span class="hljs-keyword">in</span>.
-</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/AfsCD_2HaYo?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-<h2 id="shell-scripting-tutorial-57-know-when-users-log-in-part-two"><strong>Shell Scripting Tutorial-57:</strong> <em>Know when users log in Part Two</em></h2>
-
-<p>example of login. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. checks every minute the user login or not</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter username:\c"</span>
-<span class="hljs-built_in">read</span> logname
-
-grep <span class="hljs-string">"<span class="hljs-variable">$logname</span>"</span> /etc/passwd &gt; /dev/null
-<span class="hljs-keyword">if</span> [ $? <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Wait..."</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"User not found."</span>
-<span class="hljs-keyword">fi</span>  
-
-time=<span class="hljs-number">0</span>
-
-<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>
-<span class="hljs-keyword">do</span>
-    who | grep <span class="hljs-string">"<span class="hljs-variable">$logname</span>"</span> &gt; /dev/null
-    <span class="hljs-keyword">if</span> [ $? <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$logname</span> has logged in."</span>
-        <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$time</span> <span class="hljs-operator">-ne</span> <span class="hljs-number">0</span> ]
-        <span class="hljs-keyword">then</span>
-            <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$logname</span> was <span class="hljs-variable">$time</span> minutes late in logging in."</span>
-        <span class="hljs-keyword">fi</span>
-        <span class="hljs-keyword">exit</span>
-    <span class="hljs-keyword">else</span>
-        time=`expr <span class="hljs-variable">$time</span> + <span class="hljs-number">1</span>`
-        sleep <span class="hljs-number">60</span>
-    <span class="hljs-keyword">fi</span>
-<span class="hljs-keyword">done</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vhdl">Enter username:joker
-<span class="hljs-keyword">Wait</span>...
-joker has logged <span class="hljs-keyword">in</span>.
-</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>grep "$logname" /etc/passwd &gt; /dev/null</code></td>
-  <td>checking the user exists or not</td>
-</tr>
-<tr>
-  <td><code>if [ $? -eq 0 ]</code></td>
-  <td></td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/F9aqWi0bON0?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-58-know-when-users-log-in-final-part"><strong>Shell Scripting Tutorial-58:</strong> <em>Know when users log in Final Part</em></h2>
-
-<p>loging example is implemented. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-comment">#!/usr/bin/env bas</span>
-<span class="hljs-comment"># Shell_scripting_tutorial_58:  Know when users log in Final Part</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># 1. checks every minute the user login or not</span>
-
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"Enter username:\c"</span>
-<span class="hljs-built_in">read</span> logname
-
-grep <span class="hljs-string">"<span class="hljs-variable">$logname</span>"</span> /etc/passwd &gt; /dev/null
-<span class="hljs-keyword">if</span> [ $? <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span> ]
-<span class="hljs-keyword">then</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Wait..."</span>
-<span class="hljs-keyword">else</span>
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"User not found."</span>
-<span class="hljs-keyword">fi</span>  
-
-time=<span class="hljs-number">0</span>
-
-<span class="hljs-keyword">while</span> <span class="hljs-literal">true</span>
-<span class="hljs-keyword">do</span>
-    who | grep <span class="hljs-string">"<span class="hljs-variable">$logname</span>"</span> &gt; /dev/null
-    <span class="hljs-keyword">if</span> [ $? <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span> ]
-    <span class="hljs-keyword">then</span>
-        <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$logname</span> has logged in."</span>
-        <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$time</span> <span class="hljs-operator">-ne</span> <span class="hljs-number">0</span> ]
-        <span class="hljs-keyword">then</span>
-            <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$time</span> <span class="hljs-operator">-gt</span> <span class="hljs-number">60</span> ]
-            <span class="hljs-keyword">then</span>
-                min=`expr <span class="hljs-variable">$time</span> / <span class="hljs-number">60</span>`
-                sec=`expr <span class="hljs-variable">$time</span> % <span class="hljs-number">60</span>`
-                <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$logname</span> was <span class="hljs-variable">$min</span> minutes and <span class="hljs-variable">$sec</span> seconds late in logging in."</span>
-            <span class="hljs-keyword">else</span>
-                sec=<span class="hljs-variable">$time</span>
-                <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$logname</span> was <span class="hljs-variable">$sec</span> seconds late in logging in."</span>
-            <span class="hljs-keyword">fi</span>
-        <span class="hljs-keyword">fi</span>
-        <span class="hljs-keyword">exit</span>
-    <span class="hljs-keyword">else</span>
-        time=`expr <span class="hljs-variable">$time</span> + <span class="hljs-number">1</span>`
-        sleep <span class="hljs-number">1</span>
-    <span class="hljs-keyword">fi</span>
-<span class="hljs-keyword">done</span></code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs vhdl">Enter username:joker
-<span class="hljs-keyword">Wait</span>...
-joker has logged <span class="hljs-keyword">in</span>.
-</code></pre>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/v9nZWXQCFcE?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-<h2 id="shell-scripting-tutorial-59-communicate-with-other-users-using-write"><strong>Shell Scripting Tutorial-59:</strong> <em>Communicate with other users using ‘write’</em></h2>
-
-<p>Both users must be logged in different terminals.  </p>
-
-<p><code>write username</code>  the writer command. <br>
-<code>mesg -y</code> the receiver command.  </p>
-
-<p><code>finger</code> shows the terminal of other users. <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># 1. checks every minute the user login or not</span>
-<span class="hljs-comment"># </span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># both users must be logged in different terminal.</span>
-
-write newuser2
-
-<span class="hljs-comment"># on the other terminal following command shoul be ran.</span>
-mesg y
-
-<span class="hljs-comment"># shows the terminal list of users to communicate.</span>
-finger</code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>write username</code></td>
-  <td>message command</td>
-</tr>
-<tr>
-  <td><code>mesg -y</code></td>
-  <td>receiver command to take messages</td>
-</tr>
-<tr>
-  <td><code>finger</code></td>
-  <td>terminal list for messaging</td>
-</tr>
-</tbody></table>
-
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/BSFUJVHoJ7A?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<h2 id="shell-scripting-tutorial-60-create-your-own-commands-using-functions"><strong>Shell Scripting Tutorial-60:</strong> <em>Create Your Own Commands Using Functions</em></h2>
-
-<p>following is the function usage. <br>
-run the following command to initialize the function:  </p>
-
-<p>use following command to release the function: <br>
-<code>$ unset youtube</code> <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash</span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># write functions</span>
-<span class="hljs-comment"># change the permissions</span>
-<span class="hljs-comment"># run the script</span>
-<span class="hljs-comment"># $. video_tutorial_60.sh</span>
-<span class="hljs-comment"># $ youtube</span>
-<span class="hljs-comment"># $ byebye</span>
-<span class="hljs-comment"># use unset to delete function</span>
-<span class="hljs-comment"># $ unset youtube</span>
-
-<span class="hljs-function"><span class="hljs-title">youtube</span></span>()
-{
-    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Good Morning."</span>
+verb_dict = {
+  <span class="hljs-string">"say"</span>: say,
 }
-<span class="hljs-function"><span class="hljs-title">byebye</span></span>()
-{
-    cal
-}</code></pre>
 
-<table>
-<thead>
-<tr>
-  <th>Command</th>
-  <th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td><code>unset youtube</code></td>
-  <td>removes the function</td>
-</tr>
-</tbody></table>
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+  get_input()</code></pre>
 
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/Ho0sf54Kbr8?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
+<p><strong>Result:</strong></p>
 
+<pre><code>: say Hello!
+You said "Hello!"
+: say Goodbye!
+You said "Goodbye!"
 
-
-
-<h2 id="shell-scripting-tutorial-61-executing-multiple-scripts"><strong>Shell Scripting Tutorial-61:</strong> <em>Executing Multiple Scripts</em></h2>
-
-<p>Script should run at the last line of the previous script.  <br>
-<strong>Example:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs bash"><span class="hljs-shebang">#!/usr/bin/env bash </span>
-<span class="hljs-comment"># run the following command before the script:</span>
-<span class="hljs-comment"># prepare 3 scripts which calls another consequently.</span>
-
-sh script_1_tutorial_61</code></pre>
-
-<p><strong>Output:</strong></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs ruleslanguage">                                                           #
-  ###<span class="hljs-array">#    </span>###<span class="hljs-array">#   </span>####<span class="hljs-array">#      </span><span class="hljs-array">#    </span>####<span class="hljs-array">#    </span>####<span class="hljs-array">#           </span>##
- <span class="hljs-array">#       </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#            </span><span class="hljs-array"># </span>#
-  ###<span class="hljs-array">#   </span><span class="hljs-array">#       </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#              </span>#
-      <span class="hljs-array">#  </span><span class="hljs-array">#       </span>####<span class="hljs-array">#      </span><span class="hljs-array">#    </span>####<span class="hljs-array">#      </span><span class="hljs-array">#              </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#   </span><span class="hljs-array">#      </span><span class="hljs-array">#    </span><span class="hljs-array">#          </span><span class="hljs-array">#              </span>#
-  ###<span class="hljs-array">#    </span>###<span class="hljs-array">#   </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#          </span><span class="hljs-array">#            </span>#####
-
-                                                         #####
-  ###<span class="hljs-array">#    </span>###<span class="hljs-array">#   </span>####<span class="hljs-array">#      </span><span class="hljs-array">#    </span>####<span class="hljs-array">#    </span>####<span class="hljs-array">#         </span><span class="hljs-array">#     </span>#
- <span class="hljs-array">#       </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#                 </span>#
-  ###<span class="hljs-array">#   </span><span class="hljs-array">#       </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#            </span>#####
-      <span class="hljs-array">#  </span><span class="hljs-array">#       </span>####<span class="hljs-array">#      </span><span class="hljs-array">#    </span>####<span class="hljs-array">#      </span><span class="hljs-array">#           </span>#
- <span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#   </span><span class="hljs-array">#      </span><span class="hljs-array">#    </span><span class="hljs-array">#          </span><span class="hljs-array">#           </span>#
-  ###<span class="hljs-array">#    </span>###<span class="hljs-array">#   </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#          </span><span class="hljs-array">#           </span>#######
-
- ####<span class="hljs-array">#                                                   </span>#####
-<span class="hljs-array">#     </span><span class="hljs-array">#   </span>###<span class="hljs-array">#   </span>####<span class="hljs-array">#      </span><span class="hljs-array">#    </span>####<span class="hljs-array">#    </span>####<span class="hljs-array">#         </span><span class="hljs-array">#     </span>#
-<span class="hljs-array">#        </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#                 </span>#
- ####<span class="hljs-array">#   </span><span class="hljs-array">#       </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#            </span>#####
-      <span class="hljs-array">#  </span><span class="hljs-array">#       </span>####<span class="hljs-array">#      </span><span class="hljs-array">#    </span>####<span class="hljs-array">#      </span><span class="hljs-array">#                 </span>#
-<span class="hljs-array">#     </span><span class="hljs-array">#  </span><span class="hljs-array">#    </span><span class="hljs-array">#  </span><span class="hljs-array">#   </span><span class="hljs-array">#      </span><span class="hljs-array">#    </span><span class="hljs-array">#          </span><span class="hljs-array">#           </span><span class="hljs-array">#     </span>#
- ####<span class="hljs-array">#    </span>###<span class="hljs-array">#   </span><span class="hljs-array">#    </span><span class="hljs-array">#     </span><span class="hljs-array">#    </span><span class="hljs-array">#          </span><span class="hljs-array">#            </span>#####
-
+: test
+Unknown verb test
 </code></pre>
 
 <blockquote>
-  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+  <p><strong>Note:</strong> The code above takes input from the user, and tries to match the first word with a command in <strong>verb_dict</strong>. If a match is found, the <br>
+  corresponding function is called.</p>
 </blockquote>
 
-<br><iframe width="560" height="315" src="https://www.youtube.com/embed/3dqR9W7FKB4?list=PL7B7FA4E693D8E790" frameborder="0" allowfullscreen></iframe>
+<p>The next step is to use classes to represent game objects.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameObject</span>:</span>
+  class_name = <span class="hljs-string">""</span>
+  desc = <span class="hljs-string">""</span>
+  objects = {}
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name)</span>:</span>
+    self.name = name
+    GameObject.objects[self.class_name] = self
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_desc</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">return</span> self.class_name + <span class="hljs-string">"\n"</span> + self.desc
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Goblin</span><span class="hljs-params">(GameObject)</span>:</span>
+  class_name = <span class="hljs-string">"goblin"</span>
+  desc = <span class="hljs-string">"A foul creature"</span>
+
+goblin = Goblin(<span class="hljs-string">"Gobbly"</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">examine</span><span class="hljs-params">(noun)</span>:</span>
+  <span class="hljs-keyword">if</span> noun <span class="hljs-keyword">in</span> GameObject.objects:
+    <span class="hljs-keyword">return</span> GameObject.objects[noun].get_desc()
+  <span class="hljs-keyword">else</span>:
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"There is no {} here."</span>.format(noun)</code></pre>
+
+<p>We created a <strong>Goblin</strong> class, which inherits from the <strong>GameObjects</strong> class. <br>
+We also created a new function <strong>examine</strong>, which returns the objects description. <br>
+Now we can add a new “examine” verb to our dictionary and try it out!</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs perl">verb_dict = {
+  <span class="hljs-string">"say"</span>: <span class="hljs-keyword">say</span>,
+  <span class="hljs-string">"examine"</span>: examine,
+}</code></pre>
+
+<p>Combine this code with the one in our previous example, and run the program.</p>
+
+<pre><code>&gt;&gt;&gt;
+: say Hello!
+You said "Hello!"
+
+: examine goblin
+goblin
+A foul creature
+
+: examine elf
+There is no elf here.
+:
+</code></pre>
+
+<p>This code adds more detail to the <strong>Goblin</strong> class and allows you to <strong>fight</strong> goblins.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Goblin</span><span class="hljs-params">(GameObject)</span>:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name)</span>:</span>
+    self.class_name = <span class="hljs-string">"goblin"</span>
+    self.health = <span class="hljs-number">3</span>
+    self._desc = <span class="hljs-string">" A foul creature"</span>
+    super().__init__(name)
+
+  <span class="hljs-decorator">@property</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">desc</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">if</span> self.health &gt;=<span class="hljs-number">3</span>:
+      <span class="hljs-keyword">return</span> self._desc
+    <span class="hljs-keyword">elif</span> self.health == <span class="hljs-number">2</span>:
+      health_line = <span class="hljs-string">"It has a wound on its knee."</span>
+    <span class="hljs-keyword">elif</span> self.health == <span class="hljs-number">1</span>:
+      health_line = <span class="hljs-string">"Its left arm has been cut off!"</span>
+    <span class="hljs-keyword">elif</span> self.health &lt;= <span class="hljs-number">0</span>:
+      health_line = <span class="hljs-string">"It is dead."</span>
+    <span class="hljs-keyword">return</span> self._desc + <span class="hljs-string">"\n"</span> + health_line
+
+  <span class="hljs-decorator">@desc.setter</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">desc</span><span class="hljs-params">(self, value)</span>:</span>
+    self._desc = value
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hit</span><span class="hljs-params">(noun)</span>:</span>
+  <span class="hljs-keyword">if</span> noun <span class="hljs-keyword">in</span> GameObject.objects:
+    thing = GameObject.objects[noun]
+    <span class="hljs-keyword">if</span> type(thing) == Goblin:
+      thing.health = thing.health - <span class="hljs-number">1</span>
+      <span class="hljs-keyword">if</span> thing.health &lt;= <span class="hljs-number">0</span>:
+        msg = <span class="hljs-string">"You killed the goblin!"</span>
+      <span class="hljs-keyword">else</span>: 
+        msg = <span class="hljs-string">"You hit the {}"</span>.format(thing.class_name)
+  <span class="hljs-keyword">else</span>:
+    msg =<span class="hljs-string">"There is no {} here."</span>.format(noun) 
+  <span class="hljs-keyword">return</span> msg</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<pre><code>&gt;&gt;&gt;
+: hit goblin
+You hit the goblin
+
+: examine goblin
+goblin
+ A foul creature
+It has a wound on its knee.
+
+: hit goblin
+You hit the goblin
+
+: hit goblin
+You killed the goblin!
+
+: examine goblin
+A goblin
+
+goblin
+ A foul creature
+It is dead.
+:
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> This was just a simple sample. You could create different classes <br>
+  (e.g., elves, orcs, humans), fight them, make them fight each other, <br>
+  and so on.</p>
+</blockquote>
